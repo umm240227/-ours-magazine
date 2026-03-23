@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-label="O favicon">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0075" />
+      <stop offset="100%" stop-color="#1e1397" />
+    </linearGradient>
+  </defs>
+  <rect width="256" height="256" rx="56" fill="url(#bg)" />
+  <circle cx="128" cy="128" r="70" fill="none" stroke="#ffffff" stroke-width="28" />
+  <circle cx="182" cy="78" r="14" fill="#fafa15" />
+</svg>

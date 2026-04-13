@@ -2,7 +2,7 @@
 title: "少額から始めるSNS広告の費用対効果を最大化するコツ: 月3万円でも成果を出す実践ロードマップ"
 description: "少額のSNS広告でも成果を出すために必要な準備、配信設計、改善手順、数値判断を体系化。明日から実行できる運用手順と、無駄配信を防ぐ判断基準を具体例付きで解説し、費用対効果を安定して高める実務の進め方を整理したガイドです。保存版です。完全版。"
 date: "2026.03.17"
-category: "SNS驕狗畑繝弱え繝上え"
+category: "SNS運用"
 image: "/images/articles/sns-ads-small-budget-roi.jpg"
 recommended: true
 tags:

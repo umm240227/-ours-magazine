@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import { getArticleById, getArticleIds, getRecommendedArticles } from "../../../lib/markdown";
+import { ensureArticleImageSrc, getArticleById, getArticleIds, getRecommendedArticles } from "../../../lib/markdown";
 
 const categories = [
   { label: "Instagram", slug: "instagram" },
@@ -106,16 +107,20 @@ export default async function ArticleDetailPage({ params }: ArticlePageProps) {
 
             <header className="space-y-4">
               <div className="flex items-center gap-3">
-                <span className="inline-flex rounded-md bg-brand-accent px-3 py-1 text-xs font-bold text-brand-primary">Pickup</span>
+                <span className="inline-flex rounded-md bg-brand-accent px-3 py-1 text-xs font-bold text-brand-primary">ピックアップ</span>
                 <time className="text-sm text-slate-400">{article.date}</time>
               </div>
               <h1 className="text-3xl font-bold leading-tight text-brand-primary md:text-4xl">{article.title}</h1>
-              <div
-                role="img"
-                aria-label={`${article.title}のメイン画像`}
-                className="aspect-video w-full rounded-2xl bg-cover bg-center"
-                style={{ backgroundImage: `url('${article.image}')` }}
-              />
+              <div className="relative aspect-video w-full overflow-hidden rounded-2xl bg-slate-100">
+                <Image
+                  src={ensureArticleImageSrc(article.image)}
+                  alt={`${article.title}のメイン画像`}
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 896px"
+                  className="object-cover object-center"
+                  priority
+                />
+              </div>
             </header>
 
             <article className="space-y-8 text-base leading-relaxed text-slate-700 md:text-lg">
@@ -201,7 +206,12 @@ export default async function ArticleDetailPage({ params }: ArticlePageProps) {
             </section>
 
             <section className="mt-12 space-y-5">
-              <h2 className="text-xl font-bold text-brand-primary">こちらもおすすめ</h2>
+              <div className="space-y-3">
+                <h2 className="text-xl font-bold text-brand-primary">こちらもおすすめ</h2>
+                <p className="text-sm leading-relaxed text-brand-primary/70">
+                  同じカテゴリやタグが近い記事を、優先して表示しています。足りない場合は新着から補います。
+                </p>
+              </div>
               <div className="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3">
                 {recommendedArticles.map((recommendedArticle) => (
                   <Link
@@ -210,12 +220,15 @@ export default async function ArticleDetailPage({ params }: ArticlePageProps) {
                     className="block overflow-hidden rounded-lg bg-card-bg shadow-sm ring-1 ring-slate-200 transition-all duration-300 hover:shadow-md"
                   >
                     <article>
-                      <div
-                        role="img"
-                        aria-label={`${recommendedArticle.title}のサムネイル`}
-                        className="aspect-[16/11] w-full bg-cover bg-center opacity-90"
-                        style={{ backgroundImage: `url('${recommendedArticle.image}')` }}
-                      />
+                      <div className="relative aspect-[16/11] w-full overflow-hidden bg-slate-100 opacity-90">
+                        <Image
+                          src={ensureArticleImageSrc(recommendedArticle.image)}
+                          alt={`${recommendedArticle.title}のサムネイル`}
+                          fill
+                          sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
+                          className="object-cover object-center"
+                        />
+                      </div>
                       <div className="space-y-2 p-4">
                         <span className="inline-block rounded-full bg-brand-accent px-3 py-1 text-xs font-semibold text-brand-primary">
                           {recommendedArticle.category}
@@ -223,6 +236,9 @@ export default async function ArticleDetailPage({ params }: ArticlePageProps) {
                         <h3 className="line-clamp-2 text-base font-bold leading-snug text-brand-primary">
                           {recommendedArticle.title}
                         </h3>
+                        {recommendedArticle.description ? (
+                          <p className="line-clamp-2 text-xs leading-relaxed text-brand-primary/75">{recommendedArticle.description}</p>
+                        ) : null}
                         <p className="text-xs text-brand-primary/70">{recommendedArticle.date}</p>
                       </div>
                     </article>

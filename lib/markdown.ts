@@ -1,6 +1,9 @@
 import fs from "node:fs";
 import path from "node:path";
 import matter from "gray-matter";
+import { ARTICLE_IMAGE_PLACEHOLDER_PATH, ensureArticleImageSrc } from "./article-image";
+
+export { ARTICLE_IMAGE_PLACEHOLDER_PATH, ensureArticleImageSrc };
 
 export type ArticleFrontmatter = {
   title: string;
@@ -19,6 +22,7 @@ export type Article = ArticleFrontmatter & {
 };
 
 const articlesDirectory = path.join(process.cwd(), "content", "articles");
+const publicDirectory = path.join(process.cwd(), "public");
 
 function toTimestamp(dateText: string) {
   return new Date(dateText.replace(/\./g, "-")).getTime();
@@ -50,6 +54,40 @@ export function normalizeCategory(category: string) {
   return category.trim().toLowerCase();
 }
 
+function getFallbackImage(): string {
+  return ARTICLE_IMAGE_PLACEHOLDER_PATH;
+}
+
+function resolveArticleImage(image: string, id: string, category: string) {
+  const trimmedImage = image.trim();
+
+  if (!trimmedImage) {
+    return getFallbackImage();
+  }
+
+  if (/^https?:\/\//i.test(trimmedImage)) {
+    return trimmedImage;
+  }
+
+  if (!trimmedImage.startsWith("/")) {
+    return getFallbackImage();
+  }
+
+  const normalizedSegments = trimmedImage
+    .replace(/^\/+/, "")
+    .split(/[?#]/)[0]
+    .split("/")
+    .filter(Boolean);
+
+  const fullPath = path.join(publicDirectory, ...normalizedSegments);
+
+  if (normalizedSegments.length > 0 && fs.existsSync(fullPath)) {
+    return trimmedImage;
+  }
+
+  return getFallbackImage();
+}
+
 export function getArticleIds(): string[] {
   return fs
     .readdirSync(articlesDirectory)
@@ -67,13 +105,15 @@ export function getArticleById(id: string): Article | null {
   const fileContents = fs.readFileSync(fullPath, "utf8");
   const { data, content } = matter(fileContents);
 
+  const resolvedImage = resolveArticleImage(String(data.image ?? ""), id, String(data.category ?? ""));
+
   return {
     id,
     title: String(data.title ?? ""),
     description: String(data.description ?? ""),
     date: String(data.date ?? ""),
     category: String(data.category ?? ""),
-    image: String(data.image ?? ""),
+    image: ensureArticleImageSrc(resolvedImage),
     tags: Array.isArray(data.tags) ? data.tags.map((tag) => String(tag)) : [],
     featured: parseBooleanFlag(data.featured),
     recommended: parseBooleanFlag(data.recommended),
@@ -124,10 +164,67 @@ export function getCategoryStaticParams() {
   return Array.from(uniqueCategories).map((slug) => ({ slug }));
 }
 
+function countSharedTags(a: Article, b: Article): number {
+  const setB = new Set(b.tags.map((t) => normalizeTag(t)));
+  let n = 0;
+  for (const t of a.tags) {
+    if (setB.has(normalizeTag(t))) {
+      n += 1;
+    }
+  }
+  return n;
+}
+
+/**
+ * 「こちらもおすすめ」用: 同カテゴリ → タグが重なる他カテゴリ（重複数・日付）→ それでも足りなければ新着順
+ */
 export function getRecommendedArticles(currentId: string, limit = 3): Article[] {
-  return getAllArticles()
-    .filter((article) => article.id !== currentId)
-    .slice(0, limit);
+  const current = getArticleById(currentId);
+  if (!current) {
+    return [];
+  }
+
+  const others = getAllArticles().filter((article) => article.id !== currentId);
+  const currentCategory = normalizeCategory(current.category);
+  const currentTagSet = new Set(current.tags.map((t) => normalizeTag(t)));
+
+  const result: Article[] = [];
+  const picked = new Set<string>();
+
+  const takeFrom = (pool: Article[]) => {
+    for (const article of pool) {
+      if (result.length >= limit) {
+        return;
+      }
+      if (picked.has(article.id)) {
+        continue;
+      }
+      picked.add(article.id);
+      result.push(article);
+    }
+  };
+
+  const sameCategory = others.filter((article) => normalizeCategory(article.category) === currentCategory);
+  takeFrom(sameCategory);
+
+  if (result.length < limit && currentTagSet.size > 0) {
+    const sharedTagCandidates = others
+      .filter((article) => !picked.has(article.id) && article.tags.some((t) => currentTagSet.has(normalizeTag(t))))
+      .sort((a, b) => {
+        const overlapDiff = countSharedTags(b, current) - countSharedTags(a, current);
+        if (overlapDiff !== 0) {
+          return overlapDiff;
+        }
+        return toTimestamp(b.date) - toTimestamp(a.date);
+      });
+    takeFrom(sharedTagCandidates);
+  }
+
+  if (result.length < limit) {
+    takeFrom(others.filter((article) => !picked.has(article.id)));
+  }
+
+  return result;
 }
 
 export function searchArticles(keyword: string): Article[] {

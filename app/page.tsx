@@ -1,70 +1,21 @@
 import { Search } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import PickupArticleCard from "./components/PickupArticleCard";
-import { getAllArticles, type Article } from "../lib/markdown";
+import {
+  ARTICLE_IMAGE_PLACEHOLDER_PATH,
+  ensureArticleImageSrc,
+  getAllArticles,
+  type Article,
+} from "../lib/markdown";
 
-const articleCards = [
-  {
-    id: 1,
-    category: "Instagram",
-    title: "伸びる投稿を作る3つの型",
-    excerpt: "保存される投稿に共通する、企画から構成までの基本をやさしく解説。",
-    date: "2026.03.10",
-    image: "https://picsum.photos/seed/article-1/800/600",
-  },
-  {
-    id: 2,
-    category: "TikTok",
-    title: "再生数が伸びる冒頭設計",
-    excerpt: "最初の3秒で離脱を防ぐための導入テンプレートを紹介します。",
-    date: "2026.03.08",
-    image: "https://picsum.photos/seed/article-2/800/600",
-  },
-  {
-    id: 3,
-    category: "SNS運用",
-    title: "少人数でも回る運用フロー",
-    excerpt: "担当が少なくても無理なく続く、週次運用の分担方法をまとめました。",
-    date: "2026.03.06",
-    image: "https://picsum.photos/seed/article-3/800/600",
-  },
-  {
-    id: 4,
-    category: "YouTube",
-    title: "分析時間を半分にする習慣",
-    excerpt: "毎日の集計作業を短縮するための、実務で使える見直しポイント集。",
-    date: "2026.03.04",
-    image: "https://picsum.photos/seed/article-4/800/600",
-  },
-];
-
-const rankingItems = [
-  {
-    title: "2026年版Instagramアルゴリズム完全攻略: 再生回数を劇的に伸ばす実践ロードマップ",
-    image: "https://picsum.photos/seed/rank-instagram-1/180/120",
-    href: "/articles/post-instagram-algorithm",
-  },
-  {
-    title: "YouTube収益化の条件クリアを最速で達成するロードマップ: 90日で土台を作り、180日で安定到達する実践設計",
-    image: "https://picsum.photos/seed/rank-youtube-2/180/120",
-    href: "/articles/youtube-monetization-roadmap",
-  },
-  {
-    title: "少額から始めるSNS広告の費用対効果を最大化するコツ: 月3万円でも成果を出す実践ロードマップ",
-    image: "https://picsum.photos/seed/rank-ads-3/180/120",
-    href: "/articles/sns-ads-small-budget-roi",
-  },
-  {
-    title: "ユーザーが自然とクチコミを投稿したくなるUGC創出の仕掛け: 売り込まずに広がるSNS運用の実践設計",
-    image: "https://picsum.photos/seed/rank-ugc-4/180/120",
-    href: "/articles/ugc-natural-word-of-mouth-mechanism",
-  },
-  {
-    title: "Xでフォロワー1万人を現実にする実践ロードマップ: 0から積み上げる運用設計と毎日の改善手順",
-    image: "https://picsum.photos/seed/rank-x-5/180/120",
-    href: "/articles/x-10000-roadmap",
-  },
-];
+const RANKING_ARTICLE_IDS = [
+  "post-instagram-algorithm",
+  "youtube-monetization-roadmap",
+  "sns-ads-small-budget-roi",
+  "ugc-natural-word-of-mouth-mechanism",
+  "x-10000-roadmap",
+] as const;
 
 const sidebarFeaturedFallbackIds = [
   "post-instagram-algorithm",
@@ -93,86 +44,74 @@ type CategoryArticleSection = {
   items: CategoryArticleItem[];
 };
 
-const categoryArticleSections: CategoryArticleSection[] = [
+type RankingItem = {
+  title: string;
+  image: string;
+  description: string;
+  href: string;
+};
+
+type CategorySectionSpec = {
+  name: string;
+  entries: { id: number; slug: string }[];
+};
+
+const CATEGORY_SECTION_SPECS: CategorySectionSpec[] = [
   {
     name: "Instagram",
-    items: [
-      {
-        id: 101,
-        title: "保存率を高めるカルーセル1枚目の作り方",
-        excerpt: "スクロールを止める見出し設計と、情報の出し方の順番を整理。",
-        image: "https://picsum.photos/seed/insta-guide-1/320/220",
-        href: "/articles/instagram-save-post-structure",
-      },
-      {
-        id: 104,
-        title: "フォロワーが増えない原因と改善方法",
-        excerpt: "投稿内容・ターゲット・導線・継続の4つの視点から改善策を解説。",
-        image: "https://picsum.photos/seed/insta-guide-4/320/220",
-        href: "/articles/instagram-followers-growth-fixes",
-      },
-      {
-        id: 102,
-        title: "プロフィール改善チェックリスト（離脱防止）",
-        excerpt: "離脱されないプロフィールに整えるための確認項目を、改善例つきで解説。",
-        image: "https://picsum.photos/seed/insta-guide-2-profile/320/220",
-        href: "/articles/instagram-profile-checklist-retention",
-      },
+    entries: [
+      { id: 101, slug: "instagram-save-post-structure" },
+      { id: 104, slug: "instagram-followers-growth-fixes" },
+      { id: 102, slug: "instagram-profile-checklist-retention" },
     ],
   },
   {
     name: "TikTok",
-    items: [
-      {
-        id: 201,
-        title: "TikTokで冒頭3秒の離脱を減らすフックの作り方",
-        excerpt: "視聴維持率の基本、バズるフック例、NGパターン、即使えるテンプレを解説。",
-        image: "https://picsum.photos/seed/tiktok-guide-1/320/220",
-        href: "/articles/tiktok-first-3-seconds-hook",
-      },
-      {
-        id: 202,
-        title: "最後まで見られる動画構成の作り方（完走率アップ）",
-        excerpt: "導入→展開→オチの設計、離脱ポイント、改善方法、テンポ設計のコツを紹介。",
-        image: "https://picsum.photos/seed/tiktok-guide-2/320/220",
-        href: "/articles/tiktok-watch-through-structure",
-      },
-      {
-        id: 203,
-        title: "コメントを増やす仕掛け（エンゲージメント向上）",
-        excerpt: "質問の作り方、参加型企画、アルゴリズムとの関係、NG例まで実践的に解説。",
-        image: "https://picsum.photos/seed/tiktok-guide-3/320/220",
-        href: "/articles/tiktok-comment-engagement-guide",
-      },
+    entries: [
+      { id: 201, slug: "tiktok-first-3-seconds-hook" },
+      { id: 202, slug: "tiktok-watch-through-structure" },
+      { id: 203, slug: "tiktok-comment-engagement-guide" },
     ],
   },
   {
     name: "YouTube",
-    items: [
-      {
-        id: 301,
-        title: "再生回数が伸びる企画の作り方",
-        excerpt: "伸びる企画と伸びない企画の違い、検索型とバズ型、すぐ使える企画テンプレを解説。",
-        image: "https://picsum.photos/seed/youtube-planning-1/320/220",
-        href: "/articles/youtube-content-planning-for-views",
-      },
-      {
-        id: 302,
-        title: "クリックされるサムネイルとタイトルの作り方",
-        excerpt: "CTRを上げる設計の基本、NG例、改善パターンを初心者向けにわかりやすく紹介。",
-        image: "https://picsum.photos/seed/youtube-thumbnail-2/320/220",
-        href: "/articles/youtube-thumbnail-title-ctr-guide",
-      },
-      {
-        id: 303,
-        title: "初心者がやるべきYouTube分析指標と改善方法",
-        excerpt: "CTR・視聴維持率などの見方、よくある勘違い、具体的な改善手順をまとめて解説。",
-        image: "https://picsum.photos/seed/youtube-analytics-3/320/220",
-        href: "/articles/youtube-analytics-metrics-improvement-guide",
-      },
+    entries: [
+      { id: 301, slug: "youtube-content-planning-for-views" },
+      { id: 302, slug: "youtube-thumbnail-title-ctr-guide" },
+      { id: 303, slug: "youtube-analytics-metrics-improvement-guide" },
     ],
   },
 ];
+
+function buildRankingItems(allArticles: Article[]): RankingItem[] {
+  const byId = new Map(allArticles.map((a) => [a.id, a]));
+  return RANKING_ARTICLE_IDS.map((id) => {
+    const article = byId.get(id);
+    return {
+      title: article?.title ?? "",
+      image: article?.image ?? ARTICLE_IMAGE_PLACEHOLDER_PATH,
+      description: article?.description ?? "",
+      href: `/articles/${id}`,
+    };
+  });
+}
+
+function buildCategoryArticleSections(allArticles: Article[]): CategoryArticleSection[] {
+  const byId = new Map(allArticles.map((a) => [a.id, a]));
+  return CATEGORY_SECTION_SPECS.map((section) => ({
+    name: section.name,
+    items: section.entries.map((entry) => {
+      const article = byId.get(entry.slug);
+      return {
+        id: entry.id,
+        title: article?.title ?? "",
+        excerpt: article?.description ?? "",
+        image: article?.image ?? ARTICLE_IMAGE_PLACEHOLDER_PATH,
+        href: `/articles/${entry.slug}`,
+      };
+    }),
+  }));
+}
 
 function getTagHref(tag: string) {
   return `/tags/${encodeURIComponent(tag.replace(/^#/, "").trim().toLowerCase())}`;
@@ -230,11 +169,13 @@ function MainLatestArticlesSection({ latestArticles }: { latestArticles: ReturnT
           >
             <Link href={`/articles/${article.id}`} className="group block">
               <article className="flex items-stretch gap-5">
-                <div className="h-[108px] w-48 shrink-0 overflow-hidden rounded-md bg-slate-100">
-                  <img
-                    src={article.image}
+                <div className="relative h-[108px] w-48 shrink-0 overflow-hidden rounded-md bg-slate-100">
+                  <Image
+                    src={ensureArticleImageSrc(article.image)}
                     alt={`${article.title}のサムネイル`}
-                    className="h-full w-full object-cover object-center"
+                    fill
+                    sizes="192px"
+                    className="object-cover object-center"
                   />
                 </div>
                 <div className="min-w-0 flex min-h-[108px] flex-1 flex-col">
@@ -289,14 +230,16 @@ function SidebarFeaturedArticlesSection({ featuredArticles }: { featuredArticles
               className="block overflow-hidden rounded-xl bg-white shadow-sm ring-1 ring-slate-200 transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg"
             >
               <article className="sidebar-featured-article-card">
-                <div
-                  role="img"
-                  aria-label={`${article.title}のサムネイル`}
-                  className="sidebar-featured-thumbnail relative aspect-[16/10] w-full bg-cover bg-center"
-                  style={{ backgroundImage: `url('${article.image}')` }}
-                >
-                  <span className="absolute left-3 top-3 inline-flex rounded-md bg-brand-accent px-2 py-1 text-[11px] font-bold leading-none text-brand-primary">
-                    PICKUP
+                <div className="sidebar-featured-thumbnail relative aspect-[16/10] w-full overflow-hidden bg-slate-100">
+                  <Image
+                    src={ensureArticleImageSrc(article.image)}
+                    alt={`${article.title}のサムネイル`}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 300px"
+                    className="object-cover object-center"
+                  />
+                  <span className="absolute left-3 top-3 z-10 inline-flex rounded-md bg-brand-accent px-2 py-1 text-[11px] font-bold leading-none text-brand-primary">
+                    ピックアップ
                   </span>
                 </div>
                 <div className="px-4 pb-4 pt-3">
@@ -315,6 +258,8 @@ function SidebarFeaturedArticlesSection({ featuredArticles }: { featuredArticles
 
 export default function Home() {
   const allArticles = getAllArticles();
+  const rankingItems = buildRankingItems(allArticles);
+  const categoryArticleSections = buildCategoryArticleSections(allArticles);
   const latestArticles = allArticles.slice(0, 6);
   const sidebarFeaturedArticles = selectSidebarFeaturedArticles(allArticles);
   const topPickupArticle = latestArticles[0];
@@ -326,7 +271,7 @@ export default function Home() {
         <section className="space-y-3">
           <h2 className="text-xl font-extrabold">おすすめ記事</h2>
           <PickupArticleCard
-            imageUrl={topPickupArticle?.image ?? "https://picsum.photos/seed/pickup-main/1200/700"}
+            imageUrl={topPickupArticle?.image ?? ARTICLE_IMAGE_PLACEHOLDER_PATH}
             href={topPickupArticle ? `/articles/${topPickupArticle.id}` : "/articles/post-1"}
             title={topPickupArticle?.title}
             description={topPickupArticle?.description}
@@ -338,24 +283,31 @@ export default function Home() {
         <section className="space-y-3">
           <h2 className="text-xl font-extrabold">新着記事</h2>
           <div className="grid grid-cols-1 gap-3 min-[480px]:grid-cols-2 md:grid-cols-3">
-            {latestArticles.slice(0, 3).map((article) => (
+            {latestArticles.slice(0, 3).map((article, index) => (
               <Link
                 key={`mobile-latest-${article.id}`}
                 href={`/articles/${article.id}`}
                 className="flex h-full flex-col overflow-hidden rounded-lg bg-card-bg shadow-sm ring-1 ring-slate-200 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
               >
                 <article className="flex h-full flex-col">
-                  <div
-                    role="img"
-                    aria-label={`${article.title}のサムネイル`}
-                    className="aspect-[16/10] w-full bg-cover bg-center"
-                    style={{ backgroundImage: `url('${article.image}')` }}
-                  />
+                  <div className="relative aspect-[16/10] w-full overflow-hidden bg-slate-100">
+                    <Image
+                      src={ensureArticleImageSrc(article.image)}
+                      alt={`${article.title}のサムネイル`}
+                      fill
+                      sizes="(max-width: 479px) 100vw, (max-width: 767px) 50vw, 33vw"
+                      className="object-cover object-center"
+                      priority={index === 0}
+                    />
+                  </div>
                   <div className="flex h-full flex-col gap-2 p-3">
                     <span className="inline-flex w-fit rounded-md bg-brand-accent px-2 py-1 text-[11px] font-semibold leading-none text-brand-primary">
                       {article.category}
                     </span>
                     <h3 className="line-clamp-2 min-h-[2.8rem] text-sm font-bold leading-snug">{article.title}</h3>
+                    {article.description ? (
+                      <p className="line-clamp-2 text-[11px] leading-relaxed text-brand-primary/75">{article.description}</p>
+                    ) : null}
                     <p className="mt-auto text-[11px] leading-tight text-brand-primary/70">{article.date}</p>
                   </div>
                 </article>
@@ -368,7 +320,7 @@ export default function Home() {
           <h2 className="text-xl font-extrabold">人気記事ランキング</h2>
           <ul className="space-y-3">
             {rankingItems.slice(0, 5).map((item, index) => (
-              <li key={item.title}>
+              <li key={item.href}>
                 <Link href={item.href} className="flex items-center gap-3 rounded-lg bg-card-bg p-3 shadow-sm ring-1 ring-slate-200">
                   <RankCrownBadge rank={index + 1} />
                   <p className="line-clamp-2 text-sm font-semibold leading-snug">{item.title}</p>
@@ -394,12 +346,15 @@ export default function Home() {
                         href={item.href ?? "#"}
                         className="flex items-start gap-3 rounded-lg bg-card-bg px-3 py-2 shadow-sm ring-1 ring-slate-200"
                       >
-                        <div
-                          role="img"
-                          aria-label={`${item.title}のサムネイル`}
-                          className="h-[92px] w-[92px] shrink-0 rounded-md bg-cover bg-center"
-                          style={{ backgroundImage: `url('${item.image}')` }}
-                        />
+                        <div className="relative h-[92px] w-[92px] shrink-0 overflow-hidden rounded-md bg-slate-100">
+                          <Image
+                            src={ensureArticleImageSrc(item.image)}
+                            alt={`${item.title}のサムネイル`}
+                            fill
+                            sizes="92px"
+                            className="object-cover object-center"
+                          />
+                        </div>
                         <div className="min-w-0 flex-1 space-y-1">
                           <p className="line-clamp-2 text-base font-bold leading-snug">{item.title}</p>
                           <p className="line-clamp-2 text-xs text-brand-primary/80">{item.excerpt}</p>
@@ -459,7 +414,7 @@ export default function Home() {
             <section className="space-y-6">
               <h2 className="text-4xl font-extrabold">おすすめ記事</h2>
               <PickupArticleCard
-                imageUrl={topPickupArticle?.image ?? "https://picsum.photos/seed/pickup-main/1200/700"}
+                imageUrl={topPickupArticle?.image ?? ARTICLE_IMAGE_PLACEHOLDER_PATH}
                 href={topPickupArticle ? `/articles/${topPickupArticle.id}` : "/articles/post-1"}
                 title={topPickupArticle?.title}
                 description={topPickupArticle?.description}
@@ -486,12 +441,15 @@ export default function Home() {
                             href={item.href ?? "#"}
                             className="flex min-h-[90px] items-center gap-4 rounded-lg bg-card-bg p-3 shadow-sm ring-1 ring-slate-200"
                           >
-                            <div
-                              role="img"
-                              aria-label={`${item.title}のサムネイル`}
-                              className="h-[90px] w-[96px] shrink-0 rounded-md bg-cover bg-center"
-                              style={{ backgroundImage: `url('${item.image}')` }}
-                            />
+                            <div className="relative h-[90px] w-[96px] shrink-0 overflow-hidden rounded-md bg-slate-100">
+                              <Image
+                                src={ensureArticleImageSrc(item.image)}
+                                alt={`${item.title}のサムネイル`}
+                                fill
+                                sizes="96px"
+                                className="object-cover object-center"
+                              />
+                            </div>
                             <div className="space-y-1">
                               <p className="line-clamp-2 text-base font-bold leading-snug">{item.title}</p>
                               <p className="line-clamp-2 text-sm text-brand-primary/80">{item.excerpt}</p>
@@ -534,17 +492,21 @@ export default function Home() {
                 <div className="rounded-lg bg-card-bg p-4 shadow-sm ring-1 ring-slate-200">
                   <ul className="space-y-3">
                     {rankingItems.map((item, index) => (
-                      <li key={item.title}>
+                      <li key={item.href}>
                         <Link
                           href={item.href}
                           className="grid grid-cols-[auto_auto_minmax(0,1fr)] items-center gap-3 rounded-md p-1 hover:bg-slate-50"
                         >
                           <RankCrownBadge rank={index + 1} />
-                          <img
-                            src={item.image}
-                            alt={`${item.title}のサムネイル`}
-                            className="h-14 w-14 shrink-0 rounded-md object-cover"
-                          />
+                          <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-md bg-slate-100">
+                            <Image
+                              src={ensureArticleImageSrc(item.image)}
+                              alt={`${item.title}のサムネイル`}
+                              fill
+                              sizes="56px"
+                              className="object-cover"
+                            />
+                          </div>
                           <p className="min-w-0 line-clamp-2 text-sm font-semibold leading-snug">{item.title}</p>
                         </Link>
                       </li>

@@ -1,4 +1,6 @@
+import Image from "next/image";
 import Link from "next/link";
+import { ensureArticleImageSrc } from "../../../lib/markdown";
 
 const categories = [
   { label: "Instagram", slug: "instagram" },
@@ -31,6 +33,9 @@ function getCategoryHref(category: string) {
 function getTagHref(tag: string) {
   return `/tags/${encodeURIComponent(tag.replace(/^#/, "").trim().toLowerCase())}`;
 }
+
+const PICKUP_HERO_IMAGE_URL = "https://picsum.photos/seed/pickup-main/1200/700";
+
 const recommendedArticles = [
   {
     id: 1,
@@ -88,18 +93,22 @@ export default function PickupArticleDetailPage() {
 
             <header className="space-y-4">
               <div className="flex items-center gap-3">
-                <span className="inline-flex rounded-md bg-brand-accent px-3 py-1 text-xs font-bold text-brand-primary">Pickup</span>
+                <span className="inline-flex rounded-md bg-brand-accent px-3 py-1 text-xs font-bold text-brand-primary">ピックアップ</span>
                 <time className="text-sm text-slate-400">2026.03.15</time>
               </div>
               <h1 className="text-3xl font-bold leading-tight text-brand-primary md:text-4xl">
                 2026年版SNS運用を伸ばす最新トレンドまとめ
               </h1>
-              <div
-                role="img"
-                aria-label="海と山のイメージ画像"
-                className="aspect-video w-full rounded-2xl bg-cover bg-center"
-                style={{ backgroundImage: "url('https://picsum.photos/seed/pickup-main/1200/700')" }}
-              />
+              <div className="relative aspect-video w-full overflow-hidden rounded-2xl bg-slate-100">
+                <Image
+                  src={ensureArticleImageSrc(PICKUP_HERO_IMAGE_URL)}
+                  alt="海と山のイメージ画像"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 896px"
+                  className="object-cover object-center"
+                  priority
+                />
+              </div>
             </header>
 
             <article className="space-y-8 text-base leading-relaxed text-slate-700 md:text-lg">
@@ -311,12 +320,15 @@ export default function PickupArticleDetailPage() {
                     className="block overflow-hidden rounded-lg bg-card-bg shadow-sm ring-1 ring-slate-200 transition-all duration-300 hover:shadow-md"
                   >
                     <article>
-                      <div
-                        role="img"
-                        aria-label={`${article.title}のサムネイル`}
-                        className="aspect-[16/11] w-full bg-cover bg-center opacity-90"
-                        style={{ backgroundImage: `url('${article.image}')` }}
-                      />
+                      <div className="relative aspect-[16/11] w-full overflow-hidden bg-slate-100 opacity-90">
+                        <Image
+                          src={ensureArticleImageSrc(article.image)}
+                          alt={`${article.title}のサムネイル`}
+                          fill
+                          sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
+                          className="object-cover object-center"
+                        />
+                      </div>
                       <div className="space-y-2 p-4">
                         <span className="inline-block rounded-full bg-brand-accent px-3 py-1 text-xs font-semibold text-brand-primary">
                           {article.category}

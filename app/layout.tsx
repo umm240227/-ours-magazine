@@ -12,8 +12,28 @@ const notoSansJp = Noto_Sans_JP({
 });
 
 export const metadata: Metadata = {
-  title: "SNS OURS MAGAZINE",
-  description: "SNSマーケティング特化のWebメディア",
+  title: "OURS MAGAZINE | SNSマーケティングメディア",
+  description: "Instagram・TikTok・YouTube・XなどのSNSの最新情報やノウハウを発信するSNSマガジン",
+  metadataBase: new URL("https://www.ours-magazine.jp"),
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
+  },
+  openGraph: {
+    title: "OURS MAGAZINE",
+    description: "Instagram・TikTok・YouTube・XなどのSNSの最新情報やノウハウを発信するSNSマガジン",
+    url: "https://www.ours-magazine.jp",
+    siteName: "OURS MAGAZINE",
+    locale: "ja_JP",
+    type: "website",
+  },
+  twitter: {
+    description: "Instagram・TikTok・YouTube・XなどのSNSの最新情報やノウハウを発信するSNSマガジン",
+  },
 };
 
 export default function RootLayout({

@@ -4,7 +4,7 @@ description: "TikTokで再生回数を伸ばすうえで最重要となる「最
 date: "2026-03-17"
 category: "TikTok"
 tags: ["#TikTok", "#ショート動画"]
-image: "/images/articles/thumbnail-01.jpg"
+image: "/images/articles/tiktok-first-3-seconds-hook.jpg"
 ---
 
 TikTokで動画が再生されるか、それとも次の動画へスワイプされるか。  

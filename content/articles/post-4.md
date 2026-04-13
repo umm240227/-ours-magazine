@@ -1,7 +1,8 @@
 ---
 title: "少人数でも続く週間運用フロー"
+description: "少人数チームで週の運用を回す基本の流れと、役割の分け方・続け方のコツを、初心者でも真似しやすい形でまとめた記事です。"
 date: "2026.03.07"
-category: "SNS驕狗畑"
+category: "SNS運用"
 image: "/images/articles/post-4.jpg"
 tags:
   - "#運用フロー"

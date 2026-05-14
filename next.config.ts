@@ -10,6 +10,8 @@ const redirectProtectedPrefixes = [
   "search",
   "icon",
   "apple-icon",
+  "admin",
+  "api",
 ].join("|");
 
 const redirectProtectedFiles = [
@@ -25,6 +27,11 @@ const nextConfig: NextConfig = {
       {
         protocol: "https",
         hostname: "picsum.photos",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
         pathname: "/**",
       },
     ],

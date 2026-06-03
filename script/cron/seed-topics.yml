@@ -1,0 +1,36 @@
+# Railway 스케줄러 시드 주제 리스트 (Semrush 자동발굴 대신 — jp-site-config §7·§8)
+# run-railway.sh가 매 실행 시 content/articles에 없는(미발행) 첫 시드를 골라 생성한다.
+# 운영자가 주제를 추가/순환. 전부 발행되면 로그에 "시드 소진" → 새 주제 추가 필요.
+#
+# 각 시드: slug(영문 kebab, =파일명) / topic(일본어 주제) / main_keyword / secondary(보조키워드) / category(content/_taxonomy.json 라벨)
+
+topics:
+  - slug: instagram-reels-saves-increase
+    topic: "インスタのリール保存数を増やす方法（初心者向け実践ガイド）"
+    main_keyword: "リール 保存数 増やす"
+    secondary: "リール 保存されない / リール 保存率 平均 / リール 冒頭 3秒"
+    category: "Instagram"
+
+  - slug: tiktok-fyp-reach-guide
+    topic: "TikTokでおすすめ（FYP）に乗るための運用ガイド"
+    main_keyword: "TikTok おすすめ 乗る"
+    secondary: "TikTok FYP 仕組み / TikTok 完了率 目安 / TikTok 投稿 時間"
+    category: "TikTok"
+
+  - slug: youtube-shorts-subscribers-growth
+    topic: "YouTubeショートで登録者を増やす設計のコツ"
+    main_keyword: "YouTubeショート 登録者 増やす"
+    secondary: "ショート 登録 されない / ショート 視聴維持率 / ショート 概要欄"
+    category: "YouTube"
+
+  - slug: x-impressions-increase-tips
+    topic: "X（旧Twitter）でインプレッションを伸ばす投稿のコツ"
+    main_keyword: "X インプレッション 増やす"
+    secondary: "X 伸びない 原因 / X 投稿 時間 / X リプ 戦略"
+    category: "X"
+
+  - slug: sns-content-calendar-beginners
+    topic: "SNS運用のコンテンツカレンダー初心者向け作り方"
+    main_keyword: "SNS コンテンツカレンダー 作り方"
+    secondary: "SNS 投稿 ネタ / SNS 運用 計画 / 投稿 頻度 目安"
+    category: "SNS運用"

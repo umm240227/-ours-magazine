@@ -1,0 +1,131 @@
+<!DOCTYPE html><html lang="ja">
+<head><meta charset="UTF-8">
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+body{font-family:'Noto Sans JP',-apple-system,sans-serif;-webkit-font-smoothing:antialiased}
+.num{font-variant-numeric:tabular-nums}
+</style>
+</head>
+<body style="background:#F0F4FF">
+<main class="w-[1200px] mx-auto py-12 px-12">
+
+  <!-- ヘッダー -->
+  <header class="rounded-[32px] p-12 mb-8 text-center" style="background:linear-gradient(135deg,#3B82F6 0%,#6366F1 100%)">
+    <div class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-[20px] font-bold tracking-widest uppercase mb-6" style="background:rgba(255,255,255,0.22);color:#fff">
+      FUNNEL ANALYSIS
+    </div>
+    <h1 class="text-[60px] font-black text-white leading-tight mb-3">SNSマーケティング 転換ファネル</h1>
+    <p class="text-[24px]" style="color:rgb(255,255,255)">中小事業者 平均100万インプレッション基準のファネル分析</p>
+  </header>
+
+  <!-- ファネル可視化 -->
+  <div class="bg-white rounded-[32px] p-12 mb-8 shadow-sm">
+    <!-- レイヤー1: インプレッション (100%) -->
+    <div class="flex justify-center mb-2">
+      <div class="flex items-center justify-between px-10 py-7 rounded-2xl" style="width:100%;background:#3B82F6">
+        <div class="flex items-center gap-4">
+          <span class="text-white" style="font-size:36px">👁</span>
+          <span class="text-white font-bold text-[26px]">インプレッション</span>
+        </div>
+        <div class="text-right">
+          <div class="num text-white font-black leading-none whitespace-nowrap" style="font-size:44px">100<span style="font-size:26px">万</span></div>
+          <div class="text-[20px] font-bold" style="color:rgb(255,255,255)">100%</div>
+        </div>
+      </div>
+    </div>
+    <!-- 矢印 -->
+    <div class="flex justify-center my-3">
+      <div class="flex flex-col items-center">
+        <div class="w-px h-5" style="background:#CBD5E1"></div>
+        <span class="text-[20px] font-bold" style="color:#475569">▼ 5%</span>
+        <div class="w-px h-5" style="background:#CBD5E1"></div>
+      </div>
+    </div>
+    <!-- レイヤー2: クリック (75%) -->
+    <div class="flex justify-center mb-2">
+      <div class="flex items-center justify-between px-10 py-7 rounded-2xl" style="width:75%;background:#4F46E5">
+        <div class="flex items-center gap-4">
+          <span class="text-white" style="font-size:36px">🖱</span>
+          <span class="text-white font-bold text-[26px]">クリック</span>
+        </div>
+        <div class="text-right">
+          <div class="num text-white font-black leading-none whitespace-nowrap" style="font-size:44px">5<span style="font-size:26px">万</span></div>
+          <div class="text-[20px] font-bold" style="color:rgb(255,255,255)">CTR 5%</div>
+        </div>
+      </div>
+    </div>
+    <!-- 矢印 -->
+    <div class="flex justify-center my-3">
+      <div class="flex flex-col items-center">
+        <div class="w-px h-5" style="background:#CBD5E1"></div>
+        <span class="text-[20px] font-bold" style="color:#475569">▼ 20%</span>
+        <div class="w-px h-5" style="background:#CBD5E1"></div>
+      </div>
+    </div>
+    <!-- レイヤー3: カート (50%) -->
+    <div class="flex justify-center mb-2">
+      <div class="flex items-center justify-between px-10 py-7 rounded-2xl" style="width:50%;background:#7C3AED">
+        <div class="flex items-center gap-4">
+          <span class="text-white" style="font-size:32px">🛒</span>
+          <span class="text-white font-bold text-[24px]">カート</span>
+        </div>
+        <div class="text-right">
+          <div class="num text-white font-black leading-none whitespace-nowrap" style="font-size:40px">1<span style="font-size:22px">万</span></div>
+          <div class="text-[18px] font-bold" style="color:rgb(255,255,255)">20%</div>
+        </div>
+      </div>
+    </div>
+    <!-- 矢印 -->
+    <div class="flex justify-center my-3">
+      <div class="flex flex-col items-center">
+        <div class="w-px h-5" style="background:#CBD5E1"></div>
+        <span class="text-[20px] font-bold" style="color:#475569">▼ 20%</span>
+        <div class="w-px h-5" style="background:#CBD5E1"></div>
+      </div>
+    </div>
+    <!-- レイヤー4: 購入 (28%) -->
+    <div class="flex justify-center mb-10">
+      <div class="flex items-center justify-between px-8 py-7 rounded-2xl" style="width:28%;background:#9333EA">
+        <span class="text-white" style="font-size:32px">💳</span>
+        <div class="text-right">
+          <div class="num text-white font-black leading-none whitespace-nowrap" style="font-size:36px">2,000<span style="font-size:20px">件</span></div>
+          <div class="text-[18px] font-bold" style="color:rgb(255,255,255)">購入</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ROI 結果ボックス -->
+    <div class="rounded-2xl p-8 text-center" style="background:linear-gradient(135deg,#EDE9FE,#DBEAFE)">
+      <p class="text-[22px] font-bold mb-3" style="color:#475569">最終予想売上</p>
+      <div class="num font-black leading-none mb-3 whitespace-nowrap" style="color:#4F46E5;font-size:88px">7,000<span style="font-size:44px">万円</span></div>
+      <p class="text-[22px]" style="color:#475569">平均客単価 3.5万円 × 2,000件 で算出</p>
+    </div>
+  </div>
+
+  <!-- 転換率サマリー -->
+  <div class="grid grid-cols-3 gap-6 mb-8">
+    <div class="bg-white rounded-2xl p-8 text-center shadow-sm">
+      <div class="num font-black text-[64px] whitespace-nowrap" style="color:#3B82F6">5%</div>
+      <div class="text-[22px] font-bold mt-3" style="color:#475569">表示→クリック</div>
+    </div>
+    <div class="bg-white rounded-2xl p-8 text-center shadow-sm">
+      <div class="num font-black text-[64px] whitespace-nowrap" style="color:#7C3AED">20%</div>
+      <div class="text-[22px] font-bold mt-3" style="color:#475569">クリック→カート</div>
+    </div>
+    <div class="bg-white rounded-2xl p-8 text-center shadow-sm">
+      <div class="num font-black text-[64px] whitespace-nowrap" style="color:#9333EA">20%</div>
+      <div class="text-[22px] font-bold mt-3" style="color:#475569">カート→購入</div>
+    </div>
+  </div>
+
+  <!-- フッター -->
+  <footer class="flex items-center justify-between pt-4">
+    <div class="flex items-center gap-4">
+      
+      <span class="font-bold text-[22px] text-gray-800">ours-magazine.jp</span>
+    </div>
+    <span class="text-[20px] font-medium text-gray-700" style="white-space:nowrap">SNSマーケティング セルフサービス</span>
+  </footer>
+
+</main></body></html>

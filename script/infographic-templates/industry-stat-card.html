@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<!--
+  Template: 業界統計カード (Industry Stat Card)
+  用途: 大きな数字 + 出典 + 文脈を1枚で強調
+  Placeholders: {{BIG_NUM}}, {{UNIT}}, {{LABEL}}, {{SOURCE}}, {{CONTEXT}}, {{SUPPORTING}}
+  備考: データは SAMPLE_DATA マーカー内にあります。記事ごとにデータを差し替えてください。
+
+  レンダリング:
+    node script/render-infographic.mjs this-html.html output.webp --width=1200 --max-height=2000
+-->
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  body { font-family: 'Noto Sans JP', -apple-system, sans-serif; -webkit-font-smoothing: antialiased; word-break: keep-all; }
+  .num { font-variant-numeric: tabular-nums; }
+</style>
+</head>
+<body style="background:#F8FAFC">
+<main class="w-[1200px] mx-auto py-16 px-12">
+
+  <!-- SAMPLE_DATA: メイン統計 -->
+  <section class="bg-gradient-to-br from-[#0F172A] via-[#1E293B] to-[#0F172A] rounded-[40px] p-16 mb-8 text-center relative overflow-hidden">
+    <div class="inline-flex items-center gap-2 bg-[#FACC15] text-[#0A0A0A] text-[18px] font-bold tracking-widest uppercase px-5 py-2.5 rounded-full mb-8">
+      Industry Stat
+    </div>
+
+    <div class="flex items-end justify-center gap-2 mb-6">
+      <span class="text-[160px] font-black text-white num leading-none">2.7</span>
+      <span class="text-[88px] font-black text-[#FACC15] num leading-tight">兆円</span>
+    </div>
+
+    <p class="text-[32px] font-bold text-white mb-3">
+      2026年 国内SNSマーケティング市場規模
+    </p>
+    <p class="text-[22px] text-white">
+      出典: ours-magazine編集部調べ 2026年メディア広告トレンドレポート
+    </p>
+  </section>
+
+  <!-- SAMPLE_DATA: 文脈カード3枚 -->
+  <section class="grid grid-cols-3 gap-6 mb-8">
+    <div class="bg-white rounded-[24px] p-7 shadow-[0_2px_12px_rgba(0,0,0,0.04)]">
+      <p class="text-[20px] tracking-widest uppercase text-[#555] mb-3">前年比</p>
+      <p class="text-[56px] font-black text-[#21B26A] num leading-none mb-2">+18<span class="text-[28px]">%</span></p>
+      <p class="text-[18px] text-[#444] leading-relaxed break-keep">
+        2025年2.3兆 → 2.7兆 (4,000億↑)
+      </p>
+    </div>
+
+    <div class="bg-white rounded-[24px] p-7 shadow-[0_2px_12px_rgba(0,0,0,0.04)]">
+      <p class="text-[20px] tracking-widest uppercase text-[#555] mb-3">デジタル広告のシェア</p>
+      <p class="text-[56px] font-black text-[#3B70FF] num leading-none mb-2">37<span class="text-[28px]">%</span></p>
+      <p class="text-[18px] text-[#444] leading-relaxed break-keep">
+        SNSチャネル広告の割合
+      </p>
+    </div>
+
+    <div class="bg-white rounded-[24px] p-7 shadow-[0_2px_12px_rgba(0,0,0,0.04)]">
+      <p class="text-[20px] tracking-widest uppercase text-[#555] mb-3">個人事業主の実施率</p>
+      <p class="text-[56px] font-black text-[#FF6B2C] num leading-none mb-2">62<span class="text-[28px]">%</span></p>
+      <p class="text-[18px] text-[#444] leading-relaxed break-keep">
+        月1回以上SNS広告を出稿
+      </p>
+    </div>
+  </section>
+
+  <section class="bg-[#FEF3C7] rounded-[24px] p-7 mb-8">
+    <div class="flex gap-4 items-start">
+      <span class="text-[28px]">📌</span>
+      <p class="text-[22px] text-[#0A0A0A] leading-relaxed break-keep">
+        市場規模は毎年二桁成長を続けており、デジタル広告の中でもSNSの比重が最も速く伸びています
+      </p>
+    </div>
+  </section>
+
+  <footer class="flex items-center justify-between pt-6 border-t border-slate-200">
+    <div class="flex items-center gap-3">
+      
+      <span class="font-bold text-[20px] text-slate-800">ours-magazine.jp</span>
+    </div>
+    <span class="text-[18px] text-slate-500">SNSマーケティングのセルフサービス</span>
+  </footer>
+
+</main>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="ja">
+<!--
+  Variant V7: timeline-hero — 縦型タイムライン hero (16:9 1200×675)
+  用途: _batch-replace-hero.mjs が {{...}} placeholder を置換
+  PLACEHOLDER: {{TITLE}} {{MILESTONES}}(3-5個の year+event ペア配列) {{CATEGORY}} {{YEAR_TAG}}
+  §4.8.5 必須仕様: タイトル ≥ 56px / 年マーカー ≥ 40px / カテゴリーバッジ ≥ 24px / ロゴ ≥ 60×60
+
+  MILESTONES 置換例 (配列 → 行):
+    <li class="flex items-baseline gap-6">
+      <span class="num font-black" style="font-size:48px;color:#FFFFFF;min-width:120px">2024</span>
+      <span class="font-bold text-white" style="font-size:30px;text-shadow:0 1px 6px rgba(0,0,0,0.3)">アルゴリズム第1次刷新</span>
+    </li>
+-->
+<head>
+<meta charset="utf-8">
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+body{font-family:'Noto Sans JP',-apple-system,sans-serif;-webkit-font-smoothing:antialiased;margin:0}
+.num{font-variant-numeric:tabular-nums}
+</style>
+</head>
+<body style="background:#0B1220">
+<main class="w-[1200px] h-[675px] relative overflow-hidden px-12 py-10 flex flex-col">
+
+  <!-- 上部: カテゴリーバッジ + 年 -->
+  <div class="flex items-center justify-between relative z-10">
+    <!-- PLACEHOLDER: {{CATEGORY}} -->
+    <span class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full"
+          style="background:rgba(255,255,255,0.22);border:1px solid rgba(255,255,255,0.45);backdrop-filter:blur(8px)">
+      <span class="w-2.5 h-2.5 rounded-full bg-white"></span>
+      <span style="font-size:26px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#FFFFFF">{{CATEGORY}}</span>
+    </span>
+    <!-- PLACEHOLDER: {{YEAR_TAG}} -->
+    <span style="font-size:20px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:rgb(255,255,255)">{{YEAR_TAG}}</span>
+  </div>
+
+  <!-- 本文: 左側にタイトル + 右側にタイムライン -->
+  <div class="flex-1 grid grid-cols-[1fr_1.2fr] gap-10 items-center mt-6 relative z-10">
+    <!-- 左側: タイトル -->
+    <div>
+      <!-- PLACEHOLDER: {{TITLE}} -->
+      <h1 class="font-black text-white tracking-tight"
+          style="font-size:60px;line-height:1.12;text-shadow:0 2px 12px rgba(0,0,0,0.18)">{{TITLE}}</h1>
+    </div>
+
+    <!-- 右側: 縦型タイムライン -->
+    <div class="relative pl-10">
+      <!-- 縦線 -->
+      <div class="absolute top-2 bottom-2 left-3 w-[3px]"
+           style="background:linear-gradient(to bottom, rgba(99,102,241,0.85), rgba(244,114,182,0.85))"></div>
+      <!-- PLACEHOLDER: {{MILESTONES}} (3-5個のマイルストーン <li>) -->
+      <ul class="space-y-5 relative">
+        {{MILESTONES}}
+      </ul>
+    </div>
+  </div>
+
+  <!-- 下部: ロゴ -->
+  <footer class="absolute bottom-5 left-12 right-12 flex items-center justify-between z-10">
+    <div class="flex items-center gap-3">
+
+      <span class="font-black text-[22px] text-white">ours-magazine.jp</span>
+    </div>
+    <span class="font-semibold text-[14px] text-white">SNSマーケティング セルフサービス</span>
+  </footer>
+</main>
+</body>
+</html>

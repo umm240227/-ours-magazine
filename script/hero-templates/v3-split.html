@@ -1,0 +1,56 @@
+<!DOCTYPE html><html lang="ja">
+<!-- Variant V3: split — 左側にカラーパネル + 右側にライト背景のマガジンスタイル (16:9 1200×675) -->
+<head>
+<meta charset="UTF-8">
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+body{font-family:'Noto Sans JP',-apple-system,sans-serif;-webkit-font-smoothing:antialiased;margin:0;background:#F1F5F9}
+.num{font-variant-numeric:tabular-nums}
+</style>
+</head>
+<body>
+<main class="w-[1200px] h-[675px] mx-auto flex relative overflow-hidden">
+
+  <!-- 左側カラーパネル -->
+  <aside class="w-[380px] h-full flex flex-col justify-between p-12 relative"
+         style="background:{{BG_GRADIENT}}">
+    <div>
+      <span class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full mb-6"
+            style="background:rgba(255,255,255,0.25);border:1px solid rgba(255,255,255,0.45)">
+        <span class="w-2.5 h-2.5 rounded-full bg-white"></span>
+        <span style="font-size:26px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#FFFFFF">{{CATEGORY_BADGE}}</span>
+      </span>
+      <div class="num font-black select-none pointer-events-none" style="font-size:240px;line-height:0.85;color:rgb(255,255,255);letter-spacing:-0.05em">
+        {{DECO_LETTER}}
+      </div>
+    </div>
+    <div>
+      <div style="font-size:18px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:rgb(255,255,255);margin-bottom:4px">{{YEAR_TAG}}</div>
+      <div class="text-[20px] font-black text-white">ours-magazine インサイト</div>
+    </div>
+  </aside>
+
+  <!-- 右側ライトパネル -->
+  <section class="flex-1 h-full p-16 flex flex-col justify-between">
+    <div>
+      <div style="font-size:18px;font-weight:900;letter-spacing:0.08em;text-transform:uppercase;color:{{LOGO_DOT_COLOR}};margin-bottom:16px">実践ガイド</div>
+      <h1 class="font-black tracking-tight" style="font-size:{{TITLE_FONT_SIZE}}px;line-height:1.18;color:#0B1220">{{TITLE}}</h1>
+      {{SUBTITLE_BLOCK_DARK}}
+    </div>
+    <footer class="flex items-end justify-between">
+      {{STATS_BLOCK_DARK}}
+      <div class="flex items-center gap-3">
+        <div class="w-[60px] h-[60px] rounded-2xl flex items-center justify-center" style="background:{{LOGO_DOT_COLOR}}">
+          <span class="font-black text-[28px] text-white">S</span>
+        </div>
+        <div class="leading-tight">
+          <div class="font-black text-[22px]" style="color:#0B1220">ours-magazine</div>
+          <div class="text-[14px] font-semibold" style="color:#475569">ours-magazine.jp</div>
+        </div>
+      </div>
+    </footer>
+  </section>
+</main>
+</body>
+</html>

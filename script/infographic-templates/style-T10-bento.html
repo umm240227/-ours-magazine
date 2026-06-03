@@ -1,0 +1,139 @@
+<!DOCTYPE html><html lang="ja">
+<head><meta charset="UTF-8">
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+body{font-family:'Noto Sans JP',-apple-system,sans-serif;-webkit-font-smoothing:antialiased}
+.num{font-variant-numeric:tabular-nums}
+</style>
+</head>
+<body style="background:#FFFFFF">
+<main class="w-[1200px] mx-auto py-12 px-12">
+
+  <!-- タイトル -->
+  <div class="mb-10">
+    <span class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-[20px] font-bold tracking-widest uppercase mb-6" style="background:#F3F4F6;color:#1F2937">
+      2024 PLATFORM DATA
+    </span>
+    <h1 class="text-[60px] font-black text-gray-900 leading-tight">日本の主要SNSプラットフォーム<br><span class="text-[40px] font-bold" style="color:#475569">月間アクティブユーザーの現状</span></h1>
+  </div>
+
+  <!-- ベントーグリッド: 6列ベース -->
+  <div class="grid gap-6 mb-8" style="grid-template-columns:repeat(6,1fr)">
+
+    <!-- セルA: YouTube (col-span-4) -->
+    <div class="rounded-3xl p-10 relative overflow-hidden" style="grid-column:span 4;background:#111827;min-height:300px">
+      <div class="absolute right-0 top-0 bottom-0 w-44 flex items-center justify-center ">
+        <span style="font-size:160px">▶</span>
+      </div>
+      <div class="relative z-10">
+        <div class="flex items-center gap-3 mb-6">
+          <span style="font-size:36px">📺</span>
+          <span class="text-[24px] font-bold" style="color:rgb(255,255,255)">YouTube</span>
+        </div>
+        <div class="num font-black text-white leading-none mb-3 whitespace-nowrap" style="font-size:88px">4,500<span style="font-size:44px">万</span></div>
+        <div class="text-[22px] font-bold mb-5" style="color:rgb(255,255,255)">月間アクティブユーザー (MAU)</div>
+        <span class="inline-block px-4 py-2 rounded-xl text-[20px] font-bold" style="background:rgba(239,68,68,0.3);color:#FCA5A5">人口の87%が利用</span>
+      </div>
+    </div>
+
+    <!-- セルB: Instagram (col-span-2) -->
+    <div class="rounded-3xl p-8 flex flex-col justify-between" style="grid-column:span 2;background:linear-gradient(135deg,#EC4899,#F97316);min-height:300px">
+      <div>
+        <div class="flex items-center gap-2 mb-4">
+          <span style="font-size:32px">📸</span>
+          <span class="text-[22px] font-bold text-white">Instagram</span>
+        </div>
+        <div class="num font-black text-white leading-none whitespace-nowrap" style="font-size:64px">2,200<span style="font-size:32px">万</span></div>
+      </div>
+      <span class="inline-block self-start px-4 py-2 rounded-xl text-[20px] font-bold" style="background:rgba(255,255,255,0.28);color:#fff">MAU 42%</span>
+    </div>
+
+    <!-- セルC: TikTok (col-span-2) -->
+    <div class="rounded-3xl p-8 flex flex-col justify-between" style="grid-column:span 2;background:#000000;min-height:240px">
+      <div>
+        <div class="flex items-center gap-2 mb-4">
+          <span style="font-size:32px">🎵</span>
+          <span class="text-[22px] font-bold" style="color:rgb(255,255,255)">TikTok</span>
+        </div>
+        <div class="num font-black text-white leading-none whitespace-nowrap" style="font-size:56px">900<span style="font-size:28px">万</span></div>
+      </div>
+      <span class="inline-block self-start px-4 py-2 rounded-xl text-[20px] font-bold" style="background:rgba(255,255,255,0.2);color:rgb(255,255,255)">MAU 17%</span>
+    </div>
+
+    <!-- セルD: リール リーチ (col-span-4) -->
+    <div class="rounded-3xl p-10" style="grid-column:span 4;background:linear-gradient(135deg,#6366F1,#8B5CF6);min-height:240px">
+      <div class="flex items-start justify-between h-full">
+        <div>
+          <div class="text-[22px] font-bold mb-3" style="color:rgb(255,255,255)">リール vs 通常フィード</div>
+          <div class="flex items-baseline gap-2 mb-3 whitespace-nowrap">
+            <span class="num font-black text-white" style="font-size:96px">3.4</span>
+            <span class="font-black text-white" style="font-size:56px">倍</span>
+          </div>
+          <div class="text-[22px] font-bold" style="color:rgb(255,255,255)">リーチの差</div>
+        </div>
+        <div class="flex flex-col gap-3 items-end mt-2">
+          <div class="text-right">
+            <div class="text-[18px] font-bold" style="color:rgb(255,255,255)">リール</div>
+            <div class="h-4 rounded-full" style="width:128px;background:rgba(255,255,255,0.95)"></div>
+          </div>
+          <div class="text-right">
+            <div class="text-[18px] font-bold" style="color:rgb(255,255,255)">フィード</div>
+            <div class="h-4 rounded-full" style="width:36px;background:rgba(255,255,255,0.5)"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- セルE: 購入への影響 (col-span-3) -->
+    <div class="rounded-3xl p-10" style="grid-column:span 3;background:#F0FDF4;min-height:240px">
+      <div class="flex items-center gap-2 mb-4">
+        <span style="font-size:28px">🛍</span>
+        <span class="text-[20px] font-bold" style="color:#475569">購入決定への影響</span>
+      </div>
+      <div class="flex items-baseline gap-2 mb-3 whitespace-nowrap">
+        <span class="num font-black leading-none" style="color:#15803D;font-size:96px">73</span>
+        <span class="font-black" style="color:#15803D;font-size:56px">%</span>
+      </div>
+      <div class="text-[22px] font-bold" style="color:#475569">SNSが購入に影響</div>
+    </div>
+
+    <!-- セルF: CPC比較 (col-span-3) -->
+    <div class="rounded-3xl p-10" style="grid-column:span 3;background:#F8FAFC;min-height:240px">
+      <div class="text-[20px] font-bold mb-6" style="color:#475569">クリック単価 (CPC)</div>
+      <div class="space-y-4">
+        <div class="flex items-center gap-4">
+          <span class="text-[20px] font-bold w-20" style="color:#475569">Insta</span>
+          <div class="flex-1 bg-gray-100 rounded-full h-5">
+            <div class="h-5 rounded-full" style="width:100%;background:#EC4899"></div>
+          </div>
+          <span class="num text-[20px] font-bold" style="color:#1F2937;white-space:nowrap">70円</span>
+        </div>
+        <div class="flex items-center gap-4">
+          <span class="text-[20px] font-bold w-20" style="color:#475569">YouTube</span>
+          <div class="flex-1 bg-gray-100 rounded-full h-5">
+            <div class="h-5 rounded-full" style="width:64%;background:#EF4444"></div>
+          </div>
+          <span class="num text-[20px] font-bold" style="color:#1F2937;white-space:nowrap">45円</span>
+        </div>
+        <div class="flex items-center gap-4">
+          <span class="text-[20px] font-bold w-20" style="color:#475569">FB</span>
+          <div class="flex-1 bg-gray-100 rounded-full h-5">
+            <div class="h-5 rounded-full" style="width:50%;background:#3B82F6"></div>
+          </div>
+          <span class="num text-[20px] font-bold" style="color:#1F2937;white-space:nowrap">35円</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- フッター -->
+  <footer class="flex items-center justify-between pt-4">
+    <div class="flex items-center gap-4">
+      
+      <span class="font-bold text-[22px] text-gray-800">ours-magazine.jp</span>
+    </div>
+    <span class="text-[20px] font-medium text-gray-700" style="white-space:nowrap">SNSマーケティング セルフサービス</span>
+  </footer>
+
+</main></body></html>

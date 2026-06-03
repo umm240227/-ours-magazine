@@ -38,6 +38,52 @@ function getCategoryHref(category: string) {
   return `/category/${resolvedSlug ?? encodeURIComponent(category)}`;
 }
 
+const SITE_BASE = "https://www.ours-magazine.jp";
+
+// 구조화 데이터 (AEO/GEO — jp-site-config §9). Article + Organization + Breadcrumb + (faq 있으면)FAQPage.
+function buildJsonLd(article: import("../../../lib/markdown").Article) {
+  const url = `${SITE_BASE}/articles/${article.id}`;
+  const isoDate = article.date.replace(/\./g, "-"); // YYYY.MM.DD → YYYY-MM-DD
+  const publisher = { "@type": "Organization", name: "ours-magazine", url: SITE_BASE };
+
+  const graph: Record<string, unknown>[] = [
+    {
+      "@type": "Article",
+      headline: article.title,
+      description: article.description,
+      datePublished: isoDate,
+      dateModified: isoDate,
+      image: article.image.startsWith("http") ? article.image : `${SITE_BASE}${article.image}`,
+      articleSection: article.category,
+      keywords: article.tags.map((tag) => tag.replace(/^#/, "")).join(", "),
+      author: article.author ? { "@type": "Person", name: article.author } : publisher,
+      publisher,
+      mainEntityOfPage: { "@type": "WebPage", "@id": url },
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "ホーム", item: SITE_BASE },
+        { "@type": "ListItem", position: 2, name: article.category, item: `${SITE_BASE}${getCategoryHref(article.category)}` },
+        { "@type": "ListItem", position: 3, name: article.title, item: url },
+      ],
+    },
+  ];
+
+  if (article.faq && article.faq.length > 0) {
+    graph.push({
+      "@type": "FAQPage",
+      mainEntity: article.faq.map((item) => ({
+        "@type": "Question",
+        name: item.question,
+        acceptedAnswer: { "@type": "Answer", text: item.answer },
+      })),
+    });
+  }
+
+  return { "@context": "https://schema.org", "@graph": graph };
+}
+
 type ArticlePageProps = {
   params: Promise<{ id: string }>;
 };
@@ -77,9 +123,11 @@ export default async function ArticleDetailPage({ params }: ArticlePageProps) {
   }
 
   const recommendedArticles = getRecommendedArticles(id, 3);
+  const jsonLd = buildJsonLd(article);
 
   return (
     <div className="bg-site-bg text-brand-primary">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <section className="mx-auto max-w-6xl px-4 pb-8 pt-24 lg:py-8">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:items-start">
           <section className="space-y-8 lg:col-span-8">
@@ -146,6 +194,37 @@ export default async function ArticleDetailPage({ params }: ArticlePageProps) {
                       {children}
                     </a>
                   ),
+                  ol: ({ children }) => <ol className="list-decimal space-y-2 pl-6 marker:font-semibold marker:text-brand-primary">{children}</ol>,
+                  strong: ({ children }) => <strong className="font-bold text-brand-primary">{children}</strong>,
+                  hr: () => <hr className="border-slate-200" />,
+                  blockquote: ({ children }) => (
+                    <blockquote className="border-l-4 border-brand-primary/40 bg-slate-50 px-4 py-2 italic text-slate-600">
+                      {children}
+                    </blockquote>
+                  ),
+                  code: ({ children }) => (
+                    <code className="rounded bg-slate-100 px-1.5 py-0.5 text-[0.9em] text-brand-primary">{children}</code>
+                  ),
+                  img: ({ src, alt }) => (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                      src={typeof src === "string" ? src : ""}
+                      alt={alt ?? ""}
+                      loading="lazy"
+                      className="mx-auto w-full rounded-xl border border-slate-200"
+                    />
+                  ),
+                  table: ({ children }) => (
+                    <div className="overflow-x-auto">
+                      <table className="w-full border-collapse text-sm md:text-base">{children}</table>
+                    </div>
+                  ),
+                  thead: ({ children }) => <thead className="bg-slate-50">{children}</thead>,
+                  th: ({ children }) => (
+                    <th className="border border-slate-200 px-3 py-2 text-left font-bold text-brand-primary">{children}</th>
+                  ),
+                  td: ({ children }) => <td className="border border-slate-200 px-3 py-2 align-top">{children}</td>,
+                  tr: ({ children }) => <tr className="even:bg-slate-50/50">{children}</tr>,
                 }}
               >
                 {article.content}

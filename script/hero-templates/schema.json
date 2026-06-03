@@ -1,0 +1,220 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Hero Template Schema",
+  "description": "ours-magazine blog hero テンプレート8種 (v1-v8) の placeholder/sample 正本。audit-hero-templates.mjs が本スキーマで sample をレンダリング + §4.8.5 可読性を検証。",
+  "common": {
+    "viewport": { "width": 1200, "height": 675 },
+    "dpr": 2,
+    "background": "#0B1220 (ダークBGが基本) — ライトBGのバリエーションは v3-split の右パネルのみ white",
+    "font": "Noto Sans JP (Google Fonts)",
+    "tailwind": "CDN: cdn.tailwindcss.com",
+    "logo_path": "",
+    "min_font_sizes_px": {
+      "title": 56,
+      "subtitle": 40,
+      "category_badge": 24,
+      "year_tag": 18,
+      "logo_brand_text": 22,
+      "logo_url_text": 14,
+      "stat_label": 14,
+      "min_text_opacity": 0.7
+    }
+  },
+  "templates": {
+    "v1-title-typography": {
+      "file": "title-typography.html",
+      "status": "existing",
+      "viewport": { "width": 1200, "height": 675 },
+      "purpose": "タイトル中心のタイポグラフィ hero",
+      "placeholders": ["TITLE", "SUBTITLE_BLOCK", "CATEGORY_BADGE", "YEAR_TAG", "BG_GRADIENT", "DECO_LETTER", "TITLE_FONT_SIZE", "STATS_BLOCK", "LOGO_DOT_COLOR"],
+      "constraints": {
+        "TITLE": { "minLen": 6, "maxLen": 32 },
+        "SUBTITLE_BLOCK": { "minLen": 0, "maxLen": 60 },
+        "CATEGORY_BADGE": { "minLen": 2, "maxLen": 14 },
+        "YEAR_TAG": { "minLen": 4, "maxLen": 10 },
+        "DECO_LETTER": { "minLen": 1, "maxLen": 2 }
+      },
+      "sample": {
+        "TITLE": "インスタフォロワー安全ブースト 2026",
+        "SUBTITLE_BLOCK": "<p class=\"font-bold text-white/95 mt-6\" style=\"font-size:40px;line-height:1.32;text-shadow:0 2px 8px rgba(0,0,0,0.3)\">アルゴリズム変化に対応した5ステップのセルフガイド</p>",
+        "CATEGORY_BADGE": "インスタグラム",
+        "YEAR_TAG": "2026",
+        "BG_GRADIENT": "linear-gradient(135deg, #4F46E5 0%, #DB2777 100%)",
+        "DECO_LETTER": "I",
+        "TITLE_FONT_SIZE": "82",
+        "STATS_BLOCK": "",
+        "LOGO_DOT_COLOR": "#4F46E5"
+      }
+    },
+    "v2-stat-hero": {
+      "file": "v2-stat-hero.html",
+      "status": "existing",
+      "viewport": { "width": 1200, "height": 675 },
+      "purpose": "巨大数値を強調する hero",
+      "placeholders": ["TITLE", "STAT_VALUE_HTML", "STAT_LABEL", "STAT_DESC", "STAT_FONT_SIZE", "CATEGORY_BADGE", "YEAR_TAG", "BG_GRADIENT", "TITLE_FONT_SIZE", "FOOTER_TEXT", "LOGO_DOT_COLOR", "SUBTITLE_BLOCK"],
+      "constraints": {
+        "TITLE": { "minLen": 6, "maxLen": 32 },
+        "STAT_VALUE_HTML": { "minLen": 1, "maxLen": 12 },
+        "STAT_LABEL": { "minLen": 2, "maxLen": 14 },
+        "STAT_DESC": { "minLen": 0, "maxLen": 60 },
+        "CATEGORY_BADGE": { "minLen": 2, "maxLen": 14 }
+      },
+      "sample": {
+        "TITLE": "セルフブーストで削減する広告費",
+        "STAT_VALUE_HTML": "73<span style=\"font-size:55%\">%</span>",
+        "STAT_LABEL": "広告費削減",
+        "STAT_DESC": "同一リーチ基準で外注代行と比べた平均削減幅",
+        "STAT_FONT_SIZE": "120",
+        "CATEGORY_BADGE": "インスタグラム",
+        "YEAR_TAG": "2026",
+        "BG_GRADIENT": "linear-gradient(135deg, #0EA5E9 0%, #6366F1 100%)",
+        "TITLE_FONT_SIZE": "58",
+        "FOOTER_TEXT": "ours-magazine編集部調べ",
+        "LOGO_DOT_COLOR": "#0EA5E9",
+        "SUBTITLE_BLOCK": ""
+      }
+    },
+    "v3-split": {
+      "file": "v3-split.html",
+      "status": "existing",
+      "viewport": { "width": 1200, "height": 675 },
+      "purpose": "左側にカラーパネル + 右側にライトなマガジンスタイル",
+      "placeholders": ["TITLE", "SUBTITLE_BLOCK_DARK", "CATEGORY_BADGE", "YEAR_TAG", "BG_GRADIENT", "DECO_LETTER", "TITLE_FONT_SIZE", "STATS_BLOCK_DARK", "LOGO_DOT_COLOR"],
+      "constraints": {
+        "TITLE": { "minLen": 6, "maxLen": 32 },
+        "SUBTITLE_BLOCK_DARK": { "minLen": 0, "maxLen": 60 },
+        "CATEGORY_BADGE": { "minLen": 2, "maxLen": 14 }
+      },
+      "sample": {
+        "TITLE": "リール再生数を伸ばす実践ガイド",
+        "SUBTITLE_BLOCK_DARK": "<p class=\"font-bold mt-6\" style=\"font-size:40px;line-height:1.32;color:#0B1220\">アルゴリズムの3つのシグナルで再生数2倍</p>",
+        "CATEGORY_BADGE": "リール",
+        "YEAR_TAG": "2026",
+        "BG_GRADIENT": "linear-gradient(135deg, #DC2626 0%, #F59E0B 100%)",
+        "DECO_LETTER": "R",
+        "TITLE_FONT_SIZE": "62",
+        "STATS_BLOCK_DARK": "",
+        "LOGO_DOT_COLOR": "#DC2626"
+      }
+    },
+    "v4-quote-hero": {
+      "file": "v4-quote-hero.html",
+      "status": "new",
+      "viewport": { "width": 1200, "height": 675 },
+      "purpose": "一次ソースの引用を強調 (blockquote ビジュアル)",
+      "placeholders": ["TITLE", "QUOTE_TEXT", "QUOTE_SOURCE", "CATEGORY", "YEAR_TAG"],
+      "constraints": {
+        "TITLE": { "minLen": 6, "maxLen": 32 },
+        "QUOTE_TEXT": { "minLen": 12, "maxLen": 80, "minFontPx": 48 },
+        "QUOTE_SOURCE": { "minLen": 4, "maxLen": 28 },
+        "CATEGORY": { "minLen": 2, "maxLen": 14 },
+        "YEAR_TAG": { "minLen": 4, "maxLen": 10 }
+      },
+      "sample": {
+        "TITLE": "セルフブースト、まず安全から",
+        "QUOTE_TEXT": "安全なブースト速度の限界は、1日あたりフォロワー +1.5% 以内。",
+        "QUOTE_SOURCE": "ours-magazine編集部調べ 2026",
+        "CATEGORY": "インスタグラム",
+        "YEAR_TAG": "2026"
+      }
+    },
+    "v5-checklist-hero": {
+      "file": "v5-checklist-hero.html",
+      "status": "new",
+      "viewport": { "width": 1200, "height": 675 },
+      "purpose": "Do/Don't チェックリスト hero",
+      "placeholders": ["TITLE", "DO_ITEMS", "DONT_ITEMS", "CATEGORY", "YEAR_TAG"],
+      "constraints": {
+        "TITLE": { "minLen": 6, "maxLen": 32 },
+        "DO_ITEMS": { "minCount": 3, "maxCount": 5, "itemMaxLen": 22, "minFontPx": 36 },
+        "DONT_ITEMS": { "minCount": 3, "maxCount": 5, "itemMaxLen": 22, "minFontPx": 36 },
+        "CATEGORY": { "minLen": 2, "maxLen": 14 },
+        "YEAR_TAG": { "minLen": 4, "maxLen": 10 }
+      },
+      "sample": {
+        "TITLE": "フォロワーブーストの Do と Don't",
+        "DO_ITEMS": "<li class=\"flex items-start gap-3\"><span class=\"text-[34px] leading-none\">✓</span><span>1日の増加率1.5%以内</span></li><li class=\"flex items-start gap-3\"><span class=\"text-[34px] leading-none\">✓</span><span>実ユーザー基盤のフォロワー</span></li><li class=\"flex items-start gap-3\"><span class=\"text-[34px] leading-none\">✓</span><span>リールと投稿を同時にブースト</span></li><li class=\"flex items-start gap-3\"><span class=\"text-[34px] leading-none\">✓</span><span>5日に分散しゆっくり進める</span></li>",
+        "DONT_ITEMS": "<li class=\"flex items-start gap-3\"><span class=\"text-[34px] leading-none\">✕</span><span>1日で+1万の急増</span></li><li class=\"flex items-start gap-3\"><span class=\"text-[34px] leading-none\">✕</span><span>ボットアカウントの大量購入</span></li><li class=\"flex items-start gap-3\"><span class=\"text-[34px] leading-none\">✕</span><span>いいねなしでフォロワーだけ</span></li><li class=\"flex items-start gap-3\"><span class=\"text-[34px] leading-none\">✕</span><span>非公開アカウントにブースト</span></li>",
+        "CATEGORY": "インスタグラム",
+        "YEAR_TAG": "2026"
+      }
+    },
+    "v6-comparison-hero": {
+      "file": "v6-comparison-hero.html",
+      "status": "new",
+      "viewport": { "width": 1200, "height": 675 },
+      "purpose": "A vs B 2カラム比較 hero",
+      "placeholders": ["TITLE", "LEFT_LABEL", "LEFT_VALUE", "RIGHT_LABEL", "RIGHT_VALUE", "CATEGORY", "YEAR_TAG"],
+      "constraints": {
+        "TITLE": { "minLen": 6, "maxLen": 32 },
+        "LEFT_LABEL": { "minLen": 2, "maxLen": 12, "minFontPx": 56 },
+        "LEFT_VALUE": { "minLen": 1, "maxLen": 10 },
+        "RIGHT_LABEL": { "minLen": 2, "maxLen": 12, "minFontPx": 56 },
+        "RIGHT_VALUE": { "minLen": 1, "maxLen": 10 },
+        "CATEGORY": { "minLen": 2, "maxLen": 14 },
+        "YEAR_TAG": { "minLen": 4, "maxLen": 10 }
+      },
+      "sample": {
+        "TITLE": "セルフブースト vs 外注代行の費用",
+        "LEFT_LABEL": "セルフブースト",
+        "LEFT_VALUE": "¥2,900",
+        "RIGHT_LABEL": "外注代行",
+        "RIGHT_VALUE": "¥12,000",
+        "CATEGORY": "費用比較",
+        "YEAR_TAG": "2026"
+      }
+    },
+    "v7-timeline-hero": {
+      "file": "v7-timeline-hero.html",
+      "status": "new",
+      "viewport": { "width": 1200, "height": 675 },
+      "purpose": "変化・過程・年別の縦型タイムライン hero",
+      "placeholders": ["TITLE", "MILESTONES", "CATEGORY", "YEAR_TAG"],
+      "constraints": {
+        "TITLE": { "minLen": 6, "maxLen": 32 },
+        "MILESTONES": { "minCount": 3, "maxCount": 5, "yearMinFontPx": 40, "eventMaxLen": 28 },
+        "CATEGORY": { "minLen": 2, "maxLen": 14 },
+        "YEAR_TAG": { "minLen": 4, "maxLen": 10 }
+      },
+      "sample": {
+        "TITLE": "インスタアルゴリズム5年の変遷",
+        "MILESTONES": "<li class=\"flex items-baseline gap-6\"><span class=\"num font-black\" style=\"font-size:48px;color:#FFFFFF;min-width:130px;text-shadow:0 1px 6px rgba(0,0,0,0.3)\">2022</span><span class=\"font-bold text-white\" style=\"font-size:28px;line-height:1.32;text-shadow:0 1px 6px rgba(0,0,0,0.3)\">リール優先表示の導入</span></li><li class=\"flex items-baseline gap-6\"><span class=\"num font-black\" style=\"font-size:48px;color:#FFFFFF;min-width:130px;text-shadow:0 1px 6px rgba(0,0,0,0.3)\">2023</span><span class=\"font-bold text-white\" style=\"font-size:28px;line-height:1.32;text-shadow:0 1px 6px rgba(0,0,0,0.3)\">興味関心ベースのレコメンド強化</span></li><li class=\"flex items-baseline gap-6\"><span class=\"num font-black\" style=\"font-size:48px;color:#FFFFFF;min-width:130px;text-shadow:0 1px 6px rgba(0,0,0,0.3)\">2024</span><span class=\"font-bold text-white\" style=\"font-size:28px;line-height:1.32;text-shadow:0 1px 6px rgba(0,0,0,0.3)\">オリジナルコンテンツ加点</span></li><li class=\"flex items-baseline gap-6\"><span class=\"num font-black\" style=\"font-size:48px;color:#FFFFFF;min-width:130px;text-shadow:0 1px 6px rgba(0,0,0,0.3)\">2026</span><span class=\"font-bold text-white\" style=\"font-size:28px;line-height:1.32;text-shadow:0 1px 6px rgba(0,0,0,0.3)\">ソーシャルシグナルの再定義</span></li>",
+        "CATEGORY": "アルゴリズム",
+        "YEAR_TAG": "2026"
+      }
+    },
+    "v8-persona-hero": {
+      "file": "v8-persona-hero.html",
+      "status": "new",
+      "viewport": { "width": 1200, "height": 675 },
+      "purpose": "ペルソナのペインポイントを強調する hero",
+      "placeholders": ["TITLE", "PERSONA_LABEL", "PAIN_LINE", "INSIGHT_LINE", "PERSONA_NAME", "PERSONA_HEADSHOT_URL", "PERSONA_BIO", "PERSONA_STAT_VALUE", "PERSONA_STAT_LABEL", "CATEGORY", "YEAR_TAG"],
+      "constraints": {
+        "TITLE": { "minLen": 6, "maxLen": 32 },
+        "PERSONA_LABEL": { "minLen": 2, "maxLen": 14 },
+        "PAIN_LINE": { "minLen": 6, "maxLen": 34, "minFontPx": 44 },
+        "INSIGHT_LINE": { "minLen": 6, "maxLen": 40 },
+        "PERSONA_NAME": { "minLen": 2, "maxLen": 12 },
+        "PERSONA_HEADSHOT_URL": { "format": "uri" },
+        "PERSONA_BIO": { "minLen": 6, "maxLen": 48 },
+        "PERSONA_STAT_VALUE": { "minLen": 1, "maxLen": 8 },
+        "PERSONA_STAT_LABEL": { "minLen": 2, "maxLen": 14 },
+        "CATEGORY": { "minLen": 2, "maxLen": 14 },
+        "YEAR_TAG": { "minLen": 4, "maxLen": 10 }
+      },
+      "sample": {
+        "TITLE": "1万フォロワー個人事業主の悩み",
+        "PERSONA_LABEL": "個人事業主 店長",
+        "PAIN_LINE": "広告費は重く、売上は伸び悩み",
+        "INSIGHT_LINE": "セルフブーストで広告費73%削減",
+        "PERSONA_NAME": "佐藤健太",
+        "PERSONA_HEADSHOT_URL": "https://assets.helpsns.com/personas/persona-self-employed.webp",
+        "PERSONA_BIO": "地元カフェ運営3年目、インスタ運用を自ら担当",
+        "PERSONA_STAT_VALUE": "10,400",
+        "PERSONA_STAT_LABEL": "フォロワー",
+        "CATEGORY": "個人事業",
+        "YEAR_TAG": "2026"
+      }
+    }
+  }
+}

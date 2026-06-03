@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<!--
+  Template: ステップ別ガイド型インフォグラフィック (How-to / Workflow)
+  用途: 5ステップのワークフロー、3〜7ステップのガイド、手順型の記事
+  備考: データは SAMPLE_DATA マーカー内にあります。記事ごとにデータを差し替えてください。
+
+  レンダリング:
+    node script/render-infographic.mjs \
+      this-html.html output.webp --width=1200 --height=2000
+  (asset-images.md §4.10.4 — height ≤ 2000px ルール)
+-->
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  body { font-family: 'Noto Sans JP', -apple-system, sans-serif; -webkit-font-smoothing: antialiased; }
+  .num { font-variant-numeric: tabular-nums; }
+</style>
+</head>
+<body class="bg-[#F6F8FB]">
+  <main class="w-[1200px] mx-auto py-12 px-12">
+
+    <!-- HEADER -->
+    <header class="bg-gradient-to-br from-[#E8F1FF] via-[#F5EFE0] to-[#F6F8FB] rounded-[32px] p-12 mb-6 relative overflow-hidden">
+      <div class="inline-flex items-center gap-2 bg-[#3B70FF] text-white text-[20px] font-bold tracking-widest uppercase px-5 py-2.5 rounded-full mb-6">
+            <span class="w-2 h-2 rounded-full bg-white"></span>
+            Step-by-Step Guide
+          </div>
+      <div class="flex justify-center mb-6">
+        
+      </div>
+      <!-- SAMPLE_DATA: ヘッダーカテゴリ chip -->
+
+          <!-- SAMPLE_DATA: 大見出し -->
+          <h1 class="text-[72px] font-black leading-[1.05] tracking-tight text-[#0A0A0A] mb-5">
+            誰でも真似できる<br>
+            <span class="text-[#3B70FF]">5ステップのワークフロー</span>
+          </h1>
+          <!-- SAMPLE_DATA: サブタイトル -->
+          <p class="text-[26px] text-[#444] leading-relaxed max-w-3xl">
+            企画から投稿まで、約 <strong class="text-[#3B70FF]">2〜4時間</strong> あれば十分です。
+          </p>
+    </header>
+
+    <!-- TOTAL SUMMARY -->
+    <section class="bg-white rounded-[28px] p-8 mb-6 shadow-[0_2px_12px_rgba(0,0,0,0.04)]">
+      <div class="grid grid-cols-3 gap-8">
+        <div class="text-center">
+          <p class="text-[20px] text-[#555] tracking-widest uppercase mb-2">総ステップ</p>
+          <p class="text-[56px] font-black text-[#3B70FF] num leading-none">5ステップ</p>
+        </div>
+        <div class="text-center border-l border-r border-[#F0F0F0]">
+          <p class="text-[20px] text-[#555] tracking-widest uppercase mb-2">総所要時間</p>
+          <p class="text-[56px] font-black text-[#3B70FF] num leading-none">2〜4時間</p>
+        </div>
+        <div class="text-center">
+          <p class="text-[20px] text-[#555] tracking-widest uppercase mb-2">必要なツール</p>
+          <p class="text-[56px] font-black text-[#3B70FF] num leading-none">4〜5種</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- STEPS -->
+    <section class="space-y-5 mb-6">
+      <!-- SAMPLE_DATA: ステップ 1 -->
+      <div class="bg-white rounded-[28px] p-10 shadow-[0_2px_12px_rgba(0,0,0,0.04)] flex gap-8 items-start">
+        <div class="flex-shrink-0 w-20 h-20 rounded-2xl bg-[#3B70FF] text-white flex items-center justify-center text-[40px] font-black num">1</div>
+        <div class="flex-1">
+          <div class="flex items-baseline justify-between mb-3">
+            <h3 class="text-[36px] font-bold text-[#0A0A0A]">企画書を作成</h3>
+            <span class="text-[26px] text-[#555] num">15分</span>
+          </div>
+          <p class="text-[22px] text-[#444] leading-relaxed mb-3">
+            ChatGPTまたはClaudeに業種・メッセージ・構成を入力し、60秒リールの企画書を受け取ります。
+            各カットの画面説明・英文プロンプト・日本語字幕を含めます。
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="text-[18px] bg-[#F1F5FF] text-[#2553D7] font-bold px-3 py-1.5 rounded-full">ChatGPT</span>
+            <span class="text-[18px] bg-[#F1F5FF] text-[#2553D7] font-bold px-3 py-1.5 rounded-full">Claude</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-[28px] p-10 shadow-[0_2px_12px_rgba(0,0,0,0.04)] flex gap-8 items-start">
+        <div class="flex-shrink-0 w-20 h-20 rounded-2xl bg-[#2553D7] text-white flex items-center justify-center text-[40px] font-black num">2</div>
+        <div class="flex-1">
+          <div class="flex items-baseline justify-between mb-3">
+            <h3 class="text-[36px] font-bold text-[#0A0A0A]">キービジュアル画像を生成</h3>
+            <span class="text-[26px] text-[#555] num">30分</span>
+          </div>
+          <p class="text-[22px] text-[#444] leading-relaxed mb-3">
+            最初のフレーム画像を4〜5枚、Midjourney・DALL-Eで生成。動画ツールがこれを基準に一貫性を保ちます。
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="text-[18px] bg-[#F1F5FF] text-[#2553D7] font-bold px-3 py-1.5 rounded-full">Midjourney</span>
+            <span class="text-[18px] bg-[#F1F5FF] text-[#2553D7] font-bold px-3 py-1.5 rounded-full">DALL-E</span>
+            <span class="text-[18px] bg-[#F1F5FF] text-[#2553D7] font-bold px-3 py-1.5 rounded-full">Adobe Firefly</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-[28px] p-10 shadow-[0_2px_12px_rgba(0,0,0,0.04)] flex gap-8 items-start">
+        <div class="flex-shrink-0 w-20 h-20 rounded-2xl bg-[#3B70FF] text-white flex items-center justify-center text-[40px] font-black num">3</div>
+        <div class="flex-1">
+          <div class="flex items-baseline justify-between mb-3">
+            <h3 class="text-[36px] font-bold text-[#0A0A0A]">AI動画クリップを4〜5本生成</h3>
+            <span class="text-[26px] text-[#555] num">75分</span>
+          </div>
+          <p class="text-[22px] text-[#444] leading-relaxed mb-3">
+            5〜10秒のクリップをツールで生成。一発では満足できないので、カットあたり2〜3回の再生成を見込んで始めます。
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="text-[18px] bg-[#F1F5FF] text-[#2553D7] font-bold px-3 py-1.5 rounded-full">Runway</span>
+            <span class="text-[18px] bg-[#F1F5FF] text-[#2553D7] font-bold px-3 py-1.5 rounded-full">Sora</span>
+            <span class="text-[18px] bg-[#F1F5FF] text-[#2553D7] font-bold px-3 py-1.5 rounded-full">Veo 3</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-[28px] p-10 shadow-[0_2px_12px_rgba(0,0,0,0.04)] flex gap-8 items-start">
+        <div class="flex-shrink-0 w-20 h-20 rounded-2xl bg-[#2553D7] text-white flex items-center justify-center text-[40px] font-black num">4</div>
+        <div class="flex-1">
+          <div class="flex items-baseline justify-between mb-3">
+            <h3 class="text-[36px] font-bold text-[#0A0A0A]">結合 + 9:16にクロップ</h3>
+            <span class="text-[26px] text-[#555] num">30分</span>
+          </div>
+          <p class="text-[22px] text-[#444] leading-relaxed mb-3">
+            CapCut・Canvaでクリップ4〜5本をタイムラインに配置。9:16の1080×1920にクロップし、0.3秒のトランジションを入れます。
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="text-[18px] bg-[#F1F5FF] text-[#2553D7] font-bold px-3 py-1.5 rounded-full">CapCut</span>
+            <span class="text-[18px] bg-[#F1F5FF] text-[#2553D7] font-bold px-3 py-1.5 rounded-full">Canva</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-[28px] p-10 shadow-[0_2px_12px_rgba(0,0,0,0.04)] flex gap-8 items-start">
+        <div class="flex-shrink-0 w-20 h-20 rounded-2xl bg-[#1A3DA8] text-white flex items-center justify-center text-[40px] font-black num">5</div>
+        <div class="flex-1">
+          <div class="flex items-baseline justify-between mb-3">
+            <h3 class="text-[36px] font-bold text-[#0A0A0A]">字幕・BGM・アップロード</h3>
+            <span class="text-[26px] text-[#555] num">20分</span>
+          </div>
+          <p class="text-[22px] text-[#444] leading-relaxed mb-3">
+            CapCutの自動字幕で無音視聴に対応。Instagramのトレンド音源 + 最後のカットにCTA → Instagramリールにアップロード。
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="text-[18px] bg-[#F1F5FF] text-[#2553D7] font-bold px-3 py-1.5 rounded-full">CapCut</span>
+            <span class="text-[18px] bg-[#F1F5FF] text-[#2553D7] font-bold px-3 py-1.5 rounded-full">Instagram</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- KEY TAKEAWAY -->
+    <section class="bg-[#1A3DA8] text-white rounded-[28px] p-10 mb-6 shadow-[0_2px_12px_rgba(0,0,0,0.04)]">
+      <p class="text-[20px] tracking-widest uppercase text-[#D6E2FF] mb-3">重要なインサイト</p>
+      <h3 class="text-[32px] font-bold leading-snug">
+        「5〜10秒の短いクリップを複数つなぐこと」が要。<br>
+        1カットに60秒を詰め込もうとすると、キャラクターや物理の一貫性が崩れます。
+      </h3>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-white rounded-[28px] p-8 flex items-center justify-between shadow-[0_2px_12px_rgba(0,0,0,0.04)]">
+      <div class="flex items-center gap-5">
+        
+        <div>
+          <div class="text-[26px] font-bold text-[#0A0A0A]">ours-magazine.jp</div>
+          <div class="text-[18px] text-[#555]">SNSマーケティングのセルフサービス</div>
+        </div>
+      </div>
+      <div class="text-[18px] text-[#555] italic text-right leading-relaxed">
+        想定条件: AIツールの習熟を終えた個人マーケター<br>
+        60秒リール1本 · 初回制作は +50%
+      </div>
+    </footer>
+
+  </main>
+</body>
+</html>

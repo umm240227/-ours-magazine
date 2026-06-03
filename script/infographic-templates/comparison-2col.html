@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<!--
+  Template: 左右2カラム比較 (Comparison 2-column)
+  用途: オプション A vs B (ツール・戦略・アプローチの比較)
+  Placeholders: {{TITLE}}, {{SUBTITLE}}, {{LEFT_TITLE}}, {{LEFT_BULLETS}}, {{RIGHT_TITLE}}, {{RIGHT_BULLETS}}
+  備考: データは SAMPLE_DATA マーカー内にあります。記事ごとにデータを差し替えてください。
+
+  レンダリング:
+    node script/render-infographic.mjs this-html.html output.webp --width=1200 --max-height=2000
+-->
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  body { font-family: 'Noto Sans JP', -apple-system, sans-serif; -webkit-font-smoothing: antialiased; }
+  .num { font-variant-numeric: tabular-nums; }
+</style>
+</head>
+<body style="background:#F8FAFC">
+<main class="w-[1200px] mx-auto py-16 px-12">
+
+  <header class="mb-10 text-center">
+    <div class="inline-flex items-center gap-2 bg-[#0A0A0A] text-white text-[18px] font-bold tracking-widest uppercase px-5 py-2.5 rounded-full mb-5">
+      A vs B
+    </div>
+    <h1 class="text-[64px] font-black text-[#0A0A0A] leading-[1.1] tracking-tight mb-4">
+      オーガニックリーチ vs<br>
+      <span class="text-[#3B70FF]">広告リーチ</span>
+    </h1>
+    <p class="text-[24px] text-[#444] leading-relaxed">
+      予算が限られた個人事業主のための、2つの選択肢を比較。
+    </p>
+  </header>
+
+  <!-- SAMPLE_DATA: LEFT / RIGHT -->
+  <section class="grid grid-cols-2 gap-6 mb-8">
+
+    <!-- 左 -->
+    <div class="bg-white rounded-[28px] p-8 shadow-[0_2px_12px_rgba(0,0,0,0.04)] border-t-8 border-[#3B70FF]">
+      <div class="mb-6 pb-5 border-b border-slate-100">
+        <p class="text-[20px] tracking-widest uppercase text-[#3B70FF] font-bold mb-2">Option A</p>
+        <h2 class="text-[36px] font-black text-[#0A0A0A]">オーガニックリーチ</h2>
+      </div>
+
+      <ul class="space-y-5">
+        <li class="flex gap-3 items-start">
+          <span class="flex-shrink-0 w-7 h-7 rounded-full bg-[#E8F1FF] flex items-center justify-center text-[#3B70FF] font-black text-[18px]">✓</span>
+          <span class="text-[24px] text-[#0A0A0A] leading-snug">初期費用0円、時間の投資で成長</span>
+        </li>
+        <li class="flex gap-3 items-start">
+          <span class="flex-shrink-0 w-7 h-7 rounded-full bg-[#E8F1FF] flex items-center justify-center text-[#3B70FF] font-black text-[18px]">✓</span>
+          <span class="text-[24px] text-[#0A0A0A] leading-snug">フォロワーのロイヤルティが自然に育つ</span>
+        </li>
+        <li class="flex gap-3 items-start">
+          <span class="flex-shrink-0 w-7 h-7 rounded-full bg-[#E8F1FF] flex items-center justify-center text-[#3B70FF] font-black text-[18px]">✓</span>
+          <span class="text-[24px] text-[#0A0A0A] leading-snug">長期LTVが平均2.3倍高い</span>
+        </li>
+        <li class="flex gap-3 items-start">
+          <span class="flex-shrink-0 w-7 h-7 rounded-full bg-[#FEF3C7] flex items-center justify-center text-[#FBBF24] font-black text-[18px]">!</span>
+          <span class="text-[24px] text-[#0A0A0A] leading-snug">成果が出るまで3〜6か月かかる</span>
+        </li>
+      </ul>
+
+      <div class="mt-7 pt-5 border-t border-slate-100">
+        <p class="text-[20px] text-[#555]">想定リーチ</p>
+        <p class="text-[48px] font-black text-[#3B70FF] num leading-none">8.2K<span class="text-[24px]">/月</span></p>
+      </div>
+    </div>
+
+    <!-- 右 -->
+    <div class="bg-white rounded-[28px] p-8 shadow-[0_2px_12px_rgba(0,0,0,0.04)] border-t-8 border-[#FF6B2C]">
+      <div class="mb-6 pb-5 border-b border-slate-100">
+        <p class="text-[20px] tracking-widest uppercase text-[#FF6B2C] font-bold mb-2">Option B</p>
+        <h2 class="text-[36px] font-black text-[#0A0A0A]">広告リーチ</h2>
+      </div>
+
+      <ul class="space-y-5">
+        <li class="flex gap-3 items-start">
+          <span class="flex-shrink-0 w-7 h-7 rounded-full bg-[#FFE8DC] flex items-center justify-center text-[#FF6B2C] font-black text-[18px]">✓</span>
+          <span class="text-[24px] text-[#0A0A0A] leading-snug">すぐにリーチが拡大、1〜3日で成果</span>
+        </li>
+        <li class="flex gap-3 items-start">
+          <span class="flex-shrink-0 w-7 h-7 rounded-full bg-[#FFE8DC] flex items-center justify-center text-[#FF6B2C] font-black text-[18px]">✓</span>
+          <span class="text-[24px] text-[#0A0A0A] leading-snug">ターゲットの細分化が可能</span>
+        </li>
+        <li class="flex gap-3 items-start">
+          <span class="flex-shrink-0 w-7 h-7 rounded-full bg-[#FFE8DC] flex items-center justify-center text-[#FF6B2C] font-black text-[18px]">✓</span>
+          <span class="text-[24px] text-[#0A0A0A] leading-snug">新商品の認知を素早く獲得</span>
+        </li>
+        <li class="flex gap-3 items-start">
+          <span class="flex-shrink-0 w-7 h-7 rounded-full bg-[#FEF3C7] flex items-center justify-center text-[#FBBF24] font-black text-[18px]">!</span>
+          <span class="text-[24px] text-[#0A0A0A] leading-snug">広告を止めるとリーチが即座に低下</span>
+        </li>
+      </ul>
+
+      <div class="mt-7 pt-5 border-t border-slate-100">
+        <p class="text-[20px] text-[#555]">想定リーチ</p>
+        <p class="text-[48px] font-black text-[#FF6B2C] num leading-none">42K<span class="text-[24px]">/月</span></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-[#F1F5FF] rounded-[24px] p-7 mb-8">
+    <p class="text-[24px] leading-relaxed text-[#0A0A0A]">
+      <strong class="text-[#3B70FF]">おすすめの組み合わせ</strong>: オーガニックコンテンツ7 + 広告3の比率。コンテンツ資産を積み上げつつ、新商品のプッシュを広告で補強する方法がROIは最も高くなります。
+    </p>
+  </section>
+
+  <footer class="flex items-center justify-between pt-6 border-t border-slate-200">
+    <div class="flex items-center gap-3">
+      
+      <span class="font-bold text-[20px] text-slate-800">ours-magazine.jp</span>
+    </div>
+    <span class="text-[18px] text-slate-500">SNSマーケティングのセルフサービス</span>
+  </footer>
+
+</main>
+</body>
+</html>

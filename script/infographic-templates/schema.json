@@ -1,0 +1,582 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "description": "ours-magazine 本文インフォグラフィック31種 placeholder/SAMPLE_DATA マッピング（既存15種 + 新規16種）。幅1200が正本。asset-images.md §4.10.1 + design.md §6.3-§6.4 整合。",
+  "version": "1.0.0",
+  "common": {
+    "viewport": "w-[1200px]",
+    "main_padding": "py-16 px-12",
+    "max_height_css": 2000,
+    "dpr": 2,
+    "render": "node script/render-infographic.mjs <template>.html <output>.webp --width=1200 --max-height=2000",
+    "wrap_guard": {
+      "headline_font_min": 56,
+      "body_font_min": 22,
+      "label_font_min": 18,
+      "stat_value_font_min": 56,
+      "forbidden_text_colors": ["#9CA3AF", "#94A3B8", "#999", "#A5C0FF", "#B6BBC5"]
+    },
+    "ac_rule_6_text_limits": {
+      "headline_chars": [6, 28],
+      "section_title_chars": [4, 20],
+      "stat_value_chars_max": 8,
+      "stat_label_chars": [4, 14],
+      "card_body_chars_max": 60,
+      "figcaption_chars_max": 120
+    },
+    "banned_phrases_standalone": [
+      "自動で貯まる",
+      "自動で積み上がる",
+      "自動収益",
+      "本業の時間ゼロ",
+      "運用時間ゼロ",
+      "100%保証",
+      "確実な収益",
+      "努力なしで",
+      "ラクして稼ぐ"
+    ],
+    "footer_logo_path": ""
+  },
+  "templates": {
+    "style-T07-hero-stat": {
+      "viewport": "w-[1200px]",
+      "category": "legacy-hero",
+      "use_case": "大きな単一統計 + 補助3列",
+      "placeholders": ["BADGE", "BIG_NUM", "BIG_UNIT", "BIG_LABEL", "SOURCE", "MINI_STATS"],
+      "sample": {
+        "BIG_NUM": "73",
+        "BIG_UNIT": "%",
+        "BIG_LABEL": "購買決定の73%がSNSコンテンツの影響を受ける",
+        "SOURCE": "総務省 2024年 情報通信メディア利用調査",
+        "MINI_STATS": [
+          {"value": "3.4倍", "label": "リール到達率"},
+          {"value": "65%", "label": "ショート完視聴率"},
+          {"value": "520%", "label": "インフルエンサーROI"}
+        ]
+      }
+    },
+    "style-T08-timeline": {
+      "viewport": "w-[1200px]",
+      "category": "legacy-timeline",
+      "use_case": "年代別の出来事5-7個を縦に流す",
+      "placeholders": ["TITLE", "EVENTS"],
+      "sample": {
+        "TITLE": "日本のSNSマーケティング成長クロニクル",
+        "EVENTS": [
+          {"year": "2019", "title": "リール導入", "desc": "ショート動画の流入が急増"},
+          {"year": "2020", "title": "ライブ配信が活性化", "desc": "リアルタイム販売が定着"},
+          {"year": "2021", "title": "ショッピングタグ定着", "desc": "直接購入の動線が確立"},
+          {"year": "2023", "title": "AIレコメンド強化", "desc": "発見タブが優位に"},
+          {"year": "2024", "title": "AIコンテンツが一般化", "desc": "ツール利用率68%"}
+        ]
+      }
+    },
+    "style-T09-funnel": {
+      "viewport": "w-[1200px]",
+      "category": "legacy-funnel",
+      "use_case": "表示 → クリック → 購入のファネル4-5層",
+      "placeholders": ["TITLE", "LAYERS"],
+      "sample": {
+        "TITLE": "SNSマーケティングの転換ファネル",
+        "LAYERS": [
+          {"label": "表示", "value": "100%"},
+          {"label": "クリック", "value": "75%"},
+          {"label": "カート", "value": "50%"},
+          {"label": "購入", "value": "28%"}
+        ]
+      }
+    },
+    "style-T10-bento": {
+      "viewport": "w-[1200px]",
+      "category": "legacy-bento",
+      "use_case": "ベントーグリッド6列 — プラットフォーム別MAU",
+      "placeholders": ["TITLE", "CELLS"],
+      "sample": {
+        "TITLE": "日本の主要SNSプラットフォーム 月間アクティブユーザー",
+        "CELLS": [
+          {"name": "YouTube", "value": "7,000万", "span": 4},
+          {"name": "Instagram", "value": "3,300万", "span": 2},
+          {"name": "TikTok", "value": "1,700万", "span": 2},
+          {"name": "リール到達", "value": "+3.4倍", "span": 4}
+        ]
+      }
+    },
+    "style-T11-vs-battle": {
+      "viewport": "w-[1200px]",
+      "category": "legacy-vs",
+      "use_case": "左右1対1の対決型（オプションA vs B）",
+      "placeholders": ["LEFT", "RIGHT", "WINNER"],
+      "sample": {
+        "LEFT": {"name": "リール", "stat": "4.2%", "label": "平均転換率"},
+        "RIGHT": {"name": "フィード", "stat": "1.1%", "label": "平均転換率"},
+        "WINNER": "リール"
+      }
+    },
+    "style-T12-scorecard": {
+      "viewport": "w-[1200px]",
+      "category": "legacy-scorecard",
+      "use_case": "チェックリスト診断スコア表",
+      "placeholders": ["TITLE", "CRITERIA", "TOTAL_SCORE"],
+      "sample": {
+        "TITLE": "SNS運用セルフ診断",
+        "CRITERIA": [
+          {"name": "投稿の頻度", "score": 8},
+          {"name": "コンテンツの質", "score": 7},
+          {"name": "返信のスピード", "score": 6}
+        ],
+        "TOTAL_SCORE": 21
+      }
+    },
+    "style-T13-pull-quote": {
+      "viewport": "w-[1200px]",
+      "category": "legacy-quote",
+      "use_case": "大型の引用（専門家・ユーザー）",
+      "placeholders": ["QUOTE", "AUTHOR", "ROLE"],
+      "sample": {
+        "QUOTE": "コンテンツ一本の深さは、投稿の頻度より大切だ。",
+        "AUTHOR": "佐藤 美咲 ディレクター",
+        "ROLE": "DataReportal Japan"
+      }
+    },
+    "style-T14-icon-matrix": {
+      "viewport": "w-[1200px]",
+      "category": "legacy-matrix",
+      "use_case": "2×3 または 3×3 のアイコンマトリクス",
+      "placeholders": ["TITLE", "CELLS"],
+      "sample": {
+        "TITLE": "SNSコンテンツ6大タイプ",
+        "CELLS": [
+          {"icon": "📷", "name": "写真"},
+          {"icon": "🎬", "name": "リール"},
+          {"icon": "📚", "name": "カルーセル"},
+          {"icon": "💬", "name": "ストーリー"},
+          {"icon": "🎤", "name": "ライブ"},
+          {"icon": "🔖", "name": "ガイド"}
+        ]
+      }
+    },
+    "style-T15-dashboard": {
+      "viewport": "w-[1200px]",
+      "category": "legacy-dashboard",
+      "use_case": "ダッシュボードKPI 4-6個",
+      "placeholders": ["TITLE", "KPIS"],
+      "sample": {
+        "TITLE": "週間KPIダッシュボード",
+        "KPIS": [
+          {"name": "到達", "value": "12.4K", "delta": "+18%"},
+          {"name": "いいね", "value": "824", "delta": "+22%"},
+          {"name": "フォロワー", "value": "+96", "delta": "+12%"},
+          {"name": "DM", "value": "47", "delta": "+30%"}
+        ]
+      }
+    },
+    "style-T16-roadmap": {
+      "viewport": "w-[1200px]",
+      "category": "legacy-roadmap",
+      "use_case": "四半期・月別ロードマップ（水平）",
+      "placeholders": ["TITLE", "PHASES"],
+      "sample": {
+        "TITLE": "コンテンツ成長 6か月ロードマップ",
+        "PHASES": [
+          {"period": "1-2月", "goal": "基礎セットアップ"},
+          {"period": "3-4月", "goal": "コンテンツの蓄積"},
+          {"period": "5-6月", "goal": "転換の最適化"}
+        ]
+      }
+    },
+    "tools-comparison-template": {
+      "viewport": "w-[1200px]",
+      "category": "legacy-comparison",
+      "use_case": "ツール比較表（3-4ツール × N feature）",
+      "placeholders": ["TITLE", "SUBTITLE", "TOOLS"],
+      "sample": {
+        "TITLE": "AIマーケティングツール比較",
+        "TOOLS": [
+          {"name": "ours-magazine", "price": "¥2,980", "features": ["インサイト", "予約投稿", "AIコピー"]},
+          {"name": "Metaビジネススイート", "price": "無料", "features": ["インサイト", "予約投稿"]},
+          {"name": "CapCut", "price": "無料", "features": ["編集"]}
+        ]
+      }
+    },
+    "steps-guide-template": {
+      "viewport": "w-[1200px]",
+      "category": "legacy-steps",
+      "use_case": "手順ガイド5-8ステップ",
+      "placeholders": ["TITLE", "STEPS"],
+      "sample": {
+        "TITLE": "初めてのリール投稿ガイド",
+        "STEPS": [
+          {"num": 1, "title": "テーマを決める", "desc": "ターゲットから最もよく聞かれる質問を1つ"},
+          {"num": 2, "title": "フックを書く", "desc": "最初の3秒に置く一文"},
+          {"num": 3, "title": "撮影", "desc": "縦型9:16"},
+          {"num": 4, "title": "編集", "desc": "字幕は大きなフォントで"},
+          {"num": 5, "title": "投稿", "desc": "直近で到達が高かった時間帯"}
+        ]
+      }
+    },
+    "stats-insights-template": {
+      "viewport": "w-[1200px]",
+      "category": "legacy-stats",
+      "use_case": "レポート型ビッグナンバー + 棒 + 横棒 + 一行まとめ",
+      "placeholders": ["BADGE", "TITLE", "SUBTITLE", "BIG_NUMBERS", "BAR_CHART", "BREAKDOWN", "KEY_TAKEAWAY"],
+      "sample": {
+        "TITLE": "数字で見るAIマーケティング市場",
+        "BIG_NUMBERS": [
+          {"label": "AIツール利用率", "value": "68%", "delta": "+24%p YoY"},
+          {"label": "平均コスト削減", "value": "82%", "delta": "10万 → 1.8万"},
+          {"label": "制作スピード", "value": "11x", "delta": "7日 → 15時間"}
+        ],
+        "KEY_TAKEAWAY": "テキストはすでに標準、動画は今が参入のゴールデンタイム。"
+      }
+    },
+    "checklist-template": {
+      "viewport": "w-[1200px]",
+      "category": "legacy-checklist",
+      "use_case": "Do/Don't 左右6+6",
+      "placeholders": ["TITLE", "SUBTITLE", "DOS", "DONTS"],
+      "sample": {
+        "TITLE": "個人事業主が陥りやすいAIマーケティングの落とし穴",
+        "DOS": [
+          {"num": 1, "title": "1カットに1メッセージ", "desc": "5-10秒のクリップごとにメッセージは1つだけ"},
+          {"num": 2, "title": "キービジュアルを先に", "desc": "最初のフレーム画像を確定させる"}
+        ],
+        "DONTS": [
+          {"num": 1, "title": "毎日投稿", "desc": "質が落ちて到達も一緒に下がる"}
+        ]
+      }
+    },
+    "event-timeline-template": {
+      "viewport": "w-[1200px]",
+      "category": "legacy-event",
+      "use_case": "イベント日程タイムライン5-7個",
+      "placeholders": ["TITLE", "SUBTITLE", "EVENTS"],
+      "sample": {
+        "TITLE": "2026 SNSマーケティング主要イベント",
+        "EVENTS": [
+          {"date": "01-15", "title": "リールのアルゴリズム変更", "desc": "完視聴率の重みが強化"},
+          {"date": "03-22", "title": "AIラベリングの義務化", "desc": "未表示は到達が50%減少"},
+          {"date": "06-10", "title": "ショッピングタグ統合", "desc": "ワンクリック決済を導入"}
+        ]
+      }
+    },
+    "mini-chart-bar": {
+      "viewport": "w-[1200px]",
+      "category": "new-chart",
+      "use_case": "3-5項目の横棒チャート",
+      "placeholders": ["TITLE", "SUBTITLE", "BARS"],
+      "sample": {
+        "TITLE": "プラットフォーム別の平均広告転換率",
+        "SUBTITLE": "国内の個人マーケター1,840名の回答に基づく（2026年上半期）",
+        "BARS": [
+          {"label": "Instagramリール", "value": "4.2", "unit": "%", "width_pct": 84},
+          {"label": "YouTubeショート", "value": "3.5", "unit": "%", "width_pct": 70},
+          {"label": "TikTok", "value": "2.8", "unit": "%", "width_pct": 56},
+          {"label": "Facebookフィード", "value": "1.1", "unit": "%", "width_pct": 22}
+        ]
+      }
+    },
+    "mini-chart-trend": {
+      "viewport": "w-[1200px]",
+      "category": "new-chart",
+      "use_case": "時間X軸のラインチャート（5-10ポイント）",
+      "placeholders": ["TITLE", "SUBTITLE", "X_LABELS", "Y_VALUES", "Y_UNIT"],
+      "sample": {
+        "TITLE": "リール視聴時間 月別の増加推移",
+        "SUBTITLE": "国内18-44歳のInstagramユーザー 1日あたり平均視聴 分/日、2025.10-2026.04",
+        "X_LABELS": ["25.10", "25.11", "25.12", "26.01", "26.02", "26.03", "26.04"],
+        "Y_VALUES": [27, 31, 38, 45, 51, 55, 58],
+        "Y_UNIT": "分",
+        "DELTA_TOTAL": "+115%",
+        "DELTA_MONTHLY": "+11.6%"
+      }
+    },
+    "pricing-table": {
+      "viewport": "w-[1200px]",
+      "category": "new-pricing",
+      "use_case": "3-4プラン × 5-7 feature 比較",
+      "placeholders": ["TITLE", "SUBTITLE", "PLANS"],
+      "sample": {
+        "TITLE": "SNS管理ツール 3つの料金プラン比較",
+        "PLANS": [
+          {
+            "name": "ベーシック",
+            "price": "¥980",
+            "period": "月 / 1人",
+            "highlight": false,
+            "features": ["アカウント1個連携", "月30件の予約投稿", "基本の統計レポート"]
+          },
+          {
+            "name": "プロ",
+            "price": "¥2,980",
+            "period": "月 / 1人",
+            "highlight": true,
+            "badge": "一番人気",
+            "features": ["アカウント5個連携", "予約投稿が無制限", "AIコピー提案", "詳細インサイトレポート"]
+          },
+          {
+            "name": "ビジネス",
+            "price": "¥8,800",
+            "period": "月 / チーム5人",
+            "highlight": false,
+            "features": ["アカウント無制限", "チーム協業の権限管理", "専任マネージャー", "API連携サポート"]
+          }
+        ]
+      }
+    },
+    "formula-explained": {
+      "viewport": "w-[1200px]",
+      "category": "new-formula",
+      "use_case": "X = Y × Z の公式 + 各変数の説明",
+      "placeholders": ["TITLE", "SUBTITLE", "FORMULA", "TERMS", "INSIGHT"],
+      "sample": {
+        "TITLE": "リール到達率の計算式",
+        "FORMULA": "到達率 = エンゲージメント × 完視聴 × 初速",
+        "TERMS": [
+          {"name": "エンゲージメント", "summary": "いいね・コメント・シェア・保存", "desc": "投稿後30分以内の反応シグナル。アルゴリズムが最初に評価する核心指標。"},
+          {"name": "完視聴", "summary": "最後まで見た割合", "desc": "70%以上視聴した割合。短いほど有利で、最初の3秒が左右します。"},
+          {"name": "初速", "summary": "1時間の到達スピード", "desc": "投稿後1時間で到達したアカウント数。速いほど表示が拡大します。"}
+        ],
+        "INSIGHT": "3つの変数をすべて1.5倍に上げると、到達率は約3.4倍に増えます。"
+      }
+    },
+    "mistake-vs-fix": {
+      "viewport": "w-[1200px]",
+      "category": "new-compare",
+      "use_case": "間違った例 / 正しい例 を左右3-5ペア",
+      "placeholders": ["TITLE", "SUBTITLE", "MISTAKES", "FIXES"],
+      "sample": {
+        "TITLE": "よくある失敗と正しい改善法",
+        "MISTAKES": [
+          {"title": "毎日投稿", "desc": "頻度だけ増やすと質が落ち、到達率も一緒に下がります。"},
+          {"title": "ハッシュタグ30個", "desc": "スパムと判定され、アルゴリズムの表示がかえって減ります。"},
+          {"title": "フォロワー数を追う", "desc": "数字にこだわると、本当の顧客が誰なのか見えなくなります。"}
+        ],
+        "FIXES": [
+          {"title": "週3回の高品質", "desc": "一本により多くの時間をかけ、完成度を高める方が効率的です。"},
+          {"title": "核となる5-8個", "desc": "ターゲットとの関連性が高いタグだけ選ぶと、おすすめ表示が広がります。"},
+          {"title": "保存率に集中", "desc": "保存は再訪の可能性が最も高い指標で、購入に直結します。"}
+        ]
+      }
+    },
+    "industry-stat-card": {
+      "viewport": "w-[1200px]",
+      "category": "new-stat",
+      "use_case": "1枚の大きな統計 + 出典 + 文脈3カード",
+      "placeholders": ["BIG_NUM", "UNIT", "LABEL", "SOURCE", "CONTEXT_CARDS", "SUPPORTING"],
+      "sample": {
+        "BIG_NUM": "8,500",
+        "UNIT": "億円",
+        "LABEL": "2026年 国内SNSマーケティング市場規模",
+        "SOURCE": "ours-magazine編集部調べ 2026 メディア広告トレンドレポート",
+        "CONTEXT_CARDS": [
+          {"label": "前年比", "value": "+18%", "desc": "2025年の7,200億円から1,300億円増加しました。"},
+          {"label": "デジタル広告のシェア", "value": "37%", "desc": "デジタル広告費全体に占めるSNSチャネルの割合。"},
+          {"label": "個人事業主の参加率", "value": "62%", "desc": "月1回以上SNS広告を出稿している割合。"}
+        ],
+        "SUPPORTING": "市場規模は毎年2桁成長を続けており、デジタル広告のなかでもSNSの比率が最も速く伸びています。"
+      }
+    },
+    "quote-card": {
+      "viewport": "w-[1200px]",
+      "category": "new-quote",
+      "use_case": "専門家の引用 + 出典 + 根拠2-3個",
+      "placeholders": ["QUOTE_TEXT", "ATTRIBUTION", "ROLE", "SOURCE_URL", "SUPPORTING_FACTS"],
+      "sample": {
+        "QUOTE_TEXT": "ブランドが最もよく見落とすのは、コンテンツの頻度ではなく一本の深さだ。毎日投稿する場より、週2回ていねいなコンテンツを上げる場の方が、転換率は平均3倍高い。",
+        "ATTRIBUTION": "佐藤 美咲 ディレクター",
+        "ROLE": "DataReportal Japan・SNS広告戦略部門",
+        "SUPPORTING_FACTS": [
+          {"label": "根拠1", "text": "週2回ていねいなコンテンツを運用するチャネル320件の平均転換率は4.1%。"},
+          {"label": "根拠2", "text": "毎日投稿するチャネルの平均転換率は1.3%で、約1/3の水準。"}
+        ]
+      }
+    },
+    "flowchart-mini": {
+      "viewport": "w-[1200px]",
+      "category": "new-flow",
+      "use_case": "3-7ノードのHTML/CSSフロー（Mermaid不使用）",
+      "placeholders": ["TITLE", "SUBTITLE", "NODES"],
+      "sample": {
+        "TITLE": "リール投稿の標準ワークフロー",
+        "NODES": [
+          {"step": 1, "title": "テーマ・フック企画", "desc": "最初の3秒で目を引く一文のフックを先に決めます。"},
+          {"step": 2, "title": "スクリプト・絵コンテ", "desc": "10秒単位でシーンを分け、字幕の核心となる文を作ります。"},
+          {"step": 3, "title": "撮影・編集", "desc": "縦型9:16、30秒以内。最初のカットに最も強いビジュアルを置きます。"},
+          {"step": 4, "title": "投稿時刻の決定", "desc": "直近7日のインサイトで到達が高かった時間帯を優先します。"},
+          {"step": 5, "title": "48時間後にふり返り", "desc": "保存率・完視聴率・シェア率の3指標で次のコンテンツ方針を決めます。"}
+        ]
+      }
+    },
+    "comparison-2col": {
+      "viewport": "w-[1200px]",
+      "category": "new-compare",
+      "use_case": "オプションA vs B の左右2段",
+      "placeholders": ["TITLE", "SUBTITLE", "LEFT_TITLE", "LEFT_BULLETS", "LEFT_KPI", "RIGHT_TITLE", "RIGHT_BULLETS", "RIGHT_KPI", "RECOMMENDATION"],
+      "sample": {
+        "TITLE": "オーガニック到達 vs 広告到達",
+        "LEFT_TITLE": "オーガニック到達",
+        "LEFT_BULLETS": [
+          {"type": "pro", "text": "初期費用0円、時間の投資で成長"},
+          {"type": "pro", "text": "フォロワーの愛着が自然に育つ"},
+          {"type": "pro", "text": "長期LTVが平均2.3倍高い"},
+          {"type": "caution", "text": "結果まで3-6か月かかる"}
+        ],
+        "LEFT_KPI": {"label": "想定到達", "value": "8.2K/月"},
+        "RIGHT_TITLE": "広告到達",
+        "RIGHT_BULLETS": [
+          {"type": "pro", "text": "即時に到達を拡大、1-3日で結果"},
+          {"type": "pro", "text": "ターゲットの細分化が可能"},
+          {"type": "pro", "text": "新商品の認知を素早く獲得"},
+          {"type": "caution", "text": "広告を止めると到達が即下落"}
+        ],
+        "RIGHT_KPI": {"label": "想定到達", "value": "42K/月"},
+        "RECOMMENDATION": "オーガニックコンテンツ7 + 広告3の比率"
+      }
+    },
+    "comparison-3col": {
+      "viewport": "w-[1200px]",
+      "category": "new-compare",
+      "use_case": "3-way比較（オプションA/B/C）",
+      "placeholders": ["TITLE", "SUBTITLE", "COLS"],
+      "sample": {
+        "TITLE": "プラットフォーム別の強みを一目で比較",
+        "COLS": [
+          {
+            "name": "Instagram",
+            "subtitle": "写真・リール中心",
+            "color": "#E1306C",
+            "bullets": ["ビジュアルコンテンツに強い", "20-30代女性の層が厚い", "ショッピングタグを直接連携"],
+            "kpi": {"label": "平均転換率", "value": "4.2%"}
+          },
+          {
+            "name": "YouTube",
+            "subtitle": "ロング・ショートの両立",
+            "color": "#FF0000",
+            "bullets": ["検索表示の積み上げ効果", "全年齢のユーザー", "専門性で信頼を築ける"],
+            "kpi": {"label": "平均転換率", "value": "3.5%"}
+          },
+          {
+            "name": "TikTok",
+            "subtitle": "ショート・トレンドが爆発",
+            "color": "#0A0A0A",
+            "bullets": ["バズる可能性が最も高い", "10-20代に圧倒的", "新規アカウントでも到達が速い"],
+            "kpi": {"label": "平均転換率", "value": "2.8%"}
+          }
+        ]
+      }
+    },
+    "timeline-vertical": {
+      "viewport": "w-[1200px]",
+      "category": "new-timeline",
+      "use_case": "縦型タイムライン5-7マイルストーン",
+      "placeholders": ["TITLE", "SUBTITLE", "MILESTONES"],
+      "sample": {
+        "TITLE": "リールのアルゴリズム 2年間の変化の流れ",
+        "MILESTONES": [
+          {"period": "2024年 第1四半期", "title": "完視聴率の重みを導入", "desc": "最後まで見た割合がアルゴリズム表示に直接影響。"},
+          {"period": "2024年 第3四半期", "title": "シェア・保存シグナル強化", "desc": "いいねより保存・DMシェアの比重が大きく。"},
+          {"period": "2025年 第1四半期", "title": "新規アカウントのおすすめ拡大", "desc": "フォロワーが少ないアカウントも発見タブに表示の機会。"},
+          {"period": "2025年 第4四半期", "title": "重複投稿のペナルティ導入", "desc": "同じキャプション・ハッシュタグの繰り返しで到達が減少。"},
+          {"period": "2026年 第1四半期", "title": "AIコンテンツのラベリング義務", "desc": "AI動画はラベル未表示だと到達が半減。"}
+        ]
+      }
+    },
+    "pros-cons-card": {
+      "viewport": "w-[1200px]",
+      "category": "new-compare",
+      "use_case": "1つの対象の長所/短所を左右",
+      "placeholders": ["TITLE", "SUBTITLE", "PROS", "CONS"],
+      "sample": {
+        "TITLE": "AIコンテンツツールの長所と限界",
+        "PROS": [
+          {"title": "制作時間が1/10", "desc": "人が8時間かけていたコンテンツを1時間以内に下書きまで。"},
+          {"title": "アイデアの発散", "desc": "同じテーマから20通りの言い換えコピーを即座に生成します。"},
+          {"title": "翻訳・ローカライズが速い", "desc": "国ごとの微妙なトーン調整も指示文ひとつで処理。"},
+          {"title": "案の比較が自由", "desc": "A/B案5種を即座に作り、インサイトで比較できます。"}
+        ],
+        "CONS": [
+          {"title": "事実検証が必要", "desc": "統計・引用は必ず一次出典で再検証する必要があります。"},
+          {"title": "独自性が不足", "desc": "他ブランドとトーンが似やすく、差別化が難しくなります。"},
+          {"title": "月額の積み上がり", "desc": "3-5個のツールを契約すると月1万円以上の予算が必要です。"},
+          {"title": "アルゴリズムのペナルティ", "desc": "AIラベル未表示だとプラットフォームの到達が半分に減ります。"}
+        ]
+      }
+    },
+    "step-by-step": {
+      "viewport": "w-[1200px]",
+      "category": "new-steps",
+      "use_case": "1-2-3-4ステップ進行（アイコン + 説明）",
+      "placeholders": ["TITLE", "SUBTITLE", "STEPS", "SUMMARY"],
+      "sample": {
+        "TITLE": "初めてのリール投稿 4ステップガイド",
+        "STEPS": [
+          {"num": 1, "icon": "📱", "title": "アカウント準備", "desc": "プロフィール写真・紹介文・連絡先の3つをまず埋めましょう。"},
+          {"num": 2, "icon": "✍️", "title": "フックを決める", "desc": "最初の3秒に出す一文のメッセージを紙に書きます。"},
+          {"num": 3, "icon": "🎬", "title": "撮影・編集", "desc": "縦型9:16、15-30秒。字幕は大きなフォントで入れます。"},
+          {"num": 4, "icon": "🚀", "title": "投稿・ふり返り", "desc": "投稿の48時間後にインサイトを見て次のコンテンツ方針を決定。"}
+        ],
+        "SUMMARY": "4ステップの所要時間は合計で平均30分。"
+      }
+    },
+    "pie-chart-mini": {
+      "viewport": "w-[1200px]",
+      "category": "new-chart",
+      "use_case": "3-5セグメントの円グラフ",
+      "placeholders": ["TITLE", "SUBTITLE", "SEGMENTS", "CENTER_LABEL", "CENTER_VALUE"],
+      "sample": {
+        "TITLE": "個人事業主が最も時間を使う作業",
+        "SUBTITLE": "SNS運用の週間時間配分 — 標本1,240名に基づく",
+        "CENTER_LABEL": "週間平均",
+        "CENTER_VALUE": "14時間",
+        "SEGMENTS": [
+          {"label": "コンテンツ制作", "value": 40, "color": "#3B70FF", "desc": "企画・コピー・編集の時間"},
+          {"label": "撮影", "value": 28, "color": "#21B26A", "desc": "現場の撮影・セッティング"},
+          {"label": "分析", "value": 20, "color": "#FF6B2C", "desc": "インサイト・レポート"},
+          {"label": "顧客対応", "value": 12, "color": "#8B5CF6", "desc": "DM・コメント返信"}
+        ]
+      }
+    },
+    "ranked-list": {
+      "viewport": "w-[1200px]",
+      "category": "new-list",
+      "use_case": "1-5 または 1-10 のランキング（Top N）",
+      "placeholders": ["TITLE", "SUBTITLE", "ITEMS"],
+      "sample": {
+        "TITLE": "個人事業主が選ぶSNSツール Top 5",
+        "SUBTITLE": "1年以上運用した1,840名の回答に基づく",
+        "ITEMS": [
+          {"rank": 1, "name": "ours-magazine", "score": "9.4", "reason": "個人運用者が自ら使う日本向けインサイトツール。価格に対する満足度が最高。"},
+          {"rank": 2, "name": "Metaビジネススイート", "score": "8.8", "reason": "Instagram・Facebookを一括管理。無料 + 広告出稿の一貫性が強み。"},
+          {"rank": 3, "name": "CapCut", "score": "8.5", "reason": "動画編集の無料ツール1位。テンプレ・字幕の自動認識が核心。"},
+          {"rank": 4, "name": "Canva", "score": "8.1", "reason": "テンプレートベースのデザインツール。ブランドの統一感を保ちやすい。"},
+          {"rank": 5, "name": "ChatGPT", "score": "7.8", "reason": "コピー・ハッシュタグ・返信の下書き生成ツール。事実検証は別途必要。"}
+        ]
+      }
+    },
+    "before-after": {
+      "viewport": "w-[1200px]",
+      "category": "new-compare",
+      "use_case": "導入前 / 後の数値変化を比較",
+      "placeholders": ["TITLE", "SUBTITLE", "BEFORE_LABEL", "BEFORE_VALUE", "BEFORE_DETAILS", "AFTER_LABEL", "AFTER_VALUE", "AFTER_DETAILS", "DELTA", "INSIGHT"],
+      "sample": {
+        "TITLE": "フックを変えた3か月の成果変化",
+        "SUBTITLE": "カフェ運用の事例 — 最初の3秒のメッセージを磨いた後、到達が4倍に増加",
+        "BEFORE_LABEL": "改善前（1-3月）",
+        "BEFORE_VALUE": "1,240",
+        "BEFORE_DETAILS": [
+          {"label": "平均いいね", "value": "84"},
+          {"label": "保存率", "value": "1.2%"},
+          {"label": "月商への影響", "value": "+8%"}
+        ],
+        "AFTER_LABEL": "改善後（4-6月）",
+        "AFTER_VALUE": "4,960",
+        "AFTER_DETAILS": [
+          {"label": "平均いいね", "value": "412"},
+          {"label": "保存率", "value": "5.8%"},
+          {"label": "月商への影響", "value": "+34%"}
+        ],
+        "DELTA": "+300%",
+        "INSIGHT": "フックを一行磨くのにかけた時間は合計4時間。"
+      }
+    }
+  }
+}

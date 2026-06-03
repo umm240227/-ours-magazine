@@ -1,0 +1,129 @@
+<!DOCTYPE html><html lang="ja">
+<head><meta charset="UTF-8">
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+body{font-family:'Noto Sans JP',-apple-system,sans-serif;-webkit-font-smoothing:antialiased}
+.num{font-variant-numeric:tabular-nums}
+</style>
+</head>
+<body style="background:#F1F5F9">
+<main class="w-[1200px] mx-auto py-12 px-12">
+
+  <!-- ヘッダー -->
+  <div class="text-center mb-10">
+    <span class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-[20px] font-bold tracking-widest uppercase mb-6" style="background:#E2E8F0;color:#334155">
+      STRATEGY COMPARE
+    </span>
+    <h1 class="text-[60px] font-black text-gray-900 leading-tight">オーガニック vs 有料広告<br><span class="text-[32px] font-semibold" style="color:#475569">どちらの戦略がより効果的か?</span></h1>
+  </div>
+
+  <!-- VS 分割エリア -->
+  <div class="relative flex gap-0 mb-10 rounded-[32px] overflow-hidden" style="min-height:600px">
+    <!-- 左 ダークパネル -->
+    <div class="flex-1 p-12 flex flex-col justify-between" style="background:#1E293B">
+      <div>
+        <div class="inline-block px-5 py-2.5 rounded-2xl text-[22px] font-bold mb-6" style="background:rgba(255,255,255,0.15);color:rgb(255,255,255)">
+          🌱 オーガニック投稿
+        </div>
+        <div class="space-y-6">
+          <div>
+            <div class="text-[18px] font-semibold mb-2" style="color:rgb(255,255,255)">平均リーチ (フォロワー1万人基準)</div>
+            <div class="num font-black text-white leading-none whitespace-nowrap" style="font-size:56px">2,600<span style="font-size:30px">人</span></div>
+          </div>
+          <div>
+            <div class="text-[18px] font-semibold mb-2" style="color:rgb(255,255,255)">クリック単価</div>
+            <div class="num font-black leading-none whitespace-nowrap" style="color:#34D399;font-size:56px">無料</div>
+          </div>
+          <div>
+            <div class="text-[18px] font-semibold mb-2" style="color:rgb(255,255,255)">成長スピード</div>
+            <div class="font-bold text-[26px]" style="color:rgb(255,255,255)">🐢 遅い</div>
+          </div>
+        </div>
+      </div>
+      <div class="space-y-3 mt-6">
+        <div class="flex items-center gap-3">
+          <span class="w-7 h-7 rounded-full flex items-center justify-center text-[18px] font-bold" style="background:rgba(52,211,153,0.25);color:#34D399">✓</span>
+          <span class="text-[20px]" style="color:rgb(255,255,255)">コストなし</span>
+        </div>
+        <div class="flex items-center gap-3">
+          <span class="w-7 h-7 rounded-full flex items-center justify-center text-[18px] font-bold" style="background:rgba(52,211,153,0.25);color:#34D399">✓</span>
+          <span class="text-[20px]" style="color:rgb(255,255,255)">ブランド信頼を構築</span>
+        </div>
+        <div class="flex items-center gap-3">
+          <span class="w-7 h-7 rounded-full flex items-center justify-center text-[18px] font-bold" style="background:rgba(239,68,68,0.25);color:#F87171">✗</span>
+          <span class="text-[20px]" style="color:rgb(255,255,255)">アルゴリズム依存</span>
+        </div>
+        <div class="flex items-center gap-3">
+          <span class="w-7 h-7 rounded-full flex items-center justify-center text-[18px] font-bold" style="background:rgba(239,68,68,0.25);color:#F87171">✗</span>
+          <span class="text-[20px]" style="color:rgb(255,255,255)">リーチに上限</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- VS バッジ (中央 absolute) -->
+    <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
+      <div class="w-24 h-24 rounded-full flex items-center justify-center font-black text-[32px] shadow-xl" style="background:#F59E0B;color:#000;border:6px solid #FEF3C7">
+        VS
+      </div>
+    </div>
+
+    <!-- 右 ライトパネル -->
+    <div class="flex-1 p-12 flex flex-col justify-between" style="background:#EFF6FF">
+      <div>
+        <div class="inline-block px-5 py-2.5 rounded-2xl text-[22px] font-bold mb-6" style="background:#DBEAFE;color:#1D4ED8">
+          🚀 有料広告
+        </div>
+        <div class="space-y-6">
+          <div>
+            <div class="text-[18px] font-semibold mb-2" style="color:#475569">広告リーチ範囲</div>
+            <div class="num font-black text-gray-900 leading-none whitespace-nowrap" style="font-size:56px">20万<span style="font-size:30px">人+</span></div>
+          </div>
+          <div>
+            <div class="text-[18px] font-semibold mb-2" style="color:#475569">平均CPC</div>
+            <div class="num font-black leading-none whitespace-nowrap" style="color:#2563EB;font-size:48px">35<span style="font-size:28px">円~70円</span></div>
+          </div>
+          <div>
+            <div class="text-[18px] font-semibold mb-2" style="color:#475569">成長スピード</div>
+            <div class="font-bold text-[26px]" style="color:#1F2937">🚀 速い</div>
+          </div>
+        </div>
+      </div>
+      <div class="space-y-3 mt-6">
+        <div class="flex items-center gap-3">
+          <span class="w-7 h-7 rounded-full flex items-center justify-center text-[18px] font-bold" style="background:#DCFCE7;color:#15803D">✓</span>
+          <span class="text-[20px]" style="color:#334155">精密なターゲティング</span>
+        </div>
+        <div class="flex items-center gap-3">
+          <span class="w-7 h-7 rounded-full flex items-center justify-center text-[18px] font-bold" style="background:#DCFCE7;color:#15803D">✓</span>
+          <span class="text-[20px]" style="color:#334155">すぐにリーチ拡大</span>
+        </div>
+        <div class="flex items-center gap-3">
+          <span class="w-7 h-7 rounded-full flex items-center justify-center text-[18px] font-bold" style="background:#FEE2E2;color:#B91C1C">✗</span>
+          <span class="text-[20px]" style="color:#475569">予算が必要</span>
+        </div>
+        <div class="flex items-center gap-3">
+          <span class="w-7 h-7 rounded-full flex items-center justify-center text-[18px] font-bold" style="background:#FEE2E2;color:#B91C1C">✗</span>
+          <span class="text-[20px]" style="color:#475569">停止すると効果が消える</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 結論ボックス -->
+  <div class="rounded-[28px] p-10 mb-8 text-center" style="background:linear-gradient(135deg,#FFFBEB,#FEF3C7);border:3px solid #F59E0B">
+    <div class="text-[22px] font-bold mb-2" style="color:#B45309">💡 専門家おすすめ戦略</div>
+    <div class="text-[36px] font-black text-gray-900 mb-4">2つの併用が最適なROI</div>
+    <p class="text-[22px]" style="color:#475569">オーガニックで信頼を築き、有料広告でリーチを増幅。<br>インフルエンサーROI <strong style="color:#B45309">520%</strong> は2チャネルのシナジーから</p>
+  </div>
+
+  <!-- フッター -->
+  <footer class="flex items-center justify-between pt-4">
+    <div class="flex items-center gap-4">
+      
+      <span class="font-bold text-[22px] text-gray-800">ours-magazine.jp</span>
+    </div>
+    <span class="text-[20px] font-medium text-gray-700" style="white-space:nowrap">SNSマーケティング セルフサービス</span>
+  </footer>
+
+</main></body></html>

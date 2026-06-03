@@ -1,0 +1,170 @@
+<!DOCTYPE html><html lang="ja">
+<head><meta charset="UTF-8">
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+body{font-family:'Noto Sans JP',-apple-system,sans-serif;-webkit-font-smoothing:antialiased}
+.num{font-variant-numeric:tabular-nums}
+</style>
+</head>
+<body style="background:#0F172A">
+<main class="w-[1200px] mx-auto py-12 px-12">
+
+  <!-- ヘッダー -->
+  <div class="flex items-start justify-between mb-10">
+    <div>
+      <p class="text-[20px] font-bold tracking-widest uppercase mb-2" style="color:rgb(255,255,255)">ANALYTICS REPORT</p>
+      <h1 class="text-[52px] font-black text-white leading-tight">月間SNS成果レポート</h1>
+    </div>
+    <div class="px-6 py-3 rounded-2xl text-[20px] font-bold whitespace-nowrap" style="background:#1E293B;color:rgb(255,255,255)">
+      2024年12月時点
+    </div>
+  </div>
+
+  <!-- KPI 4つ -->
+  <div class="grid grid-cols-4 gap-6 mb-8">
+    <div class="rounded-3xl p-8" style="background:#1E293B">
+      <div class="text-[20px] font-bold mb-4" style="color:rgb(255,255,255)">総リーチ</div>
+      <div class="num font-black text-white leading-none mb-3 whitespace-nowrap" style="font-size:56px">2.3<span style="font-size:30px">M</span></div>
+      <div class="text-[20px] font-bold" style="color:#34D399">↑ 18.2%</div>
+    </div>
+    <div class="rounded-3xl p-8" style="background:#1E293B">
+      <div class="text-[20px] font-bold mb-4" style="color:rgb(255,255,255)">クリック率</div>
+      <div class="num font-black text-white leading-none mb-3 whitespace-nowrap" style="font-size:56px">4.8<span style="font-size:30px">%</span></div>
+      <div class="text-[20px] font-bold" style="color:#38BDF8">↑ 0.6%p</div>
+    </div>
+    <div class="rounded-3xl p-8" style="background:#1E293B">
+      <div class="text-[20px] font-bold mb-4" style="color:rgb(255,255,255)">転換</div>
+      <div class="num font-black text-white leading-none mb-3 whitespace-nowrap" style="font-size:48px">2,847<span style="font-size:24px">件</span></div>
+      <div class="text-[20px] font-bold" style="color:#A78BFA">↑ 312件</div>
+    </div>
+    <div class="rounded-3xl p-8" style="background:#1E293B">
+      <div class="text-[20px] font-bold mb-4" style="color:rgb(255,255,255)">ROAS</div>
+      <div class="num font-black text-white leading-none mb-3 whitespace-nowrap" style="font-size:56px">5.2<span style="font-size:30px">x</span></div>
+      <div class="text-[20px] font-bold" style="color:#F472B6">↑ 0.4x</div>
+    </div>
+  </div>
+
+  <!-- プラットフォーム別リーチ バーチャート -->
+  <div class="rounded-3xl p-10 mb-8" style="background:#1E293B">
+    <div class="flex items-center justify-between mb-6">
+      <h3 class="text-[28px] font-bold text-white">プラットフォーム別リーチ比率</h3>
+      <span class="text-[18px] font-semibold" style="color:rgb(255,255,255)">全体2.3M基準</span>
+    </div>
+    <div class="space-y-5">
+      <!-- YouTube -->
+      <div>
+        <div class="flex justify-between items-center mb-3">
+          <div class="flex items-center gap-3">
+            <span style="font-size:24px">📺</span>
+            <span class="text-[22px] font-bold text-white">YouTube</span>
+          </div>
+          <span class="num text-[22px] font-bold text-white">45%</span>
+        </div>
+        <div class="h-5 rounded-full overflow-hidden" style="background:rgba(255,255,255,0.1)">
+          <div class="h-5 rounded-full" style="width:45%;background:linear-gradient(90deg,#EF4444,#F97316)"></div>
+        </div>
+      </div>
+      <!-- Instagram -->
+      <div>
+        <div class="flex justify-between items-center mb-3">
+          <div class="flex items-center gap-3">
+            <span style="font-size:24px">📸</span>
+            <span class="text-[22px] font-bold text-white">Instagram</span>
+          </div>
+          <span class="num text-[22px] font-bold text-white">30%</span>
+        </div>
+        <div class="h-5 rounded-full overflow-hidden" style="background:rgba(255,255,255,0.1)">
+          <div class="h-5 rounded-full" style="width:30%;background:linear-gradient(90deg,#EC4899,#A855F7)"></div>
+        </div>
+      </div>
+      <!-- TikTok -->
+      <div>
+        <div class="flex justify-between items-center mb-3">
+          <div class="flex items-center gap-3">
+            <span style="font-size:24px">🎵</span>
+            <span class="text-[22px] font-bold text-white">TikTok</span>
+          </div>
+          <span class="num text-[22px] font-bold text-white">15%</span>
+        </div>
+        <div class="h-5 rounded-full overflow-hidden" style="background:rgba(255,255,255,0.1)">
+          <div class="h-5 rounded-full" style="width:15%;background:linear-gradient(90deg,#38BDF8,#6366F1)"></div>
+        </div>
+      </div>
+      <!-- その他 -->
+      <div>
+        <div class="flex justify-between items-center mb-3">
+          <div class="flex items-center gap-3">
+            <span style="font-size:24px">📊</span>
+            <span class="text-[22px] font-bold" style="color:rgb(255,255,255)">その他</span>
+          </div>
+          <span class="num text-[22px] font-bold" style="color:rgb(255,255,255)">10%</span>
+        </div>
+        <div class="h-5 rounded-full overflow-hidden" style="background:rgba(255,255,255,0.1)">
+          <div class="h-5 rounded-full" style="width:10%;background:rgba(255,255,255,0.4)"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 週間トレンド (7本の縦棒) -->
+  <div class="rounded-3xl p-10 mb-8" style="background:#1E293B">
+    <div class="flex items-center justify-between mb-6">
+      <h3 class="text-[28px] font-bold text-white">週間インプレッション推移</h3>
+      <span class="text-[18px] font-semibold" style="color:rgb(255,255,255)">直近7日</span>
+    </div>
+    <div class="flex items-end justify-between gap-4" style="height:180px;position:relative">
+      <div class="flex-1 flex flex-col items-center gap-2">
+        <div class="w-full rounded-t-lg" style="height:80px;background:rgba(56,189,248,0.4)"></div>
+        <span class="text-[18px] font-bold" style="color:rgb(255,255,255)">月</span>
+      </div>
+      <div class="flex-1 flex flex-col items-center gap-2">
+        <div class="w-full rounded-t-lg" style="height:110px;background:rgba(56,189,248,0.55)"></div>
+        <span class="text-[18px] font-bold" style="color:rgb(255,255,255)">火</span>
+      </div>
+      <div class="flex-1 flex flex-col items-center gap-2">
+        <div class="w-full rounded-t-lg" style="height:96px;background:rgba(56,189,248,0.55)"></div>
+        <span class="text-[18px] font-bold" style="color:rgb(255,255,255)">水</span>
+      </div>
+      <div class="flex-1 flex flex-col items-center gap-2">
+        <div class="w-full rounded-t-lg" style="height:135px;background:rgba(56,189,248,0.75)"></div>
+        <span class="text-[18px] font-bold" style="color:rgb(255,255,255)">木</span>
+      </div>
+      <div class="flex-1 flex flex-col items-center gap-2">
+        <div class="w-full rounded-t-lg" style="height:140px;background:#38BDF8"></div>
+        <span class="text-[18px] font-bold" style="color:rgb(255,255,255)">金</span>
+      </div>
+      <div class="flex-1 flex flex-col items-center gap-2">
+        <div class="w-full rounded-t-lg" style="height:126px;background:rgba(56,189,248,0.85)"></div>
+        <span class="text-[18px] font-bold" style="color:rgb(255,255,255)">土</span>
+      </div>
+      <div class="flex-1 flex flex-col items-center gap-2">
+        <div class="w-full rounded-t-lg" style="height:114px;background:rgba(56,189,248,0.65)"></div>
+        <span class="text-[18px] font-bold" style="color:rgb(255,255,255)">日</span>
+      </div>
+    </div>
+    <p class="text-[20px] mt-4 font-semibold" style="color:rgb(255,255,255)">金曜のインプレッションが最高 · 週末も堅調をキープ</p>
+  </div>
+
+  <!-- インサイトハイライト -->
+  <div class="grid grid-cols-2 gap-6 mb-10">
+    <div class="rounded-3xl p-10" style="background:rgba(52,211,153,0.12);border:1px solid rgba(52,211,153,0.3)">
+      <div class="text-[20px] font-bold mb-3" style="color:#34D399">TOP インサイト</div>
+      <p class="text-[22px] leading-relaxed" style="color:rgb(255,255,255)">リール動画が全体リーチの<strong style="color:#34D399">68%</strong>を占有。ショート動画への集中戦略が有効。</p>
+    </div>
+    <div class="rounded-3xl p-10" style="background:rgba(167,139,250,0.12);border:1px solid rgba(167,139,250,0.3)">
+      <div class="text-[20px] font-bold mb-3" style="color:#A78BFA">NEXT STEP</div>
+      <p class="text-[22px] leading-relaxed" style="color:rgb(255,255,255)">LINE公式の開封率<strong style="color:#A78BFA">40%</strong>を活かしたリターゲティング広告の強化を推奨。</p>
+    </div>
+  </div>
+
+  <!-- フッター ダークスタイル -->
+  <footer class="flex items-center justify-between pt-6" style="border-top:1px solid rgba(255,255,255,0.12)">
+    <div class="flex items-center gap-4">
+      
+      <span class="font-bold text-[22px]" style="color:rgb(255,255,255)">ours-magazine.jp</span>
+    </div>
+    <span class="text-[20px] font-medium" style="color:rgb(255,255,255);white-space:nowrap">SNSマーケティング セルフサービス</span>
+  </footer>
+
+</main></body></html>

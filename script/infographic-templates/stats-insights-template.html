@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<!--
+  Template: 統計・インサイト型インフォグラフィック (Stats / Insights)
+  用途: 市場データ、トレンドレポート、ビッグナンバー強調型の記事
+  備考: データは SAMPLE_DATA マーカー内にあります。記事ごとにデータを差し替えてください。
+
+  レンダリング:
+    node script/render-infographic.mjs \
+      this-html.html output.webp --width=1200 --height=2000
+  (asset-images.md §4.10.4 — height ≤ 2000px ルール)
+-->
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  body { font-family: 'Noto Sans JP', -apple-system, sans-serif; -webkit-font-smoothing: antialiased; }
+  .num { font-variant-numeric: tabular-nums; }
+</style>
+</head>
+<body class="bg-[#F6F8FB]">
+  <main class="w-[1200px] mx-auto py-12 px-12">
+
+    <!-- HEADER -->
+    <header class="bg-gradient-to-br from-[#FFF1E8] via-[#F5EFE0] to-[#F6F8FB] rounded-[32px] p-12 mb-6 relative overflow-hidden">
+      <div class="inline-flex items-center gap-2 bg-[#FF6B2C] text-white text-[20px] font-bold tracking-widest uppercase px-5 py-2.5 rounded-full mb-6">
+            <span class="w-2 h-2 rounded-full bg-white"></span>
+            2026 Market Report
+          </div>
+      <div class="flex justify-center mb-6">
+        
+      </div>
+      <!-- SAMPLE_DATA: ヘッダーカテゴリ chip -->
+
+          <!-- SAMPLE_DATA: 大見出し -->
+          <h1 class="text-[72px] font-black leading-[1.05] tracking-tight text-[#0A0A0A] mb-5">
+            数字で見る<br>
+            <span class="text-[#FF6B2C]">AIマーケティング市場</span>
+          </h1>
+          <!-- SAMPLE_DATA: サブタイトル -->
+          <p class="text-[26px] text-[#444] leading-relaxed max-w-3xl">
+            国内の個人マーケター・個人事業主を対象とした <strong class="text-[#FF6B2C]">2026年上半期</strong> のトレンドデータ。
+          </p>
+    </header>
+
+    <!-- BIG NUMBERS (メインKPI 3個) -->
+    <section class="grid grid-cols-3 gap-6 mb-6">
+      <!-- SAMPLE_DATA: ビッグナンバー 1 -->
+      <div class="bg-white rounded-[28px] p-10 shadow-[0_2px_12px_rgba(0,0,0,0.04)]">
+        <p class="text-[20px] text-[#555] tracking-widest uppercase mb-3">AIツール利用率</p>
+        <div class="flex items-baseline gap-2 mb-3">
+          <span class="text-[96px] font-black text-[#FF6B2C] num leading-none">68</span>
+          <span class="text-[44px] font-black text-[#FF6B2C] num">%</span>
+        </div>
+        <div class="inline-flex items-center gap-1.5 bg-[#FFE8DC] text-[#FF6B2C] text-[18px] font-bold px-3 py-1.5 rounded-full">
+          <span>▲</span>
+          <span class="num">+24%p YoY</span>
+        </div>
+        <p class="text-[22px] text-[#444] leading-relaxed mt-3">
+          国内の個人マーケターのうち、月1回以上AIツールを使う割合。
+        </p>
+      </div>
+
+      <div class="bg-white rounded-[28px] p-10 shadow-[0_2px_12px_rgba(0,0,0,0.04)]">
+        <p class="text-[20px] text-[#555] tracking-widest uppercase mb-3">平均コスト削減</p>
+        <div class="flex items-baseline gap-2 mb-3">
+          <span class="text-[96px] font-black text-[#3B70FF] num leading-none">82</span>
+          <span class="text-[44px] font-black text-[#3B70FF] num">%</span>
+        </div>
+        <div class="inline-flex items-center gap-1.5 bg-[#E8F1FF] text-[#3B70FF] text-[18px] font-bold px-3 py-1.5 rounded-full">
+          <span class="num">10万 → 1.8万円</span>
+        </div>
+        <p class="text-[22px] text-[#444] leading-relaxed mt-3">
+          外注と比べ、AIツール活用時のコンテンツ1件あたりの平均制作費。
+        </p>
+      </div>
+
+      <div class="bg-white rounded-[28px] p-10 shadow-[0_2px_12px_rgba(0,0,0,0.04)]">
+        <p class="text-[20px] text-[#555] tracking-widest uppercase mb-3">制作スピード</p>
+        <div class="flex items-baseline gap-2 mb-3">
+          <span class="text-[96px] font-black text-[#1A3DA8] num leading-none">11</span>
+          <span class="text-[44px] font-black text-[#1A3DA8] num">x</span>
+        </div>
+        <div class="inline-flex items-center gap-1.5 bg-[#E8F1FF] text-[#1A3DA8] text-[18px] font-bold px-3 py-1.5 rounded-full">
+          <span class="num">7日 → 15時間</span>
+        </div>
+        <p class="text-[22px] text-[#444] leading-relaxed mt-3">
+          企画から投稿まで、平均所要時間が短縮された倍率。
+        </p>
+      </div>
+    </section>
+
+    <!-- BAR CHART (月別の利用率推移) -->
+    <section class="bg-white rounded-[28px] p-12 mb-6 shadow-[0_2px_12px_rgba(0,0,0,0.04)]">
+      <div class="flex items-center gap-4 mb-2">
+        <div class="w-12 h-12 rounded-full bg-[#FFE8DC] flex items-center justify-center text-[26px]">📈</div>
+        <h2 class="text-[40px] font-bold text-[#0A0A0A]">月別のAIツール導入推移</h2>
+      </div>
+      <p class="text-[22px] text-[#555] ml-16 mb-6">サンプル2,840人 (2025.07 - 2026.04)</p>
+
+      <!-- SAMPLE_DATA: 棒グラフ (CSS bar, 10か月) -->
+      <div class="grid grid-cols-10 gap-4 items-end h-[280px] mb-4">
+        <div class="flex flex-col items-center justify-end h-full">
+          <div class="w-full rounded-t-lg bg-gradient-to-t from-[#FFC9A8] to-[#FF6B2C]" style="height: 38%"></div>
+        </div>
+        <div class="flex flex-col items-center justify-end h-full">
+          <div class="w-full rounded-t-lg bg-gradient-to-t from-[#FFC9A8] to-[#FF6B2C]" style="height: 42%"></div>
+        </div>
+        <div class="flex flex-col items-center justify-end h-full">
+          <div class="w-full rounded-t-lg bg-gradient-to-t from-[#FFC9A8] to-[#FF6B2C]" style="height: 47%"></div>
+        </div>
+        <div class="flex flex-col items-center justify-end h-full">
+          <div class="w-full rounded-t-lg bg-gradient-to-t from-[#FFC9A8] to-[#FF6B2C]" style="height: 50%"></div>
+        </div>
+        <div class="flex flex-col items-center justify-end h-full">
+          <div class="w-full rounded-t-lg bg-gradient-to-t from-[#FFC9A8] to-[#FF6B2C]" style="height: 54%"></div>
+        </div>
+        <div class="flex flex-col items-center justify-end h-full">
+          <div class="w-full rounded-t-lg bg-gradient-to-t from-[#FFC9A8] to-[#FF6B2C]" style="height: 58%"></div>
+        </div>
+        <div class="flex flex-col items-center justify-end h-full">
+          <div class="w-full rounded-t-lg bg-gradient-to-t from-[#FFC9A8] to-[#FF6B2C]" style="height: 60%"></div>
+        </div>
+        <div class="flex flex-col items-center justify-end h-full">
+          <div class="w-full rounded-t-lg bg-gradient-to-t from-[#FFC9A8] to-[#FF6B2C]" style="height: 63%"></div>
+        </div>
+        <div class="flex flex-col items-center justify-end h-full">
+          <div class="w-full rounded-t-lg bg-gradient-to-t from-[#FFC9A8] to-[#FF6B2C]" style="height: 66%"></div>
+        </div>
+        <div class="flex flex-col items-center justify-end h-full relative">
+          <div class="absolute -top-10 left-1/2 -translate-x-1/2 text-[28px] font-black text-[#FF6B2C] num whitespace-nowrap">68%</div>
+          <div class="w-full rounded-t-lg bg-gradient-to-t from-[#FF6B2C] to-[#FF4A0C] ring-4 ring-[#FF6B2C]/20" style="height: 68%"></div>
+        </div>
+      </div>
+      <div class="grid grid-cols-10 gap-4 text-center">
+        <div class="text-[18px] text-[#555] num">'25.07</div>
+        <div class="text-[18px] text-[#555] num">08</div>
+        <div class="text-[18px] text-[#555] num">09</div>
+        <div class="text-[18px] text-[#555] num">10</div>
+        <div class="text-[18px] text-[#555] num">11</div>
+        <div class="text-[18px] text-[#555] num">12</div>
+        <div class="text-[18px] text-[#555] num">'26.01</div>
+        <div class="text-[18px] text-[#555] num">02</div>
+        <div class="text-[18px] text-[#555] num">03</div>
+        <div class="text-[18px] font-bold text-[#FF6B2C] num">04</div>
+      </div>
+    </section>
+
+    <!-- BREAKDOWN (ツールカテゴリ別の構成比) -->
+    <section class="bg-white rounded-[28px] p-12 mb-6 shadow-[0_2px_12px_rgba(0,0,0,0.04)]">
+      <div class="flex items-center gap-4 mb-2">
+        <div class="w-12 h-12 rounded-full bg-[#E8F1FF] flex items-center justify-center text-[26px]">🧩</div>
+        <h2 class="text-[40px] font-bold text-[#0A0A0A]">どのツールが最も使われているか</h2>
+      </div>
+      <p class="text-[22px] text-[#555] ml-16 mb-6">複数回答。回答者1,932人</p>
+
+      <!-- SAMPLE_DATA: 横棒5種 -->
+      <div class="space-y-5">
+        <div>
+          <div class="flex items-baseline justify-between mb-2">
+            <span class="text-[26px] font-bold text-[#0A0A0A]">テキスト生成 (ChatGPT, Claude)</span>
+            <span class="text-[28px] font-black text-[#3B70FF] num">81%</span>
+          </div>
+          <div class="h-5 bg-[#F1F5FF] rounded-full overflow-hidden">
+            <div class="h-full bg-[#3B70FF] rounded-full" style="width: 81%"></div>
+          </div>
+        </div>
+        <div>
+          <div class="flex items-baseline justify-between mb-2">
+            <span class="text-[26px] font-bold text-[#0A0A0A]">画像生成 (Midjourney, DALL-E)</span>
+            <span class="text-[28px] font-black text-[#3B70FF] num">54%</span>
+          </div>
+          <div class="h-5 bg-[#F1F5FF] rounded-full overflow-hidden">
+            <div class="h-full bg-[#3B70FF] rounded-full" style="width: 54%"></div>
+          </div>
+        </div>
+        <div>
+          <div class="flex items-baseline justify-between mb-2">
+            <span class="text-[26px] font-bold text-[#0A0A0A]">動画生成 (Runway, Sora, Veo)</span>
+            <span class="text-[28px] font-black text-[#3B70FF] num">37%</span>
+          </div>
+          <div class="h-5 bg-[#F1F5FF] rounded-full overflow-hidden">
+            <div class="h-full bg-[#3B70FF] rounded-full" style="width: 37%"></div>
+          </div>
+        </div>
+        <div>
+          <div class="flex items-baseline justify-between mb-2">
+            <span class="text-[26px] font-bold text-[#0A0A0A]">アバター・リップシンク (HeyGen)</span>
+            <span class="text-[28px] font-black text-[#3B70FF] num">22%</span>
+          </div>
+          <div class="h-5 bg-[#F1F5FF] rounded-full overflow-hidden">
+            <div class="h-full bg-[#3B70FF] rounded-full" style="width: 22%"></div>
+          </div>
+        </div>
+        <div>
+          <div class="flex items-baseline justify-between mb-2">
+            <span class="text-[26px] font-bold text-[#0A0A0A]">自動化 (Zapier, Make)</span>
+            <span class="text-[28px] font-black text-[#3B70FF] num">14%</span>
+          </div>
+          <div class="h-5 bg-[#F1F5FF] rounded-full overflow-hidden">
+            <div class="h-full bg-[#3B70FF] rounded-full" style="width: 14%"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- KEY TAKEAWAY -->
+    <section class="bg-[#FF6B2C] text-white rounded-[28px] p-10 mb-6 shadow-[0_2px_12px_rgba(0,0,0,0.04)]">
+      <p class="text-[20px] tracking-widest uppercase text-[#FFEEDC] mb-3">ひとことまとめ</p>
+      <h3 class="text-[32px] font-bold leading-snug">
+        テキストはすでに標準、動画は今が参入のゴールデンタイム。<br>
+        2026年下半期には、動画ツールの利用率が50%を超えると見込まれます。
+      </h3>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-white rounded-[28px] p-8 flex items-center justify-between shadow-[0_2px_12px_rgba(0,0,0,0.04)]">
+      <div class="flex items-center gap-5">
+        
+        <div>
+          <div class="text-[26px] font-bold text-[#0A0A0A]">ours-magazine.jp</div>
+          <div class="text-[18px] text-[#555]">SNSマーケティングのセルフサービス</div>
+        </div>
+      </div>
+      <div class="text-[18px] text-[#555] italic text-right leading-relaxed">
+        調査期間: 2025.07 - 2026.04 · サンプル2,840人<br>
+        ※ サンプルデータ — 実際の記事作成時は出典・期間の明記が必須
+      </div>
+    </footer>
+
+  </main>
+</body>
+</html>

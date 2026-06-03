@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<!--
+  Template: 数式・計算の解説 (Formula Explained)
+  用途: X = Y + Z 形式の数式 + 各項目の解説
+  Placeholders: {{TITLE}}, {{SUBTITLE}}, {{FORMULA}}, {{TERMS}} ([{symbol, name, desc}, ...])
+  備考: データは SAMPLE_DATA マーカー内にあります。記事ごとにデータを差し替えてください。
+
+  レンダリング:
+    node script/render-infographic.mjs this-html.html output.webp --width=1200 --max-height=2000
+-->
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  body { font-family: 'Noto Sans JP', -apple-system, sans-serif; -webkit-font-smoothing: antialiased; }
+  .num { font-variant-numeric: tabular-nums; }
+</style>
+</head>
+<body style="background:#F8FAFC">
+<main class="w-[1200px] mx-auto py-16 px-12">
+
+  <header class="mb-10">
+    <div class="inline-flex items-center gap-2 bg-[#8B5CF6] text-white text-[18px] font-bold tracking-widest uppercase px-5 py-2.5 rounded-full mb-5">
+      Formula Explained
+    </div>
+    <h1 class="text-[64px] font-black text-[#0A0A0A] leading-[1.1] tracking-tight mb-4">
+      リールのリーチ率<br>
+      <span class="text-[#8B5CF6]">計算式</span>
+    </h1>
+    <p class="text-[24px] text-[#444] leading-relaxed">
+      1本の投稿のリーチ率がどう決まるのかを、ひと目でわかる数式に。
+    </p>
+  </header>
+
+  <!-- SAMPLE_DATA: FORMULA -->
+  <section class="bg-white rounded-[32px] p-12 mb-8 shadow-[0_2px_16px_rgba(0,0,0,0.04)] text-center">
+    <p class="text-[20px] tracking-widest uppercase text-[#555] mb-6">基本の式</p>
+    <div class="flex items-center justify-center gap-5 flex-wrap">
+      <span class="text-[56px] font-black text-[#0A0A0A] num">リーチ率</span>
+      <span class="text-[64px] font-black text-[#8B5CF6] num">=</span>
+      <span class="text-[56px] font-black text-[#3B70FF] num">エンゲージ</span>
+      <span class="text-[56px] font-black text-[#0A0A0A] num">×</span>
+      <span class="text-[56px] font-black text-[#21B26A] num">完全視聴</span>
+      <span class="text-[56px] font-black text-[#0A0A0A] num">×</span>
+      <span class="text-[56px] font-black text-[#FF6B2C] num">初速</span>
+    </div>
+  </section>
+
+  <!-- SAMPLE_DATA: TERMS (3項目) -->
+  <section class="grid grid-cols-3 gap-6 mb-8">
+    <div class="bg-white rounded-[28px] p-8 shadow-[0_2px_12px_rgba(0,0,0,0.04)] border-t-4 border-[#3B70FF]">
+      <p class="text-[36px] font-black text-[#3B70FF] mb-3">エンゲージ</p>
+      <p class="text-[20px] font-bold text-[#0A0A0A] mb-3">いいね・コメント・シェア・保存</p>
+      <p class="text-[22px] text-[#444] leading-relaxed">
+        投稿後30分以内のエンゲージメント。アルゴリズムが最初に評価する重要指標です。
+      </p>
+    </div>
+
+    <div class="bg-white rounded-[28px] p-8 shadow-[0_2px_12px_rgba(0,0,0,0.04)] border-t-4 border-[#21B26A]">
+      <p class="text-[36px] font-black text-[#21B26A] mb-3">完全視聴</p>
+      <p class="text-[20px] font-bold text-[#0A0A0A] mb-3">最後まで見られた割合</p>
+      <p class="text-[22px] text-[#444] leading-relaxed">
+        70%以上視聴された割合。短いほど有利で、最初の3秒が左右します。
+      </p>
+    </div>
+
+    <div class="bg-white rounded-[28px] p-8 shadow-[0_2px_12px_rgba(0,0,0,0.04)] border-t-4 border-[#FF6B2C]">
+      <p class="text-[36px] font-black text-[#FF6B2C] mb-3">初速</p>
+      <p class="text-[20px] font-bold text-[#0A0A0A] mb-3">1時間のリーチ速度</p>
+      <p class="text-[22px] text-[#444] leading-relaxed">
+        投稿後1時間でリーチしたアカウント数。速いほど露出が広がります。
+      </p>
+    </div>
+  </section>
+
+  <section class="bg-[#F1F5FF] rounded-[28px] p-8 mb-8">
+    <div class="flex gap-4 items-start">
+      <span class="text-[36px]">💡</span>
+      <p class="text-[24px] leading-relaxed text-[#0A0A0A]">
+        3つの変数をすべて1.5倍にすると、リーチ率は約<strong class="text-[#8B5CF6]">3.4倍</strong>に伸びます。1つに偏らず、バランスよく管理しましょう。
+      </p>
+    </div>
+  </section>
+
+  <footer class="flex items-center justify-between pt-6 border-t border-slate-200">
+    <div class="flex items-center gap-3">
+      
+      <span class="font-bold text-[20px] text-slate-800">ours-magazine.jp</span>
+    </div>
+    <span class="text-[18px] text-slate-500">SNSマーケティングのセルフサービス</span>
+  </footer>
+
+</main>
+</body>
+</html>

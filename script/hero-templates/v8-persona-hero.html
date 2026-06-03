@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="ja">
+<!--
+  Variant V8: persona-hero — ペルソナのペインポイントを強調する hero (16:9 1200×675)
+  用途: _batch-replace-hero.mjs が {{...}} placeholder を置換
+  PLACEHOLDER: {{TITLE}} {{PERSONA_LABEL}} {{PAIN_LINE}} {{INSIGHT_LINE}}
+              {{PERSONA_NAME}} {{PERSONA_HEADSHOT_URL}} {{PERSONA_BIO}}
+              {{PERSONA_STAT_VALUE}} {{PERSONA_STAT_LABEL}} {{CATEGORY}} {{YEAR_TAG}}
+  §4.8.5 必須仕様: タイトル ≥ 56px / ペインライン ≥ 44px / カテゴリーバッジ ≥ 24px / ロゴ ≥ 60×60
+-->
+<head>
+<meta charset="utf-8">
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+body{font-family:'Noto Sans JP',-apple-system,sans-serif;-webkit-font-smoothing:antialiased;margin:0}
+.num{font-variant-numeric:tabular-nums}
+</style>
+</head>
+<body style="background:#0B1220">
+<main class="w-[1200px] h-[675px] relative overflow-hidden px-12 py-10 flex flex-col">
+
+  <!-- 上部: カテゴリーバッジ + 年 -->
+  <div class="flex items-center justify-between relative z-10">
+    <!-- PLACEHOLDER: {{CATEGORY}} -->
+    <span class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full"
+          style="background:rgba(255,255,255,0.22);border:1px solid rgba(255,255,255,0.45);backdrop-filter:blur(8px)">
+      <span class="w-2.5 h-2.5 rounded-full bg-white"></span>
+      <span style="font-size:26px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#FFFFFF">{{CATEGORY}}</span>
+    </span>
+    <!-- PLACEHOLDER: {{YEAR_TAG}} -->
+    <span style="font-size:20px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:rgb(255,255,255)">{{YEAR_TAG}}</span>
+  </div>
+
+  <!-- 本文: 左側にヘッドショット + 右側にペルソナ情報 -->
+  <div class="flex-1 grid grid-cols-[280px_1fr] gap-10 items-center mt-6 relative z-10">
+    <!-- 左側: ヘッドショット + ペルソナラベル + 数値 -->
+    <div class="flex flex-col items-center">
+      <!-- PLACEHOLDER: {{PERSONA_HEADSHOT_URL}} -->
+      <div class="w-[220px] h-[220px] rounded-full overflow-hidden flex items-center justify-center"
+           style="background:rgba(255,255,255,0.12);border:4px solid rgba(255,255,255,0.55);box-shadow:0 8px 24px rgba(0,0,0,0.35)">
+        <img src="{{PERSONA_HEADSHOT_URL}}" alt="ペルソナのヘッドショット" class="w-full h-full object-cover"/>
+      </div>
+      <!-- PLACEHOLDER: {{PERSONA_LABEL}} -->
+      <div class="mt-4 px-4 py-1.5 rounded-full"
+           style="background:rgba(99,102,241,0.45);border:1px solid rgba(165,180,252,0.7)">
+        <span class="font-bold text-white" style="font-size:20px;letter-spacing:0.02em">{{PERSONA_LABEL}}</span>
+      </div>
+      <!-- PLACEHOLDER: {{PERSONA_NAME}} -->
+      <div class="font-black text-white mt-3" style="font-size:28px;text-shadow:0 1px 6px rgba(0,0,0,0.3)">{{PERSONA_NAME}}</div>
+      <!-- PLACEHOLDER: {{PERSONA_STAT_VALUE}} {{PERSONA_STAT_LABEL}} -->
+      <div class="mt-2 text-center">
+        <div class="num font-black text-white" style="font-size:36px;line-height:1;letter-spacing:-0.02em;text-shadow:0 1px 6px rgba(0,0,0,0.3)">{{PERSONA_STAT_VALUE}}</div>
+        <div class="font-bold mt-1" style="font-size:16px;color:rgb(255,255,255);letter-spacing:0.06em;text-transform:uppercase">{{PERSONA_STAT_LABEL}}</div>
+      </div>
+    </div>
+
+    <!-- 右側: タイトル + ペインライン + インサイト -->
+    <div>
+      <!-- PLACEHOLDER: {{TITLE}} -->
+      <h1 class="font-black text-white tracking-tight"
+          style="font-size:56px;line-height:1.12;text-shadow:0 2px 12px rgba(0,0,0,0.18)">{{TITLE}}</h1>
+
+      <!-- PLACEHOLDER: {{PERSONA_BIO}} -->
+      <p class="font-semibold mt-3" style="font-size:20px;line-height:1.4;color:rgb(255,255,255);text-shadow:0 1px 6px rgba(0,0,0,0.3)">{{PERSONA_BIO}}</p>
+
+      <!-- PLACEHOLDER: {{PAIN_LINE}} -->
+      <div class="mt-5 pl-5 py-2" style="border-left:5px solid rgba(239,68,68,0.85)">
+        <span class="font-bold text-white" style="font-size:44px;line-height:1.25;text-shadow:0 2px 8px rgba(0,0,0,0.3)">{{PAIN_LINE}}</span>
+      </div>
+
+      <!-- PLACEHOLDER: {{INSIGHT_LINE}} -->
+      <div class="mt-4 pl-5 py-2" style="border-left:5px solid rgba(34,197,94,0.85)">
+        <span class="font-bold text-white" style="font-size:32px;line-height:1.3;text-shadow:0 2px 8px rgba(0,0,0,0.3)">{{INSIGHT_LINE}}</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 下部: ロゴ -->
+  <footer class="absolute bottom-5 left-12 right-12 flex items-center justify-between z-10">
+    <div class="flex items-center gap-3">
+
+      <span class="font-black text-[22px] text-white">ours-magazine.jp</span>
+    </div>
+    <span class="font-semibold text-[14px] text-white">SNSマーケティング セルフサービス</span>
+  </footer>
+</main>
+</body>
+</html>

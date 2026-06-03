@@ -6,3 +6,10 @@ out/
 .env*.local
 tsconfig.tsbuildinfo
 .vercel
+
+# 블로그 자동화 (발행 전 산출물 — 커밋 안 함)
+tmp/
+drafts/
+.recycle/
+script/audit-state/
+google-ads.yaml

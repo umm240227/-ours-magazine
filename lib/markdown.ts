@@ -5,6 +5,8 @@ import { ARTICLE_IMAGE_PLACEHOLDER_PATH, ensureArticleImageSrc } from "./article
 
 export { ARTICLE_IMAGE_PLACEHOLDER_PATH, ensureArticleImageSrc };
 
+export type FaqItem = { question: string; answer: string };
+
 export type ArticleFrontmatter = {
   title: string;
   description: string;
@@ -14,6 +16,9 @@ export type ArticleFrontmatter = {
   tags: string[];
   featured?: boolean;
   recommended?: boolean;
+  author?: string;
+  // FAQPage JSON-LD용 (write 단계가 본문 「よくある質問」와 함께 frontmatter로도 출력). 없으면 FAQ 스키마 생략.
+  faq?: FaqItem[];
 };
 
 export type Article = ArticleFrontmatter & {
@@ -26,6 +31,25 @@ const publicDirectory = path.join(process.cwd(), "public");
 
 function toTimestamp(dateText: string) {
   return new Date(dateText.replace(/\./g, "-")).getTime();
+}
+
+// 표시용 날짜를 "YYYY.MM.DD"(점) 형식으로 통일 (jp-site-config §4). 하이픈/슬래시 혼재 정규화.
+function normalizeDateDot(dateText: string) {
+  return dateText.trim().replace(/[-/]/g, ".");
+}
+
+function parseFaq(value: unknown): FaqItem[] | undefined {
+  if (!Array.isArray(value)) return undefined;
+  const items = value
+    .map((entry) => {
+      if (!entry || typeof entry !== "object") return null;
+      const record = entry as Record<string, unknown>;
+      const question = String(record.question ?? record.q ?? "").trim();
+      const answer = String(record.answer ?? record.a ?? "").trim();
+      return question && answer ? { question, answer } : null;
+    })
+    .filter((item): item is FaqItem => item !== null);
+  return items.length > 0 ? items : undefined;
 }
 
 function parseBooleanFlag(value: unknown): boolean | undefined {
@@ -111,12 +135,14 @@ export function getArticleById(id: string): Article | null {
     id,
     title: String(data.title ?? ""),
     description: String(data.description ?? ""),
-    date: String(data.date ?? ""),
+    date: normalizeDateDot(String(data.date ?? "")),
     category: String(data.category ?? ""),
     image: ensureArticleImageSrc(resolvedImage),
     tags: Array.isArray(data.tags) ? data.tags.map((tag) => String(tag)) : [],
     featured: parseBooleanFlag(data.featured),
     recommended: parseBooleanFlag(data.recommended),
+    author: data.author ? String(data.author) : undefined,
+    faq: parseFaq(data.faq),
     content,
   };
 }

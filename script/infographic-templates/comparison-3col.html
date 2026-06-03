@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<!--
+  Template: 3-way 比較 (Comparison 3-column)
+  用途: オプション A vs B vs C
+  Placeholders: {{TITLE}}, {{SUBTITLE}}, {{COLS}} (3個のオブジェクト、各 title/desc/bullets)
+  備考: データは SAMPLE_DATA マーカー内にあります。記事ごとにデータを差し替えてください。
+
+  レンダリング:
+    node script/render-infographic.mjs this-html.html output.webp --width=1200 --max-height=2000
+-->
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  body { font-family: 'Noto Sans JP', -apple-system, sans-serif; -webkit-font-smoothing: antialiased; }
+  .num { font-variant-numeric: tabular-nums; }
+</style>
+</head>
+<body style="background:#F8FAFC">
+<main class="w-[1200px] mx-auto py-16 px-12">
+
+  <header class="mb-10 text-center">
+    <div class="inline-flex items-center gap-2 bg-[#0A0A0A] text-white text-[18px] font-bold tracking-widest uppercase px-5 py-2.5 rounded-full mb-5">
+      3-Way Compare
+    </div>
+    <h1 class="text-[64px] font-black text-[#0A0A0A] leading-[1.1] tracking-tight mb-4">
+      プラットフォーム別<br>
+      <span class="text-[#3B70FF]">強みをひと目で比較</span>
+    </h1>
+    <p class="text-[24px] text-[#444] leading-relaxed">
+      Instagram・YouTube・TikTok — まずどこに時間を使うべきか。
+    </p>
+  </header>
+
+  <!-- SAMPLE_DATA: COLS (3個) -->
+  <section class="grid grid-cols-3 gap-5 mb-8">
+
+    <!-- Col 1: Instagram -->
+    <div class="bg-white rounded-[28px] p-7 shadow-[0_2px_12px_rgba(0,0,0,0.04)] border-t-8 border-[#E1306C]">
+      <h2 class="text-[32px] font-black text-[#0A0A0A] mb-2">Instagram</h2>
+      <p class="text-[20px] text-[#555] mb-6">写真・リール中心</p>
+
+      <ul class="space-y-4 mb-6">
+        <li class="flex gap-2 items-start">
+          <span class="flex-shrink-0 w-7 h-7 rounded-full bg-[#FCE4EC] text-[#E1306C] font-black text-[18px] flex items-center justify-center">✓</span>
+          <span class="text-[22px] text-[#0A0A0A] leading-snug">ビジュアルコンテンツに強い</span>
+        </li>
+        <li class="flex gap-2 items-start">
+          <span class="flex-shrink-0 w-7 h-7 rounded-full bg-[#FCE4EC] text-[#E1306C] font-black text-[18px] flex items-center justify-center">✓</span>
+          <span class="text-[22px] text-[#0A0A0A] leading-snug">20〜30代女性のユーザーが厚い</span>
+        </li>
+        <li class="flex gap-2 items-start">
+          <span class="flex-shrink-0 w-7 h-7 rounded-full bg-[#FCE4EC] text-[#E1306C] font-black text-[18px] flex items-center justify-center">✓</span>
+          <span class="text-[22px] text-[#0A0A0A] leading-snug">ショッピングタグを直接連携</span>
+        </li>
+      </ul>
+
+      <div class="pt-5 border-t border-slate-100">
+        <p class="text-[18px] text-[#555] mb-1">平均コンバージョン率</p>
+        <p class="text-[48px] font-black text-[#E1306C] num leading-none">4.2<span class="text-[24px]">%</span></p>
+      </div>
+    </div>
+
+    <!-- Col 2: YouTube -->
+    <div class="bg-white rounded-[28px] p-7 shadow-[0_2px_12px_rgba(0,0,0,0.04)] border-t-8 border-[#FF0000]">
+      <h2 class="text-[32px] font-black text-[#0A0A0A] mb-2">YouTube</h2>
+      <p class="text-[20px] text-[#555] mb-6">ロング・ショート両立</p>
+
+      <ul class="space-y-4 mb-6">
+        <li class="flex gap-2 items-start">
+          <span class="flex-shrink-0 w-7 h-7 rounded-full bg-[#FFE8E8] text-[#FF0000] font-black text-[18px] flex items-center justify-center">✓</span>
+          <span class="text-[22px] text-[#0A0A0A] leading-snug">検索流入が積み上がる</span>
+        </li>
+        <li class="flex gap-2 items-start">
+          <span class="flex-shrink-0 w-7 h-7 rounded-full bg-[#FFE8E8] text-[#FF0000] font-black text-[18px] flex items-center justify-center">✓</span>
+          <span class="text-[22px] text-[#0A0A0A] leading-snug">全年齢層のユーザー</span>
+        </li>
+        <li class="flex gap-2 items-start">
+          <span class="flex-shrink-0 w-7 h-7 rounded-full bg-[#FFE8E8] text-[#FF0000] font-black text-[18px] flex items-center justify-center">✓</span>
+          <span class="text-[22px] text-[#0A0A0A] leading-snug">専門性への信頼が育つ</span>
+        </li>
+      </ul>
+
+      <div class="pt-5 border-t border-slate-100">
+        <p class="text-[18px] text-[#555] mb-1">平均コンバージョン率</p>
+        <p class="text-[48px] font-black text-[#FF0000] num leading-none">3.5<span class="text-[24px]">%</span></p>
+      </div>
+    </div>
+
+    <!-- Col 3: TikTok -->
+    <div class="bg-white rounded-[28px] p-7 shadow-[0_2px_12px_rgba(0,0,0,0.04)] border-t-8 border-[#0A0A0A]">
+      <h2 class="text-[32px] font-black text-[#0A0A0A] mb-2">TikTok</h2>
+      <p class="text-[20px] text-[#555] mb-6">ショート・トレンドが爆発</p>
+
+      <ul class="space-y-4 mb-6">
+        <li class="flex gap-2 items-start">
+          <span class="flex-shrink-0 w-7 h-7 rounded-full bg-slate-100 text-[#0A0A0A] font-black text-[18px] flex items-center justify-center">✓</span>
+          <span class="text-[22px] text-[#0A0A0A] leading-snug">バズる可能性が最も高い</span>
+        </li>
+        <li class="flex gap-2 items-start">
+          <span class="flex-shrink-0 w-7 h-7 rounded-full bg-slate-100 text-[#0A0A0A] font-black text-[18px] flex items-center justify-center">✓</span>
+          <span class="text-[22px] text-[#0A0A0A] leading-snug">10〜20代が圧倒的</span>
+        </li>
+        <li class="flex gap-2 items-start">
+          <span class="flex-shrink-0 w-7 h-7 rounded-full bg-slate-100 text-[#0A0A0A] font-black text-[18px] flex items-center justify-center">✓</span>
+          <span class="text-[22px] text-[#0A0A0A] leading-snug">新規アカウントでもリーチが速い</span>
+        </li>
+      </ul>
+
+      <div class="pt-5 border-t border-slate-100">
+        <p class="text-[18px] text-[#555] mb-1">平均コンバージョン率</p>
+        <p class="text-[48px] font-black text-[#0A0A0A] num leading-none">2.8<span class="text-[24px]">%</span></p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="flex items-center justify-between pt-6 border-t border-slate-200">
+    <div class="flex items-center gap-3">
+      
+      <span class="font-bold text-[20px] text-slate-800">ours-magazine.jp</span>
+    </div>
+    <span class="text-[18px] text-slate-500">SNSマーケティングのセルフサービス</span>
+  </footer>
+
+</main>
+</body>
+</html>

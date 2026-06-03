@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<!--
+  Template: メリット/デメリット2カラムカード (Pros & Cons)
+  用途: 1つのツール・戦略のメリット / デメリットを整理
+  Placeholders: {{TITLE}}, {{SUBTITLE}}, {{PROS}} ([{title, desc}, ...]), {{CONS}} ([{title, desc}, ...])
+  備考: データは SAMPLE_DATA マーカー内にあります。記事ごとにデータを差し替えてください。
+
+  レンダリング:
+    node script/render-infographic.mjs this-html.html output.webp --width=1200 --max-height=2000
+-->
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  body { font-family: 'Noto Sans JP', -apple-system, sans-serif; -webkit-font-smoothing: antialiased; }
+  .num { font-variant-numeric: tabular-nums; }
+</style>
+</head>
+<body style="background:#F8FAFC">
+<main class="w-[1200px] mx-auto py-16 px-12">
+
+  <header class="mb-10 text-center">
+    <div class="inline-flex items-center gap-2 bg-[#0A0A0A] text-white text-[18px] font-bold tracking-widest uppercase px-5 py-2.5 rounded-full mb-5">
+      Pros &amp; Cons
+    </div>
+    <h1 class="text-[64px] font-black text-[#0A0A0A] leading-[1.1] tracking-tight mb-4">
+      AIコンテンツツール<br>
+      <span class="text-[#3B70FF]">メリットと限界</span>
+    </h1>
+    <p class="text-[24px] text-[#444] leading-relaxed">
+      導入を検討中なら知っておきたい両面。
+    </p>
+  </header>
+
+  <!-- SAMPLE_DATA: PROS / CONS -->
+  <section class="grid grid-cols-2 gap-6 mb-8">
+
+    <!-- PROS -->
+    <div class="bg-white rounded-[28px] p-8 shadow-[0_2px_12px_rgba(0,0,0,0.04)]">
+      <div class="flex items-center gap-3 mb-6 pb-5 border-b border-slate-100">
+        <div class="w-14 h-14 rounded-2xl bg-[#21B26A] flex items-center justify-center text-white text-[32px] font-black">+</div>
+        <div>
+          <p class="text-[18px] text-[#21B26A] font-bold tracking-widest uppercase">Pros</p>
+          <h2 class="text-[30px] font-black text-[#0A0A0A]">メリット4つ</h2>
+        </div>
+      </div>
+
+      <ul class="space-y-5">
+        <li>
+          <p class="text-[24px] font-bold text-[#0A0A0A] mb-1">制作時間が1/10に</p>
+          <p class="text-[22px] text-[#444] leading-relaxed">人が8時間かけていたコンテンツを、1時間で下書きまで。</p>
+        </li>
+        <li>
+          <p class="text-[24px] font-bold text-[#0A0A0A] mb-1">アイデアの量産</p>
+          <p class="text-[22px] text-[#444] leading-relaxed">同じテーマから20通りのバリエーションコピーを即座に生成。</p>
+        </li>
+        <li>
+          <p class="text-[24px] font-bold text-[#0A0A0A] mb-1">翻訳・ローカライズが速い</p>
+          <p class="text-[22px] text-[#444] leading-relaxed">国ごとの微妙なトーン調整も、指示文1行で対応。</p>
+        </li>
+        <li>
+          <p class="text-[24px] font-bold text-[#0A0A0A] mb-1">案出しが自由</p>
+          <p class="text-[22px] text-[#444] leading-relaxed">A/B案を5種すぐに作り、インサイトで比較できます。</p>
+        </li>
+      </ul>
+    </div>
+
+    <!-- CONS -->
+    <div class="bg-white rounded-[28px] p-8 shadow-[0_2px_12px_rgba(0,0,0,0.04)]">
+      <div class="flex items-center gap-3 mb-6 pb-5 border-b border-slate-100">
+        <div class="w-14 h-14 rounded-2xl bg-[#FF4A4A] flex items-center justify-center text-white text-[32px] font-black">−</div>
+        <div>
+          <p class="text-[18px] text-[#FF4A4A] font-bold tracking-widest uppercase">Cons</p>
+          <h2 class="text-[30px] font-black text-[#0A0A0A]">デメリット4つ</h2>
+        </div>
+      </div>
+
+      <ul class="space-y-5">
+        <li>
+          <p class="text-[24px] font-bold text-[#0A0A0A] mb-1">ファクトチェックが必須</p>
+          <p class="text-[22px] text-[#444] leading-relaxed">統計や引用は、必ず一次情報で再確認する必要があります。</p>
+        </li>
+        <li>
+          <p class="text-[24px] font-bold text-[#0A0A0A] mb-1">独自性が出にくい</p>
+          <p class="text-[22px] text-[#444] leading-relaxed">他ブランドとトーンが似やすく、差別化が難しくなります。</p>
+        </li>
+        <li>
+          <p class="text-[24px] font-bold text-[#0A0A0A] mb-1">月額費用がかさむ</p>
+          <p class="text-[22px] text-[#444] leading-relaxed">3〜5個のツールを契約すると、月1万円以上の予算が必要です。</p>
+        </li>
+        <li>
+          <p class="text-[24px] font-bold text-[#0A0A0A] mb-1">アルゴリズムのペナルティ</p>
+          <p class="text-[22px] text-[#444] leading-relaxed">AIラベル未表示だと、プラットフォームのリーチが半分に減ります。</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <footer class="flex items-center justify-between pt-6 border-t border-slate-200">
+    <div class="flex items-center gap-3">
+      
+      <span class="font-bold text-[20px] text-slate-800">ours-magazine.jp</span>
+    </div>
+    <span class="text-[18px] text-slate-500">SNSマーケティングのセルフサービス</span>
+  </footer>
+
+</main>
+</body>
+</html>

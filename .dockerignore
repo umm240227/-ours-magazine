@@ -1,0 +1,11 @@
+node_modules
+.next
+out
+tmp
+drafts
+.recycle
+*.log
+.env
+.env.local
+.vercel
+# .git 은 제외하지 않음 — 컨테이너가 git push 하려면 필요

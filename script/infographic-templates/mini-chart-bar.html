@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<!--
+  Template: ミニ横棒グラフ (Mini Bar Chart)
+  用途: 3〜5項目の比較、ツール別の効率性などのシンプルな棒グラフ可視化
+  Placeholders: {{TITLE}}, {{SUBTITLE}}, {{BARS}} ([{label, value, unit}, ...])
+  備考: データは SAMPLE_DATA マーカー内にあります。記事ごとにデータを差し替えてください。
+
+  レンダリング:
+    node script/render-infographic.mjs this-html.html output.webp --width=1200 --max-height=2000
+-->
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  body { font-family: 'Noto Sans JP', -apple-system, sans-serif; -webkit-font-smoothing: antialiased; }
+  .num { font-variant-numeric: tabular-nums; }
+</style>
+</head>
+<body style="background:#F8FAFC">
+<main class="w-[1200px] mx-auto py-16 px-12">
+
+  <!-- SAMPLE_DATA: TITLE -->
+  <header class="mb-10">
+    <div class="inline-flex items-center gap-2 bg-[#3B70FF] text-white text-[18px] font-bold tracking-widest uppercase px-5 py-2.5 rounded-full mb-5">
+      <span class="w-1.5 h-1.5 rounded-full bg-white"></span>
+      Performance Bar
+    </div>
+    <h1 class="text-[64px] font-black text-[#0A0A0A] leading-[1.1] tracking-tight mb-4">
+      プラットフォーム別の平均<br>
+      <span class="text-[#3B70FF]">広告コンバージョン率</span>
+    </h1>
+    <!-- SAMPLE_DATA: SUBTITLE -->
+    <p class="text-[24px] text-[#444] leading-relaxed">
+      国内のひとりマーケター1,840人の回答に基づく (2026年上半期のInstagram・YouTube・TikTokデータ)。
+    </p>
+  </header>
+
+  <!-- SAMPLE_DATA: BARS (4項目) -->
+  <section class="bg-white rounded-[32px] p-10 mb-8 shadow-[0_2px_16px_rgba(0,0,0,0.04)]">
+    <div class="space-y-7">
+      <!-- Bar 1 -->
+      <div>
+        <div class="flex items-baseline justify-between mb-3">
+          <span class="text-[28px] font-bold text-[#0A0A0A]">Instagramリール</span>
+          <span class="text-[40px] font-black text-[#3B70FF] num">4.2<span class="text-[24px]">%</span></span>
+        </div>
+        <div class="h-6 bg-[#EEF2FF] rounded-full overflow-hidden">
+          <div class="h-full bg-gradient-to-r from-[#3B70FF] to-[#5C8CFF] rounded-full" style="width: 84%"></div>
+        </div>
+      </div>
+      <!-- Bar 2 -->
+      <div>
+        <div class="flex items-baseline justify-between mb-3">
+          <span class="text-[28px] font-bold text-[#0A0A0A]">YouTubeショート</span>
+          <span class="text-[40px] font-black text-[#3B70FF] num">3.5<span class="text-[24px]">%</span></span>
+        </div>
+        <div class="h-6 bg-[#EEF2FF] rounded-full overflow-hidden">
+          <div class="h-full bg-gradient-to-r from-[#3B70FF] to-[#5C8CFF] rounded-full" style="width: 70%"></div>
+        </div>
+      </div>
+      <!-- Bar 3 -->
+      <div>
+        <div class="flex items-baseline justify-between mb-3">
+          <span class="text-[28px] font-bold text-[#0A0A0A]">TikTok</span>
+          <span class="text-[40px] font-black text-[#3B70FF] num">2.8<span class="text-[24px]">%</span></span>
+        </div>
+        <div class="h-6 bg-[#EEF2FF] rounded-full overflow-hidden">
+          <div class="h-full bg-gradient-to-r from-[#3B70FF] to-[#5C8CFF] rounded-full" style="width: 56%"></div>
+        </div>
+      </div>
+      <!-- Bar 4 -->
+      <div>
+        <div class="flex items-baseline justify-between mb-3">
+          <span class="text-[28px] font-bold text-[#0A0A0A]">Facebookフィード</span>
+          <span class="text-[40px] font-black text-[#3B70FF] num">1.1<span class="text-[24px]">%</span></span>
+        </div>
+        <div class="h-6 bg-[#EEF2FF] rounded-full overflow-hidden">
+          <div class="h-full bg-gradient-to-r from-[#3B70FF] to-[#5C8CFF] rounded-full" style="width: 22%"></div>
+        </div>
+      </div>
+    </div>
+
+    <p class="text-[22px] text-[#555] mt-8 leading-relaxed">
+      リールが1位 (<strong class="text-[#3B70FF]">4.2%</strong>)。Facebookフィードと比べて約3.8倍高いコンバージョン成果を記録しました。
+    </p>
+  </section>
+
+  <footer class="flex items-center justify-between pt-6 border-t border-slate-200">
+    <div class="flex items-center gap-3">
+      
+      <span class="font-bold text-[20px] text-slate-800">ours-magazine.jp</span>
+    </div>
+    <span class="text-[18px] text-slate-500">SNSマーケティングのセルフサービス</span>
+  </footer>
+
+</main>
+</body>
+</html>

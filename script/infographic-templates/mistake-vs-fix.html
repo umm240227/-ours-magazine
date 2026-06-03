@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<!--
+  Template: ミス vs 改善 (Mistake vs Fix)
+  用途: 左右2カラム — 間違った例 / 正しい例の比較
+  Placeholders: {{TITLE}}, {{SUBTITLE}}, {{MISTAKES}} ([{title, desc}, ...]), {{FIXES}} ([{title, desc}, ...])
+  備考: データは SAMPLE_DATA マーカー内にあります。記事ごとにデータを差し替えてください。
+
+  レンダリング:
+    node script/render-infographic.mjs this-html.html output.webp --width=1200 --max-height=2000
+-->
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  body { font-family: 'Noto Sans JP', -apple-system, sans-serif; -webkit-font-smoothing: antialiased; }
+  .num { font-variant-numeric: tabular-nums; }
+</style>
+</head>
+<body style="background:#F8FAFC">
+<main class="w-[1200px] mx-auto py-16 px-12">
+
+  <header class="mb-10 text-center">
+    <div class="inline-flex items-center gap-2 bg-[#0A0A0A] text-white text-[18px] font-bold tracking-widest uppercase px-5 py-2.5 rounded-full mb-5">
+      Mistake vs Fix
+    </div>
+    <h1 class="text-[64px] font-black text-[#0A0A0A] leading-[1.1] tracking-tight mb-4">
+      よくあるミスと<br>
+      <span class="text-[#FF4A4A]">正しい改善法</span>
+    </h1>
+    <p class="text-[24px] text-[#444] leading-relaxed">
+      運用を始めたばかりの人が最も陥りやすい3つのパターン。
+    </p>
+  </header>
+
+  <!-- SAMPLE_DATA: 左(ミス) / 右(改善) 3ペア -->
+  <section class="grid grid-cols-2 gap-6 mb-8">
+
+    <!-- ミス カラム -->
+    <div class="space-y-4">
+      <div class="bg-[#FFE8E8] rounded-[20px] p-6 border-l-8 border-[#FF4A4A]">
+        <div class="flex items-center gap-3 mb-3">
+          <span class="w-10 h-10 rounded-full bg-[#FF4A4A] text-white text-[24px] font-black flex items-center justify-center">✗</span>
+          <p class="text-[24px] font-black text-[#FF4A4A]">毎日投稿</p>
+        </div>
+        <p class="text-[22px] text-[#0A0A0A] leading-relaxed">
+          頻度だけ増やすと品質が落ち、リーチも一緒に下がってしまいます。
+        </p>
+      </div>
+
+      <div class="bg-[#FFE8E8] rounded-[20px] p-6 border-l-8 border-[#FF4A4A]">
+        <div class="flex items-center gap-3 mb-3">
+          <span class="w-10 h-10 rounded-full bg-[#FF4A4A] text-white text-[24px] font-black flex items-center justify-center">✗</span>
+          <p class="text-[24px] font-black text-[#FF4A4A]">ハッシュタグ30個</p>
+        </div>
+        <p class="text-[22px] text-[#0A0A0A] leading-relaxed">
+          スパム判定されて、アルゴリズム上の露出がかえって減ります。
+        </p>
+      </div>
+
+      <div class="bg-[#FFE8E8] rounded-[20px] p-6 border-l-8 border-[#FF4A4A]">
+        <div class="flex items-center gap-3 mb-3">
+          <span class="w-10 h-10 rounded-full bg-[#FF4A4A] text-white text-[24px] font-black flex items-center justify-center">✗</span>
+          <p class="text-[24px] font-black text-[#FF4A4A]">フォロワー数を追う</p>
+        </div>
+        <p class="text-[22px] text-[#0A0A0A] leading-relaxed">
+          数字にこだわると、本当の顧客が誰なのか見えなくなります。
+        </p>
+      </div>
+    </div>
+
+    <!-- 改善 カラム -->
+    <div class="space-y-4">
+      <div class="bg-[#E8F7EE] rounded-[20px] p-6 border-l-8 border-[#21B26A]">
+        <div class="flex items-center gap-3 mb-3">
+          <span class="w-10 h-10 rounded-full bg-[#21B26A] text-white text-[24px] font-black flex items-center justify-center">✓</span>
+          <p class="text-[24px] font-black text-[#21B26A]">週3回・高品質</p>
+        </div>
+        <p class="text-[22px] text-[#0A0A0A] leading-relaxed">
+          1本に時間をかけて完成度を高めるほうが効率的です。
+        </p>
+      </div>
+
+      <div class="bg-[#E8F7EE] rounded-[20px] p-6 border-l-8 border-[#21B26A]">
+        <div class="flex items-center gap-3 mb-3">
+          <span class="w-10 h-10 rounded-full bg-[#21B26A] text-white text-[24px] font-black flex items-center justify-center">✓</span>
+          <p class="text-[24px] font-black text-[#21B26A]">厳選5〜8個</p>
+        </div>
+        <p class="text-[22px] text-[#0A0A0A] leading-relaxed">
+          ターゲットとの関連性が高いタグだけに絞ると、おすすめ露出が広がります。
+        </p>
+      </div>
+
+      <div class="bg-[#E8F7EE] rounded-[20px] p-6 border-l-8 border-[#21B26A]">
+        <div class="flex items-center gap-3 mb-3">
+          <span class="w-10 h-10 rounded-full bg-[#21B26A] text-white text-[24px] font-black flex items-center justify-center">✓</span>
+          <p class="text-[24px] font-black text-[#21B26A]">保存率に集中</p>
+        </div>
+        <p class="text-[22px] text-[#0A0A0A] leading-relaxed">
+          保存は再訪の可能性が最も高い指標で、購入に直結します。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="flex items-center justify-between pt-6 border-t border-slate-200">
+    <div class="flex items-center gap-3">
+      
+      <span class="font-bold text-[20px] text-slate-800">ours-magazine.jp</span>
+    </div>
+    <span class="text-[18px] text-slate-500">SNSマーケティングのセルフサービス</span>
+  </footer>
+
+</main>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="ja">
+<!--
+  Variant V6: comparison-hero — A vs B 2カラム比較 hero (16:9 1200×675)
+  用途: _batch-replace-hero.mjs が {{...}} placeholder を置換
+  PLACEHOLDER: {{TITLE}} {{LEFT_LABEL}} {{LEFT_VALUE}} {{RIGHT_LABEL}} {{RIGHT_VALUE}} {{CATEGORY}} {{YEAR_TAG}}
+  §4.8.5 必須仕様: タイトル ≥ 56px / 左・右ラベル ≥ 56px / カテゴリーバッジ ≥ 24px / ロゴ ≥ 60×60
+-->
+<head>
+<meta charset="utf-8">
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+body{font-family:'Noto Sans JP',-apple-system,sans-serif;-webkit-font-smoothing:antialiased;margin:0}
+.num{font-variant-numeric:tabular-nums}
+</style>
+</head>
+<body style="background:#0B1220">
+<main class="w-[1200px] h-[675px] relative overflow-hidden px-12 py-10 flex flex-col">
+
+  <!-- 上部: カテゴリーバッジ + 年 -->
+  <div class="flex items-center justify-between relative z-10">
+    <!-- PLACEHOLDER: {{CATEGORY}} -->
+    <span class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full"
+          style="background:rgba(255,255,255,0.22);border:1px solid rgba(255,255,255,0.45);backdrop-filter:blur(8px)">
+      <span class="w-2.5 h-2.5 rounded-full bg-white"></span>
+      <span style="font-size:26px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#FFFFFF">{{CATEGORY}}</span>
+    </span>
+    <!-- PLACEHOLDER: {{YEAR_TAG}} -->
+    <span style="font-size:20px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:rgb(255,255,255)">{{YEAR_TAG}}</span>
+  </div>
+
+  <!-- タイトル -->
+  <div class="mt-6 relative z-10">
+    <!-- PLACEHOLDER: {{TITLE}} -->
+    <h1 class="font-black text-white tracking-tight"
+        style="font-size:56px;line-height:1.12;text-shadow:0 2px 12px rgba(0,0,0,0.18);max-width:1080px">{{TITLE}}</h1>
+  </div>
+
+  <!-- 中央: 左 vs 右 比較 -->
+  <div class="flex-1 grid grid-cols-[1fr_auto_1fr] gap-6 items-stretch mt-6 relative z-10">
+    <!-- 左側: A -->
+    <div class="rounded-2xl p-7 flex flex-col justify-center"
+         style="background:rgba(99,102,241,0.22);border:2px solid rgba(129,140,248,0.6)">
+      <!-- PLACEHOLDER: {{LEFT_LABEL}} -->
+      <div class="font-black text-white" style="font-size:56px;line-height:1.1;letter-spacing:-0.02em;text-shadow:0 2px 12px rgba(0,0,0,0.3)">{{LEFT_LABEL}}</div>
+      <!-- PLACEHOLDER: {{LEFT_VALUE}} -->
+      <div class="num font-black text-white mt-3" style="font-size:72px;line-height:1;letter-spacing:-0.03em;text-shadow:0 2px 12px rgba(0,0,0,0.3)">{{LEFT_VALUE}}</div>
+    </div>
+
+    <!-- VS 中央 -->
+    <div class="flex items-center justify-center">
+      <div class="w-[80px] h-[80px] rounded-full flex items-center justify-center"
+           style="background:rgba(255,255,255,0.95)">
+        <span class="font-black text-[28px]" style="color:#0B1220">VS</span>
+      </div>
+    </div>
+
+    <!-- 右側: B -->
+    <div class="rounded-2xl p-7 flex flex-col justify-center"
+         style="background:rgba(244,114,182,0.22);border:2px solid rgba(244,114,182,0.6)">
+      <!-- PLACEHOLDER: {{RIGHT_LABEL}} -->
+      <div class="font-black text-white" style="font-size:56px;line-height:1.1;letter-spacing:-0.02em;text-shadow:0 2px 12px rgba(0,0,0,0.3)">{{RIGHT_LABEL}}</div>
+      <!-- PLACEHOLDER: {{RIGHT_VALUE}} -->
+      <div class="num font-black text-white mt-3" style="font-size:72px;line-height:1;letter-spacing:-0.03em;text-shadow:0 2px 12px rgba(0,0,0,0.3)">{{RIGHT_VALUE}}</div>
+    </div>
+  </div>
+
+  <!-- 下部: ロゴ -->
+  <footer class="absolute bottom-5 left-12 right-12 flex items-center justify-between z-10">
+    <div class="flex items-center gap-3">
+
+      <span class="font-black text-[22px] text-white">ours-magazine.jp</span>
+    </div>
+    <span class="font-semibold text-[14px] text-white">SNSマーケティング セルフサービス</span>
+  </footer>
+</main>
+</body>
+</html>

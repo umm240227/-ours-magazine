@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<!--
+  Template: Before / After 比較
+  用途: 導入前後の数値変化 — Case Study、A/Bテスト結果
+  Placeholders: {{TITLE}}, {{SUBTITLE}}, {{BEFORE_LABEL}}, {{BEFORE_VALUE}}, {{AFTER_LABEL}}, {{AFTER_VALUE}}, {{DELTA}}
+  備考: データは SAMPLE_DATA マーカー内にあります。記事ごとにデータを差し替えてください。
+
+  レンダリング:
+    node script/render-infographic.mjs this-html.html output.webp --width=1200 --max-height=2000
+-->
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  body { font-family: 'Noto Sans JP', -apple-system, sans-serif; -webkit-font-smoothing: antialiased; }
+  .num { font-variant-numeric: tabular-nums; }
+</style>
+</head>
+<body style="background:#F8FAFC">
+<main class="w-[1200px] mx-auto py-16 px-12">
+
+  <header class="mb-10 text-center">
+    <div class="inline-flex items-center gap-2 bg-[#21B26A] text-white text-[18px] font-bold tracking-widest uppercase px-5 py-2.5 rounded-full mb-5">
+      Before / After
+    </div>
+    <h1 class="text-[64px] font-black text-[#0A0A0A] leading-[1.1] tracking-tight mb-4">
+      フックを変えた<br>
+      <span class="text-[#21B26A]">3か月の成果変化</span>
+    </h1>
+    <p class="text-[24px] text-[#444] leading-relaxed">
+      カフェ運営の事例 — 最初の3秒のメッセージを磨いたら、リーチが4倍に。
+    </p>
+  </header>
+
+  <!-- SAMPLE_DATA: BEFORE / AFTER -->
+  <section class="grid grid-cols-2 gap-6 mb-8">
+
+    <!-- Before -->
+    <div class="bg-white rounded-[28px] p-10 shadow-[0_2px_12px_rgba(0,0,0,0.04)] border-t-8 border-slate-300">
+      <p class="text-[20px] tracking-widest uppercase text-slate-500 font-bold mb-3">Before</p>
+      <p class="text-[24px] font-bold text-[#0A0A0A] mb-6">改善前 (1〜3月)</p>
+
+      <div class="mb-6">
+        <p class="text-[18px] text-[#555] mb-2">平均リーチ</p>
+        <p class="text-[88px] font-black text-slate-500 num leading-none">1,240</p>
+      </div>
+
+      <div class="space-y-3 pt-5 border-t border-slate-100">
+        <div class="flex items-baseline justify-between">
+          <span class="text-[22px] text-[#444]">平均いいね</span>
+          <span class="text-[28px] font-black text-slate-500 num">84</span>
+        </div>
+        <div class="flex items-baseline justify-between">
+          <span class="text-[22px] text-[#444]">保存率</span>
+          <span class="text-[28px] font-black text-slate-500 num">1.2<span class="text-[18px]">%</span></span>
+        </div>
+        <div class="flex items-baseline justify-between">
+          <span class="text-[22px] text-[#444]">月商への影響</span>
+          <span class="text-[28px] font-black text-slate-500 num">+8<span class="text-[18px]">%</span></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- After -->
+    <div class="bg-gradient-to-br from-[#E8F7EE] to-[#D1F5E0] rounded-[28px] p-10 shadow-[0_2px_12px_rgba(33,178,106,0.15)] border-t-8 border-[#21B26A]">
+      <p class="text-[20px] tracking-widest uppercase text-[#21B26A] font-bold mb-3">After</p>
+      <p class="text-[24px] font-bold text-[#0A0A0A] mb-6">改善後 (4〜6月)</p>
+
+      <div class="mb-6">
+        <p class="text-[18px] text-[#444] mb-2">平均リーチ</p>
+        <p class="text-[88px] font-black text-[#21B26A] num leading-none">4,960</p>
+      </div>
+
+      <div class="space-y-3 pt-5 border-t border-[#21B26A]/20">
+        <div class="flex items-baseline justify-between">
+          <span class="text-[22px] text-[#444]">平均いいね</span>
+          <span class="text-[28px] font-black text-[#21B26A] num">412</span>
+        </div>
+        <div class="flex items-baseline justify-between">
+          <span class="text-[22px] text-[#444]">保存率</span>
+          <span class="text-[28px] font-black text-[#21B26A] num">5.8<span class="text-[18px]">%</span></span>
+        </div>
+        <div class="flex items-baseline justify-between">
+          <span class="text-[22px] text-[#444]">月商への影響</span>
+          <span class="text-[28px] font-black text-[#21B26A] num">+34<span class="text-[18px]">%</span></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Delta 強調 -->
+  <section class="bg-[#0A0A0A] rounded-[28px] p-10 mb-8 text-center">
+    <p class="text-[20px] tracking-widest uppercase text-white mb-4">3か月の平均リーチ増加率</p>
+    <div class="flex items-baseline justify-center gap-2 mb-3">
+      <span class="text-[120px] font-black text-[#21B26A] num leading-none">+300<span class="text-[56px]">%</span></span>
+    </div>
+    <p class="text-[24px] text-white leading-relaxed">
+      フックを磨くのにかけた時間は<strong class="text-[#21B26A]">合計4時間</strong>。投稿の頻度はそのまま維持しました。
+    </p>
+  </section>
+
+  <footer class="flex items-center justify-between pt-6 border-t border-slate-200">
+    <div class="flex items-center gap-3">
+      
+      <span class="font-bold text-[20px] text-slate-800">ours-magazine.jp</span>
+    </div>
+    <span class="text-[18px] text-slate-500">SNSマーケティングのセルフサービス</span>
+  </footer>
+
+</main>
+</body>
+</html>

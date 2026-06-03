@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<!--
+  Template: ミニ円グラフ (Pie Chart Mini)
+  用途: 3〜5セグメント + パーセンテージ (例: コンテンツ種別の構成比)
+  Placeholders: {{TITLE}}, {{SUBTITLE}}, {{SEGMENTS}} ([{label, value, color}, ...])
+  備考: データは SAMPLE_DATA マーカー内にあります。記事ごとにデータを差し替えてください。
+
+  レンダリング:
+    node script/render-infographic.mjs this-html.html output.webp --width=1200 --max-height=2000
+-->
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  body { font-family: 'Noto Sans JP', -apple-system, sans-serif; -webkit-font-smoothing: antialiased; }
+  .num { font-variant-numeric: tabular-nums; }
+</style>
+</head>
+<body style="background:#F8FAFC">
+<main class="w-[1200px] mx-auto py-16 px-12">
+
+  <header class="mb-10">
+    <div class="inline-flex items-center gap-2 bg-[#3B70FF] text-white text-[18px] font-bold tracking-widest uppercase px-5 py-2.5 rounded-full mb-5">
+      Share Pie
+    </div>
+    <h1 class="text-[64px] font-black text-[#0A0A0A] leading-[1.1] tracking-tight mb-4">
+      個人事業主が<br>
+      <span class="text-[#3B70FF]">最も時間を使う作業</span>
+    </h1>
+    <p class="text-[24px] text-[#444] leading-relaxed">
+      SNS運用の週間の時間配分 — サンプル1,240人。
+    </p>
+  </header>
+
+  <!-- SAMPLE_DATA: SEGMENTS (4個) -->
+  <section class="bg-white rounded-[32px] p-10 mb-8 shadow-[0_2px_16px_rgba(0,0,0,0.04)]">
+    <div class="grid grid-cols-2 gap-10 items-center">
+
+      <!-- Pie SVG -->
+      <div class="flex justify-center">
+        <svg viewBox="0 0 200 200" class="w-[400px] h-[400px]">
+          <!-- 40% (コンテンツ制作) -->
+          <circle cx="100" cy="100" r="80" fill="transparent" stroke="#3B70FF" stroke-width="40"
+                  stroke-dasharray="201.06 502.65" stroke-dashoffset="0" transform="rotate(-90 100 100)"/>
+          <!-- 28% (撮影) -->
+          <circle cx="100" cy="100" r="80" fill="transparent" stroke="#21B26A" stroke-width="40"
+                  stroke-dasharray="140.74 502.65" stroke-dashoffset="-201.06" transform="rotate(-90 100 100)"/>
+          <!-- 20% (分析) -->
+          <circle cx="100" cy="100" r="80" fill="transparent" stroke="#FF6B2C" stroke-width="40"
+                  stroke-dasharray="100.53 502.65" stroke-dashoffset="-341.8" transform="rotate(-90 100 100)"/>
+          <!-- 12% (対応) -->
+          <circle cx="100" cy="100" r="80" fill="transparent" stroke="#8B5CF6" stroke-width="40"
+                  stroke-dasharray="60.32 502.65" stroke-dashoffset="-442.33" transform="rotate(-90 100 100)"/>
+
+          <!-- 中央テキスト -->
+          <text x="100" y="95" text-anchor="middle" font-size="14" fill="#555" font-family="Noto Sans JP">週平均</text>
+          <text x="100" y="118" text-anchor="middle" font-size="22" font-weight="900" fill="#0A0A0A" font-family="Noto Sans JP">14時間</text>
+        </svg>
+      </div>
+
+      <!-- Legend -->
+      <div class="space-y-5">
+        <div class="flex items-center gap-4">
+          <div class="w-6 h-6 rounded-md bg-[#3B70FF] flex-shrink-0"></div>
+          <div class="flex-1">
+            <div class="flex items-baseline justify-between">
+              <p class="text-[24px] font-bold text-[#0A0A0A]">コンテンツ制作</p>
+              <p class="text-[28px] font-black text-[#3B70FF] num">40<span class="text-[18px]">%</span></p>
+            </div>
+            <p class="text-[18px] text-[#555]">企画・コピー・編集の時間</p>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-4">
+          <div class="w-6 h-6 rounded-md bg-[#21B26A] flex-shrink-0"></div>
+          <div class="flex-1">
+            <div class="flex items-baseline justify-between">
+              <p class="text-[24px] font-bold text-[#0A0A0A]">撮影</p>
+              <p class="text-[28px] font-black text-[#21B26A] num">28<span class="text-[18px]">%</span></p>
+            </div>
+            <p class="text-[18px] text-[#555]">現場での撮影・セッティング</p>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-4">
+          <div class="w-6 h-6 rounded-md bg-[#FF6B2C] flex-shrink-0"></div>
+          <div class="flex-1">
+            <div class="flex items-baseline justify-between">
+              <p class="text-[24px] font-bold text-[#0A0A0A]">分析</p>
+              <p class="text-[28px] font-black text-[#FF6B2C] num">20<span class="text-[18px]">%</span></p>
+            </div>
+            <p class="text-[18px] text-[#555]">インサイト・レポート</p>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-4">
+          <div class="w-6 h-6 rounded-md bg-[#8B5CF6] flex-shrink-0"></div>
+          <div class="flex-1">
+            <div class="flex items-baseline justify-between">
+              <p class="text-[24px] font-bold text-[#0A0A0A]">顧客対応</p>
+              <p class="text-[28px] font-black text-[#8B5CF6] num">12<span class="text-[18px]">%</span></p>
+            </div>
+            <p class="text-[18px] text-[#555]">DM・コメントへの返信</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="flex items-center justify-between pt-6 border-t border-slate-200">
+    <div class="flex items-center gap-3">
+      
+      <span class="font-bold text-[20px] text-slate-800">ours-magazine.jp</span>
+    </div>
+    <span class="text-[18px] text-slate-500">SNSマーケティングのセルフサービス</span>
+  </footer>
+
+</main>
+</body>
+</html>

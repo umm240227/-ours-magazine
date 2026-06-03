@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<!--
+  Template: チェックリスト型インフォグラフィック (Do / Don't)
+  用途: 落とし穴・ミスの整理、ベストプラクティス、Do/Don't 左右比較
+  備考: データは SAMPLE_DATA マーカー内にあります。記事ごとにデータを差し替えてください。
+
+  レンダリング:
+    node script/render-infographic.mjs \
+      this-html.html output.webp --width=1200 --height=2000
+  (asset-images.md §4.10.4 — height ≤ 2000px ルール)
+-->
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  body { font-family: 'Noto Sans JP', -apple-system, sans-serif; -webkit-font-smoothing: antialiased; }
+  .num { font-variant-numeric: tabular-nums; }
+</style>
+</head>
+<body class="bg-[#F6F8FB]">
+  <main class="w-[1200px] mx-auto py-12 px-12">
+
+    <!-- HEADER -->
+    <header class="bg-gradient-to-br from-[#E8F1FF] via-[#F5EFE0] to-[#FFE8DC] rounded-[32px] p-16 mb-8 relative overflow-hidden">
+      <div class="inline-flex items-center gap-2 bg-[#0A0A0A] text-white text-[20px] font-bold tracking-widest uppercase px-5 py-2.5 rounded-full mb-6">
+            <span class="w-2 h-2 rounded-full bg-white"></span>
+            Do &amp; Don't Checklist
+          </div>
+      <div class="flex justify-center mb-6">
+        
+      </div>
+      <!-- SAMPLE_DATA: ヘッダーのカテゴリ chip -->
+
+          <!-- SAMPLE_DATA: 大見出し -->
+          <h1 class="text-[80px] font-black leading-[1.05] tracking-tight text-[#0A0A0A] mb-6">
+            個人事業主が陥りやすい<br>
+            <span class="text-[#FF4A4A]">AIマーケティングの落とし穴</span>
+          </h1>
+          <!-- SAMPLE_DATA: サブタイトル -->
+          <p class="text-[26px] text-[#444] leading-relaxed max-w-3xl">
+            相談400件から厳選した<strong class="text-[#0A0A0A]">やるべきこと6 / 絶対にやってはいけないこと6</strong>。<br>
+            今日の投稿前に、一度だけチェックしてみてください。
+          </p>
+    </header>
+
+    <!-- DO / DON'T 左右比較 -->
+    <section class="grid grid-cols-2 gap-6 mb-8">
+
+      <!-- DO -->
+      <div class="bg-white rounded-[28px] p-10 shadow-[0_2px_12px_rgba(0,0,0,0.04)]">
+        <div class="flex items-center gap-4 mb-8 pb-6 border-b border-[#F0F0F0]">
+          <div class="w-16 h-16 rounded-2xl bg-[#21B26A] flex items-center justify-center">
+            <span class="text-white text-[40px] font-black leading-none">✓</span>
+          </div>
+          <div>
+            <p class="text-[18px] text-[#21B26A] font-bold tracking-widest uppercase">Do</p>
+            <h2 class="text-[36px] font-bold text-[#0A0A0A]">やるべきこと6</h2>
+          </div>
+        </div>
+
+        <ul class="space-y-6">
+          <!-- SAMPLE_DATA: Do 項目6個 -->
+          <li class="flex gap-4">
+            <span class="flex-shrink-0 w-9 h-9 rounded-full bg-[#E8F7EE] text-[#21B26A] text-[22px] font-black flex items-center justify-center num">1</span>
+            <div>
+              <p class="text-[26px] font-bold text-[#0A0A0A] leading-snug mb-1">1カットに1メッセージ</p>
+              <p class="text-[22px] text-[#444] leading-relaxed">5〜10秒のクリップにつきメッセージは1つだけ。欲張ると全部ぼやけます。</p>
+            </div>
+          </li>
+          <li class="flex gap-4">
+            <span class="flex-shrink-0 w-9 h-9 rounded-full bg-[#E8F7EE] text-[#21B26A] text-[22px] font-black flex items-center justify-center num">2</span>
+            <div>
+              <p class="text-[26px] font-bold text-[#0A0A0A] leading-snug mb-1">まずキービジュアルから</p>
+              <p class="text-[22px] text-[#444] leading-relaxed">最初のフレーム画像を確定 → これを基準に動画を生成。</p>
+            </div>
+          </li>
+          <li class="flex gap-4">
+            <span class="flex-shrink-0 w-9 h-9 rounded-full bg-[#E8F7EE] text-[#21B26A] text-[22px] font-black flex items-center justify-center num">3</span>
+            <div>
+              <p class="text-[26px] font-bold text-[#0A0A0A] leading-snug mb-1">1カットにつき2〜3回の再生成予算</p>
+              <p class="text-[22px] text-[#444] leading-relaxed">一発でOKは出ません。時間とクレジットを先に確保してから始めましょう。</p>
+            </div>
+          </li>
+          <li class="flex gap-4">
+            <span class="flex-shrink-0 w-9 h-9 rounded-full bg-[#E8F7EE] text-[#21B26A] text-[22px] font-black flex items-center justify-center num">4</span>
+            <div>
+              <p class="text-[26px] font-bold text-[#0A0A0A] leading-snug mb-1">自動字幕は必須</p>
+              <p class="text-[22px] text-[#444] leading-relaxed">85%がミュート視聴。CapCutの自動字幕から始めましょう。</p>
+            </div>
+          </li>
+          <li class="flex gap-4">
+            <span class="flex-shrink-0 w-9 h-9 rounded-full bg-[#E8F7EE] text-[#21B26A] text-[22px] font-black flex items-center justify-center num">5</span>
+            <div>
+              <p class="text-[26px] font-bold text-[#0A0A0A] leading-snug mb-1">9:16のトレンド音源</p>
+              <p class="text-[22px] text-[#444] leading-relaxed">Instagram公式の音源ライブラリから、伸びている曲を選びましょう。</p>
+            </div>
+          </li>
+          <li class="flex gap-4">
+            <span class="flex-shrink-0 w-9 h-9 rounded-full bg-[#E8F7EE] text-[#21B26A] text-[22px] font-black flex items-center justify-center num">6</span>
+            <div>
+              <p class="text-[26px] font-bold text-[#0A0A0A] leading-snug mb-1">最後のカットにCTA</p>
+              <p class="text-[22px] text-[#444] leading-relaxed">DM・プロフィールリンク・「保存」のどれか1つだけ。3つ全部はNG。</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- DON'T -->
+      <div class="bg-white rounded-[28px] p-10 shadow-[0_2px_12px_rgba(0,0,0,0.04)]">
+        <div class="flex items-center gap-4 mb-8 pb-6 border-b border-[#F0F0F0]">
+          <div class="w-16 h-16 rounded-2xl bg-[#FF4A4A] flex items-center justify-center">
+            <span class="text-white text-[40px] font-black leading-none">✕</span>
+          </div>
+          <div>
+            <p class="text-[18px] text-[#FF4A4A] font-bold tracking-widest uppercase">Don't</p>
+            <h2 class="text-[36px] font-bold text-[#0A0A0A]">やってはいけないこと6</h2>
+          </div>
+        </div>
+
+        <ul class="space-y-6">
+          <!-- SAMPLE_DATA: Don't 項目6個 -->
+          <li class="flex gap-4">
+            <span class="flex-shrink-0 w-9 h-9 rounded-full bg-[#FFE8E8] text-[#FF4A4A] text-[22px] font-black flex items-center justify-center num">1</span>
+            <div>
+              <p class="text-[26px] font-bold text-[#0A0A0A] leading-snug mb-1">1カットで60秒を狙う</p>
+              <p class="text-[22px] text-[#444] leading-relaxed">キャラクターや物理の一貫性が崩れます。5〜10秒ずつに区切りましょう。</p>
+            </div>
+          </li>
+          <li class="flex gap-4">
+            <span class="flex-shrink-0 w-9 h-9 rounded-full bg-[#FFE8E8] text-[#FF4A4A] text-[22px] font-black flex items-center justify-center num">2</span>
+            <div>
+              <p class="text-[26px] font-bold text-[#0A0A0A] leading-snug mb-1">プロンプトを一行で投げる</p>
+              <p class="text-[22px] text-[#444] leading-relaxed">「かっこいい動画を作って」→失敗。画面の説明・アングル・尺を明示しましょう。</p>
+            </div>
+          </li>
+          <li class="flex gap-4">
+            <span class="flex-shrink-0 w-9 h-9 rounded-full bg-[#FFE8E8] text-[#FF4A4A] text-[22px] font-black flex items-center justify-center num">3</span>
+            <div>
+              <p class="text-[26px] font-bold text-[#0A0A0A] leading-snug mb-1">1つのツールだけに頼る</p>
+              <p class="text-[22px] text-[#444] leading-relaxed">Runwayだけ？Soraだけ？それぞれ強みが違います。2〜3個を組み合わせましょう。</p>
+            </div>
+          </li>
+          <li class="flex gap-4">
+            <span class="flex-shrink-0 w-9 h-9 rounded-full bg-[#FFE8E8] text-[#FF4A4A] text-[22px] font-black flex items-center justify-center num">4</span>
+            <div>
+              <p class="text-[26px] font-bold text-[#0A0A0A] leading-snug mb-1">テキストばかり詰め込む</p>
+              <p class="text-[22px] text-[#444] leading-relaxed">字幕はあくまで補助。映像が弱ければ字幕100行あっても無駄です。</p>
+            </div>
+          </li>
+          <li class="flex gap-4">
+            <span class="flex-shrink-0 w-9 h-9 rounded-full bg-[#FFE8E8] text-[#FF4A4A] text-[22px] font-black flex items-center justify-center num">5</span>
+            <div>
+              <p class="text-[26px] font-bold text-[#0A0A0A] leading-snug mb-1">有料音源の無断使用</p>
+              <p class="text-[22px] text-[#444] leading-relaxed">Instagram外の広告用途はライセンス確認が必須。ブロックの危険があります。</p>
+            </div>
+          </li>
+          <li class="flex gap-4">
+            <span class="flex-shrink-0 w-9 h-9 rounded-full bg-[#FFE8E8] text-[#FF4A4A] text-[22px] font-black flex items-center justify-center num">6</span>
+            <div>
+              <p class="text-[26px] font-bold text-[#0A0A0A] leading-snug mb-1">投稿後にデータを見ない</p>
+              <p class="text-[22px] text-[#444] leading-relaxed">7日・30日のインプレッション・保存率を見なければ、次回の改善はゼロです。</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+    </section>
+
+    <!-- KEY TAKEAWAY -->
+    <section class="bg-[#0A0A0A] text-white rounded-[28px] p-12 mb-8 shadow-[0_2px_12px_rgba(0,0,0,0.04)]">
+      <p class="text-[20px] tracking-widest uppercase text-[#D6E2FF] mb-3">ひとことまとめ</p>
+      <h3 class="text-[34px] font-bold leading-snug">
+        Doの6つを全部こなせなくても、<span class="text-[#FF4A4A]">Don'tの6つ</span>は絶対にやめましょう。<br>
+        Don'tを1つ避けるだけでも、インプレッションは2〜3倍に伸びます。
+      </h3>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-white rounded-[28px] p-8 flex items-center justify-between shadow-[0_2px_12px_rgba(0,0,0,0.04)]">
+      <div class="flex items-center gap-5">
+        
+        <div>
+          <div class="text-[26px] font-bold text-[#0A0A0A]">ours-magazine.jp</div>
+          <div class="text-[18px] text-[#555]">SNSマーケティングのセルフサービス</div>
+        </div>
+      </div>
+      <div class="text-[18px] text-[#555] italic text-right leading-relaxed">
+        根拠: 2025〜2026年のセルフ相談400件の集計<br>
+        ※ サンプルデータ — 記事ごとに出典・サンプル数の明記を推奨
+      </div>
+    </footer>
+
+  </main>
+</body>
+</html>

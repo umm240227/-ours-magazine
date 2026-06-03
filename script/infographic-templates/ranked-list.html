@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<!--
+  Template: ランキングリスト (Ranked List)
+  用途: 1〜5位または1〜10位のランキング (Top N ツール・戦略・トレンド)
+  Placeholders: {{TITLE}}, {{SUBTITLE}}, {{ITEMS}} ([{rank, name, score, reason}, ...])
+  備考: データは SAMPLE_DATA マーカー内にあります。記事ごとにデータを差し替えてください。
+
+  レンダリング:
+    node script/render-infographic.mjs this-html.html output.webp --width=1200 --max-height=2000
+-->
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  body { font-family: 'Noto Sans JP', -apple-system, sans-serif; -webkit-font-smoothing: antialiased; }
+  .num { font-variant-numeric: tabular-nums; }
+</style>
+</head>
+<body style="background:#F8FAFC">
+<main class="w-[1200px] mx-auto py-16 px-12">
+
+  <header class="mb-10">
+    <div class="inline-flex items-center gap-2 bg-[#FFC107] text-[#0A0A0A] text-[18px] font-bold tracking-widest uppercase px-5 py-2.5 rounded-full mb-5">
+      Top Ranking
+    </div>
+    <h1 class="text-[64px] font-black text-[#0A0A0A] leading-[1.1] tracking-tight mb-4">
+      個人事業主が選んだ<br>
+      <span class="text-[#FF6B2C]">SNSツール Top 5</span>
+    </h1>
+    <p class="text-[24px] text-[#444] leading-relaxed">
+      1年以上運用した1,840人の回答に基づく総合満足度ランキング。
+    </p>
+  </header>
+
+  <!-- SAMPLE_DATA: ITEMS (5件) -->
+  <section class="bg-white rounded-[32px] p-10 mb-8 shadow-[0_2px_16px_rgba(0,0,0,0.04)]">
+    <div class="space-y-4">
+
+      <!-- Rank 1 -->
+      <div class="flex items-center gap-6 p-6 rounded-2xl bg-gradient-to-r from-[#FFF7E0] to-[#FFF1C2]">
+        <div class="flex-shrink-0 w-20 h-20 rounded-2xl bg-[#FFC107] flex items-center justify-center text-[#0A0A0A] font-black text-[40px] num">1</div>
+        <div class="flex-1">
+          <div class="flex items-baseline justify-between mb-2">
+            <p class="text-[32px] font-black text-[#0A0A0A]">ours-magazine</p>
+            <p class="text-[28px] font-black text-[#FFC107] num">9.4<span class="text-[18px] text-[#555]">/10</span></p>
+          </div>
+          <p class="text-[22px] text-[#444] leading-relaxed">
+            個人運用者が自分で使えるインサイトツール。コスパの満足度がトップ。
+          </p>
+        </div>
+      </div>
+
+      <!-- Rank 2 -->
+      <div class="flex items-center gap-6 p-6 rounded-2xl bg-[#F1F5FF]">
+        <div class="flex-shrink-0 w-20 h-20 rounded-2xl bg-[#3B70FF] flex items-center justify-center text-white font-black text-[40px] num">2</div>
+        <div class="flex-1">
+          <div class="flex items-baseline justify-between mb-2">
+            <p class="text-[32px] font-black text-[#0A0A0A]">Meta Business Suite</p>
+            <p class="text-[28px] font-black text-[#3B70FF] num">8.8<span class="text-[18px] text-[#555]">/10</span></p>
+          </div>
+          <p class="text-[22px] text-[#444] leading-relaxed">
+            Instagram・Facebookを一元管理。無料 + 広告運用の一貫性が強み。
+          </p>
+        </div>
+      </div>
+
+      <!-- Rank 3 -->
+      <div class="flex items-center gap-6 p-6 rounded-2xl bg-[#F1F5FF]">
+        <div class="flex-shrink-0 w-20 h-20 rounded-2xl bg-[#3B70FF] flex items-center justify-center text-white font-black text-[40px] num">3</div>
+        <div class="flex-1">
+          <div class="flex items-baseline justify-between mb-2">
+            <p class="text-[32px] font-black text-[#0A0A0A]">CapCut</p>
+            <p class="text-[28px] font-black text-[#3B70FF] num">8.5<span class="text-[18px] text-[#555]">/10</span></p>
+          </div>
+          <p class="text-[22px] text-[#444] leading-relaxed">
+            無料の動画編集ツールNo.1。テンプレートと字幕の自動認識が要。
+          </p>
+        </div>
+      </div>
+
+      <!-- Rank 4 -->
+      <div class="flex items-center gap-6 p-6 rounded-2xl bg-slate-50">
+        <div class="flex-shrink-0 w-20 h-20 rounded-2xl bg-slate-400 flex items-center justify-center text-white font-black text-[40px] num">4</div>
+        <div class="flex-1">
+          <div class="flex items-baseline justify-between mb-2">
+            <p class="text-[32px] font-black text-[#0A0A0A]">Canva</p>
+            <p class="text-[28px] font-black text-slate-600 num">8.1<span class="text-[18px] text-[#555]">/10</span></p>
+          </div>
+          <p class="text-[22px] text-[#444] leading-relaxed">
+            テンプレートベースのデザインツール。ブランドの統一感を保ちやすい。
+          </p>
+        </div>
+      </div>
+
+      <!-- Rank 5 -->
+      <div class="flex items-center gap-6 p-6 rounded-2xl bg-slate-50">
+        <div class="flex-shrink-0 w-20 h-20 rounded-2xl bg-slate-400 flex items-center justify-center text-white font-black text-[40px] num">5</div>
+        <div class="flex-1">
+          <div class="flex items-baseline justify-between mb-2">
+            <p class="text-[32px] font-black text-[#0A0A0A]">ChatGPT</p>
+            <p class="text-[28px] font-black text-slate-600 num">7.8<span class="text-[18px] text-[#555]">/10</span></p>
+          </div>
+          <p class="text-[22px] text-[#444] leading-relaxed">
+            コピー・ハッシュタグ・回答の下書き生成ツール。ファクトチェックは別途必要。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="flex items-center justify-between pt-6 border-t border-slate-200">
+    <div class="flex items-center gap-3">
+      
+      <span class="font-bold text-[20px] text-slate-800">ours-magazine.jp</span>
+    </div>
+    <span class="text-[18px] text-slate-500">SNSマーケティングのセルフサービス</span>
+  </footer>
+
+</main>
+</body>
+</html>

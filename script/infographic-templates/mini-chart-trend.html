@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<!--
+  Template: ミニ折れ線グラフ (Mini Trend Line)
+  用途: 時系列の推移、月別の変化、四半期ごとの成長の追跡
+  Placeholders: {{TITLE}}, {{SUBTITLE}}, {{X_LABELS}}, {{Y_VALUES}}, {{Y_UNIT}}
+  備考: データは SAMPLE_DATA マーカー内にあります。記事ごとにデータを差し替えてください。
+
+  レンダリング:
+    node script/render-infographic.mjs this-html.html output.webp --width=1200 --max-height=2000
+-->
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  body { font-family: 'Noto Sans JP', -apple-system, sans-serif; -webkit-font-smoothing: antialiased; }
+  .num { font-variant-numeric: tabular-nums; }
+</style>
+</head>
+<body style="background:#F8FAFC">
+<main class="w-[1200px] mx-auto py-16 px-12">
+
+  <!-- SAMPLE_DATA: TITLE / SUBTITLE -->
+  <header class="mb-10">
+    <div class="inline-flex items-center gap-2 bg-[#21B26A] text-white text-[18px] font-bold tracking-widest uppercase px-5 py-2.5 rounded-full mb-5">
+      <span class="w-1.5 h-1.5 rounded-full bg-white"></span>
+      Monthly Trend
+    </div>
+    <h1 class="text-[64px] font-black text-[#0A0A0A] leading-[1.1] tracking-tight mb-4">
+      リール視聴時間の<br>
+      <span class="text-[#21B26A]">月別の増加推移</span>
+    </h1>
+    <p class="text-[24px] text-[#444] leading-relaxed">
+      国内18〜44歳のInstagramユーザーの1日あたり平均リール視聴時間(分/日)、2025.10〜2026.04。
+    </p>
+  </header>
+
+  <!-- SAMPLE_DATA: Y_VALUES + X_LABELS -->
+  <section class="bg-white rounded-[32px] p-10 mb-8 shadow-[0_2px_16px_rgba(0,0,0,0.04)]">
+    <!-- 折れ線グラフ SVG (幅1100、高さ360) -->
+    <svg viewBox="0 0 1100 360" class="w-full h-auto">
+      <!-- Grid 横線 -->
+      <line x1="80" y1="40" x2="1080" y2="40" stroke="#E5E7EB" stroke-width="1"/>
+      <line x1="80" y1="120" x2="1080" y2="120" stroke="#E5E7EB" stroke-width="1"/>
+      <line x1="80" y1="200" x2="1080" y2="200" stroke="#E5E7EB" stroke-width="1"/>
+      <line x1="80" y1="280" x2="1080" y2="280" stroke="#E5E7EB" stroke-width="1"/>
+
+      <!-- Y軸ラベル -->
+      <text x="60" y="45" text-anchor="end" font-size="20" fill="#555" font-family="Noto Sans JP">60</text>
+      <text x="60" y="125" text-anchor="end" font-size="20" fill="#555" font-family="Noto Sans JP">45</text>
+      <text x="60" y="205" text-anchor="end" font-size="20" fill="#555" font-family="Noto Sans JP">30</text>
+      <text x="60" y="285" text-anchor="end" font-size="20" fill="#555" font-family="Noto Sans JP">15</text>
+
+      <!-- エリア fill -->
+      <path d="M 150 240 L 300 220 L 450 180 L 600 150 L 750 110 L 900 80 L 1050 50 L 1050 280 L 150 280 Z"
+            fill="url(#grad)" opacity="0.25"/>
+
+      <!-- ライン -->
+      <path d="M 150 240 L 300 220 L 450 180 L 600 150 L 750 110 L 900 80 L 1050 50"
+            stroke="#21B26A" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+
+      <!-- データポイント -->
+      <circle cx="150" cy="240" r="9" fill="#21B26A"/>
+      <circle cx="300" cy="220" r="9" fill="#21B26A"/>
+      <circle cx="450" cy="180" r="9" fill="#21B26A"/>
+      <circle cx="600" cy="150" r="9" fill="#21B26A"/>
+      <circle cx="750" cy="110" r="9" fill="#21B26A"/>
+      <circle cx="900" cy="80" r="9" fill="#21B26A"/>
+      <circle cx="1050" cy="50" r="12" fill="#21B26A" stroke="#fff" stroke-width="3"/>
+
+      <!-- 最後のデータを強調 -->
+      <text x="1050" y="35" text-anchor="middle" font-size="28" font-weight="900" fill="#21B26A" font-family="Noto Sans JP">58分</text>
+
+      <!-- X軸ラベル -->
+      <text x="150" y="320" text-anchor="middle" font-size="20" fill="#555" font-family="Noto Sans JP">25.10</text>
+      <text x="300" y="320" text-anchor="middle" font-size="20" fill="#555" font-family="Noto Sans JP">25.11</text>
+      <text x="450" y="320" text-anchor="middle" font-size="20" fill="#555" font-family="Noto Sans JP">25.12</text>
+      <text x="600" y="320" text-anchor="middle" font-size="20" fill="#555" font-family="Noto Sans JP">26.01</text>
+      <text x="750" y="320" text-anchor="middle" font-size="20" fill="#555" font-family="Noto Sans JP">26.02</text>
+      <text x="900" y="320" text-anchor="middle" font-size="20" fill="#555" font-family="Noto Sans JP">26.03</text>
+      <text x="1050" y="320" text-anchor="middle" font-size="20" fill="#21B26A" font-weight="700" font-family="Noto Sans JP">26.04</text>
+
+      <defs>
+        <linearGradient id="grad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#21B26A"/>
+          <stop offset="100%" stop-color="#21B26A" stop-opacity="0"/>
+        </linearGradient>
+      </defs>
+    </svg>
+
+    <div class="grid grid-cols-2 gap-6 mt-8">
+      <div class="bg-[#E8F7EE] rounded-2xl p-6">
+        <p class="text-[18px] text-[#555] mb-2">7か月の累計増加</p>
+        <p class="text-[48px] font-black text-[#21B26A] num leading-none">+115<span class="text-[28px]">%</span></p>
+      </div>
+      <div class="bg-[#E8F7EE] rounded-2xl p-6">
+        <p class="text-[18px] text-[#555] mb-2">月平均の増加率</p>
+        <p class="text-[48px] font-black text-[#21B26A] num leading-none">+11.6<span class="text-[28px]">%</span></p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="flex items-center justify-between pt-6 border-t border-slate-200">
+    <div class="flex items-center gap-3">
+      
+      <span class="font-bold text-[20px] text-slate-800">ours-magazine.jp</span>
+    </div>
+    <span class="text-[18px] text-slate-500">SNSマーケティングのセルフサービス</span>
+  </footer>
+
+</main>
+</body>
+</html>

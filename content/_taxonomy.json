@@ -1,0 +1,14 @@
+{
+  "_comment": "JP 카테고리 정본 (KR wp-content/_taxonomy.json 대체, jp-site-config §2·§4). 자동화는 frontmatter `category`에 아래 name(정확 라벨) 중 하나를 쓴다. app/category/[slug]/page.tsx의 CATEGORY_LABELS·CATEGORY_ALIASES와 동기화 유지.",
+  "categories": [
+    { "slug": "instagram", "name": "Instagram", "aliases": ["Instagram", "instagram", "Instagram攻略"] },
+    { "slug": "tiktok", "name": "TikTok", "aliases": ["TikTok", "tiktok", "TikTok攻略"] },
+    { "slug": "x", "name": "X（Twitter）", "aliases": ["X", "x", "X（Twitter）"] },
+    { "slug": "youtube", "name": "YouTube", "aliases": ["YouTube", "youtube"] },
+    { "slug": "sns", "name": "SNS運用", "aliases": ["SNS運用", "SNS運用ノウハウ"] }
+  ],
+  "rules": {
+    "frontmatter_category": "위 name 중 정확히 하나 (WP 숫자 ID 금지 — jp-site-config §4). 카테고리 자동 판정 시 글의 핵심 플랫폼으로 매칭, 플랫폼 불특정 마케팅 일반론은 SNS運用.",
+    "gap_analysis": "content/articles/*.md 의 category 분포로 갭 분석. 특정 카테고리 과밀 회피."
+  }
+}

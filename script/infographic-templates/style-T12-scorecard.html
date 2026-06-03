@@ -1,0 +1,160 @@
+<!DOCTYPE html><html lang="ja">
+<head><meta charset="UTF-8">
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+body{font-family:'Noto Sans JP',-apple-system,sans-serif;-webkit-font-smoothing:antialiased}
+.num{font-variant-numeric:tabular-nums}
+.grade-aplus{background:#DCFCE7;color:#15803D}
+.grade-a{background:#DBEAFE;color:#1D4ED8}
+.grade-aminus{background:#EDE9FE;color:#6D28D9}
+.grade-bplus{background:#FEF9C3;color:#A16207}
+</style>
+</head>
+<body style="background:#F8FAFC">
+<main class="w-[1200px] mx-auto py-12 px-12">
+
+  <!-- ヘッダー -->
+  <div class="text-center mb-10">
+    <div class="inline-flex items-center gap-2 px-6 py-3 rounded-full text-[20px] font-bold tracking-widest uppercase mb-6" style="background:#1E293B;color:#F8FAFC">
+      📊 REPORT CARD 2024
+    </div>
+    <h1 class="text-[56px] font-black text-gray-900 leading-tight">SNSプラットフォーム マーケティング成績表</h1>
+    <p class="text-[22px] mt-3" style="color:#475569">リーチ力 · コスト効率 · 転換率の3項目で評価</p>
+  </div>
+
+  <!-- 成績表テーブル -->
+  <div class="bg-white rounded-[32px] shadow-sm overflow-hidden mb-10">
+    <!-- ヘッダー行 -->
+    <div class="grid px-10 py-6" style="grid-template-columns:2fr 1fr 1fr 1fr 1.2fr;background:#1E293B">
+      <div class="text-[20px] font-bold" style="color:rgb(255,255,255)">プラットフォーム</div>
+      <div class="text-[20px] font-bold text-center" style="color:rgb(255,255,255)">リーチ力</div>
+      <div class="text-[20px] font-bold text-center" style="color:rgb(255,255,255)">コスト効率</div>
+      <div class="text-[20px] font-bold text-center" style="color:rgb(255,255,255)">転換率</div>
+      <div class="text-[20px] font-bold text-center" style="color:rgb(255,255,255)">総合グレード</div>
+    </div>
+
+    <!-- 行1: YouTubeショート -->
+    <div class="grid px-10 py-7 items-center border-b border-gray-100" style="grid-template-columns:2fr 1fr 1fr 1fr 1.2fr">
+      <div class="flex items-center gap-4">
+        <span style="font-size:36px">📺</span>
+        <div>
+          <div class="font-bold text-[24px] text-gray-900">YouTubeショート</div>
+          <div class="text-[18px]" style="color:#64748B">MAU 4,500万</div>
+        </div>
+      </div>
+      <div class="flex justify-center"><span class="num px-4 py-2 rounded-2xl text-[22px] font-black grade-aplus">A+</span></div>
+      <div class="flex justify-center"><span class="num px-4 py-2 rounded-2xl text-[22px] font-black grade-a">A</span></div>
+      <div class="flex justify-center"><span class="num px-4 py-2 rounded-2xl text-[22px] font-black grade-bplus">B+</span></div>
+      <div class="flex justify-center">
+        <div class="text-center">
+          <span class="num px-5 py-2.5 rounded-2xl text-[26px] font-black grade-a block">A</span>
+          <span class="num text-[18px] mt-1 block" style="color:#64748B">93点</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 行2: Instagramリール (1位) -->
+    <div class="grid px-10 py-7 items-center border-b border-gray-100" style="grid-template-columns:2fr 1fr 1fr 1fr 1.2fr;background:#FFFBEB">
+      <div class="flex items-center gap-4">
+        <span style="font-size:36px">📸</span>
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="font-bold text-[24px] text-gray-900">Instagramリール</span>
+            <span style="font-size:20px">🏆</span>
+          </div>
+          <div class="text-[18px] text-amber-700 font-bold">MAU 2,200万 · 1位</div>
+        </div>
+      </div>
+      <div class="flex justify-center"><span class="num px-4 py-2 rounded-2xl text-[22px] font-black grade-a">A</span></div>
+      <div class="flex justify-center"><span class="num px-4 py-2 rounded-2xl text-[22px] font-black grade-aplus">A+</span></div>
+      <div class="flex justify-center"><span class="num px-4 py-2 rounded-2xl text-[22px] font-black grade-aplus">A</span></div>
+      <div class="flex justify-center">
+        <div class="text-center">
+          <span class="num px-5 py-2.5 rounded-2xl text-[26px] font-black grade-aplus block">A+</span>
+          <span class="num text-[18px] text-amber-700 font-bold mt-1 block">95点</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 行3: TikTok -->
+    <div class="grid px-10 py-7 items-center border-b border-gray-100" style="grid-template-columns:2fr 1fr 1fr 1fr 1.2fr">
+      <div class="flex items-center gap-4">
+        <span style="font-size:36px">🎵</span>
+        <div>
+          <div class="font-bold text-[24px] text-gray-900">TikTok</div>
+          <div class="text-[18px]" style="color:#64748B">MAU 900万</div>
+        </div>
+      </div>
+      <div class="flex justify-center"><span class="num px-4 py-2 rounded-2xl text-[22px] font-black grade-aplus">A+</span></div>
+      <div class="flex justify-center"><span class="num px-4 py-2 rounded-2xl text-[22px] font-black grade-aplus">A+</span></div>
+      <div class="flex justify-center"><span class="num px-4 py-2 rounded-2xl text-[22px] font-black grade-bplus">B</span></div>
+      <div class="flex justify-center">
+        <div class="text-center">
+          <span class="num px-5 py-2.5 rounded-2xl text-[26px] font-black grade-a block">A</span>
+          <span class="num text-[18px] mt-1 block" style="color:#64748B">92点</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 行4: Facebook広告 -->
+    <div class="grid px-10 py-7 items-center border-b border-gray-100" style="grid-template-columns:2fr 1fr 1fr 1fr 1.2fr">
+      <div class="flex items-center gap-4">
+        <span style="font-size:36px">📘</span>
+        <div>
+          <div class="font-bold text-[24px] text-gray-900">Facebook広告</div>
+          <div class="text-[18px]" style="color:#64748B">CPC 35円</div>
+        </div>
+      </div>
+      <div class="flex justify-center"><span class="num px-4 py-2 rounded-2xl text-[22px] font-black grade-bplus">B+</span></div>
+      <div class="flex justify-center"><span class="num px-4 py-2 rounded-2xl text-[22px] font-black grade-bplus">B+</span></div>
+      <div class="flex justify-center"><span class="num px-4 py-2 rounded-2xl text-[22px] font-black grade-aplus">A+</span></div>
+      <div class="flex justify-center">
+        <div class="text-center">
+          <span class="num px-5 py-2.5 rounded-2xl text-[26px] font-black grade-aminus block">A-</span>
+          <span class="num text-[18px] mt-1 block" style="color:#64748B">86点</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 行5: LINE公式アカウント -->
+    <div class="grid px-10 py-7 items-center" style="grid-template-columns:2fr 1fr 1fr 1fr 1.2fr">
+      <div class="flex items-center gap-4">
+        <span style="font-size:36px">💬</span>
+        <div>
+          <div class="font-bold text-[24px] text-gray-900">LINE公式</div>
+          <div class="text-[18px]" style="color:#64748B">開封率 40%</div>
+        </div>
+      </div>
+      <div class="flex justify-center"><span class="num px-4 py-2 rounded-2xl text-[22px] font-black grade-bplus">B</span></div>
+      <div class="flex justify-center"><span class="num px-4 py-2 rounded-2xl text-[22px] font-black grade-aplus">A+</span></div>
+      <div class="flex justify-center"><span class="num px-4 py-2 rounded-2xl text-[22px] font-black grade-aplus">A+</span></div>
+      <div class="flex justify-center">
+        <div class="text-center">
+          <span class="num px-5 py-2.5 rounded-2xl text-[26px] font-black grade-a block">A</span>
+          <span class="num text-[18px] mt-1 block" style="color:#64748B">91点</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 1位 受賞バナー -->
+  <div class="rounded-[28px] p-8 mb-8 flex items-center gap-8" style="background:linear-gradient(135deg,#F59E0B,#FBBF24)">
+    <span style="font-size:72px">🏆</span>
+    <div>
+      <div class="font-black text-[32px] text-white">Instagramリール 総合1位</div>
+      <div class="text-[20px] font-semibold" style="color:rgb(255,255,255)">95点 · コスト効率A+ · 転換率A · リーチ3.4倍</div>
+    </div>
+    <div class="ml-auto num font-black text-white whitespace-nowrap" style="font-size:64px">95<span style="font-size:32px">点</span></div>
+  </div>
+
+  <!-- フッター -->
+  <footer class="flex items-center justify-between pt-4">
+    <div class="flex items-center gap-4">
+      
+      <span class="font-bold text-[22px] text-gray-800">ours-magazine.jp</span>
+    </div>
+    <span class="text-[20px] font-medium text-gray-700" style="white-space:nowrap">SNSマーケティング セルフサービス</span>
+  </footer>
+
+</main></body></html>

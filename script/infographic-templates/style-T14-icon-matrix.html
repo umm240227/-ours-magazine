@@ -1,0 +1,103 @@
+<!DOCTYPE html><html lang="ja">
+<head><meta charset="UTF-8">
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+body{font-family:'Noto Sans JP',-apple-system,sans-serif;-webkit-font-smoothing:antialiased}
+.num{font-variant-numeric:tabular-nums}
+</style>
+</head>
+<body style="background:#F9FAFB">
+<main class="w-[1200px] mx-auto py-12 px-12">
+
+  <!-- 上部タイトル (カードなしテキストのみ) -->
+  <div class="mb-10">
+    <p class="text-[20px] font-bold tracking-widest uppercase mb-4" style="color:#475569">2024 PLATFORM SNAPSHOT</p>
+    <h1 class="text-[60px] font-black text-gray-900 leading-tight">日本のSNSプラットフォーム<br>主要指標をひと目で</h1>
+  </div>
+
+  <!-- 4x2 グリッド (8マス) -->
+  <div class="grid grid-cols-4 mb-10" style="border:2px solid #E5E7EB;border-radius:28px;overflow:hidden">
+
+    <!-- セル1: YouTube (奇数=白) -->
+    <div class="flex flex-col items-center justify-center py-10 px-6 text-center" style="background:#FFFFFF;border-right:2px solid #E5E7EB;border-bottom:2px solid #E5E7EB">
+      <span style="font-size:64px;line-height:1;margin-bottom:16px">📺</span>
+      <div class="text-[20px] font-bold mb-3" style="color:#475569">YouTube</div>
+      <div class="num font-black text-gray-900 leading-none whitespace-nowrap" style="font-size:36px">4,500万</div>
+      <div class="text-[18px] mt-2 font-semibold" style="color:#64748B">MAU</div>
+    </div>
+
+    <!-- セル2: Instagram (偶数=#F8FAFC) -->
+    <div class="flex flex-col items-center justify-center py-10 px-6 text-center" style="background:#F8FAFC;border-right:2px solid #E5E7EB;border-bottom:2px solid #E5E7EB">
+      <span style="font-size:64px;line-height:1;margin-bottom:16px">📸</span>
+      <div class="text-[20px] font-bold mb-3" style="color:#475569">Instagram</div>
+      <div class="num font-black text-gray-900 leading-none whitespace-nowrap" style="font-size:36px">2,200万</div>
+      <div class="text-[18px] mt-2 font-semibold" style="color:#64748B">MAU</div>
+    </div>
+
+    <!-- セル3: TikTok (奇数=白) -->
+    <div class="flex flex-col items-center justify-center py-10 px-6 text-center" style="background:#FFFFFF;border-right:2px solid #E5E7EB;border-bottom:2px solid #E5E7EB">
+      <span style="font-size:64px;line-height:1;margin-bottom:16px">🎵</span>
+      <div class="text-[20px] font-bold mb-3" style="color:#475569">TikTok</div>
+      <div class="num font-black text-gray-900 leading-none whitespace-nowrap" style="font-size:36px">900万</div>
+      <div class="text-[18px] mt-2 font-semibold" style="color:#64748B">MAU</div>
+    </div>
+
+    <!-- セル4: LINE公式 (偶数) -->
+    <div class="flex flex-col items-center justify-center py-10 px-6 text-center" style="background:#F8FAFC;border-bottom:2px solid #E5E7EB">
+      <span style="font-size:64px;line-height:1;margin-bottom:16px">💬</span>
+      <div class="text-[20px] font-bold mb-3" style="color:#475569">LINE公式</div>
+      <div class="num font-black text-gray-900 leading-none whitespace-nowrap" style="font-size:32px">開封率 40%</div>
+      <div class="text-[18px] mt-2 font-semibold" style="color:#64748B">MAU 9,500万</div>
+    </div>
+
+    <!-- セル5: ブログSEO (奇数=白) -->
+    <div class="flex flex-col items-center justify-center py-10 px-6 text-center" style="background:#FFFFFF;border-right:2px solid #E5E7EB;border-bottom:2px solid #E5E7EB">
+      <span style="font-size:64px;line-height:1;margin-bottom:16px">🔍</span>
+      <div class="text-[20px] font-bold mb-3" style="color:#475569">ブログSEO</div>
+      <div class="num font-black text-gray-900 leading-none whitespace-nowrap" style="font-size:32px">検索流入</div>
+      <div class="text-[18px] mt-2 font-semibold" style="color:#64748B">61% シェア</div>
+    </div>
+
+    <!-- セル6: リール (偶数) -->
+    <div class="flex flex-col items-center justify-center py-10 px-6 text-center" style="background:#F8FAFC;border-right:2px solid #E5E7EB;border-bottom:2px solid #E5E7EB">
+      <span style="font-size:64px;line-height:1;margin-bottom:16px">📢</span>
+      <div class="text-[20px] font-bold mb-3" style="color:#475569">リール</div>
+      <div class="num font-black text-gray-900 leading-none whitespace-nowrap" style="font-size:32px">リーチ 3.4倍</div>
+      <div class="text-[18px] mt-2 font-bold" style="color:#4F46E5">↑ vs フィード</div>
+    </div>
+
+    <!-- セル7: インフルエンサー (奇数=白) -->
+    <div class="flex flex-col items-center justify-center py-10 px-6 text-center" style="background:#FFFFFF;border-right:2px solid #E5E7EB">
+      <span style="font-size:64px;line-height:1;margin-bottom:16px">💰</span>
+      <div class="text-[20px] font-bold mb-3" style="color:#475569">インフルエンサー</div>
+      <div class="num font-black text-gray-900 leading-none whitespace-nowrap" style="font-size:32px">ROI 520%</div>
+      <div class="text-[18px] mt-2 font-semibold" style="color:#64748B">平均投資収益</div>
+    </div>
+
+    <!-- セル8: SNS広告市場 (偶数) -->
+    <div class="flex flex-col items-center justify-center py-10 px-6 text-center" style="background:#F8FAFC">
+      <span style="font-size:64px;line-height:1;margin-bottom:16px">🎯</span>
+      <div class="text-[20px] font-bold mb-3" style="color:#475569">SNS広告</div>
+      <div class="num font-black text-gray-900 leading-none whitespace-nowrap" style="font-size:36px">3,200億円</div>
+      <div class="text-[18px] mt-2 font-semibold" style="color:#64748B">2024 市場規模</div>
+    </div>
+  </div>
+
+  <!-- 下部 ひと言サマリー -->
+  <div class="text-center mb-10 py-8 rounded-3xl" style="background:#EEF2FF">
+    <p class="text-[26px] font-bold" style="color:#4F46E5">
+      日本のSNSユーザー <strong>4,500万人</strong> — 全プラットフォーム統合マーケティングの時代
+    </p>
+  </div>
+
+  <!-- フッター -->
+  <footer class="flex items-center justify-between pt-4">
+    <div class="flex items-center gap-4">
+      
+      <span class="font-bold text-[22px] text-gray-800">ours-magazine.jp</span>
+    </div>
+    <span class="text-[20px] font-medium text-gray-700" style="white-space:nowrap">SNSマーケティング セルフサービス</span>
+  </footer>
+
+</main></body></html>

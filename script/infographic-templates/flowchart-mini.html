@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<!--
+  Template: ミニフローチャート (Flowchart Mini)
+  用途: 3〜5ノード + 矢印 (HTML/CSSベース、Mermaid不使用)
+  Placeholders: {{TITLE}}, {{SUBTITLE}}, {{NODES}} ([{label, desc, icon}, ...]), {{ARROWS}}
+  備考: データは SAMPLE_DATA マーカー内にあります。記事ごとにデータを差し替えてください。
+
+  レンダリング:
+    node script/render-infographic.mjs this-html.html output.webp --width=1200 --max-height=2000
+-->
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  body { font-family: 'Noto Sans JP', -apple-system, sans-serif; -webkit-font-smoothing: antialiased; }
+  .num { font-variant-numeric: tabular-nums; }
+</style>
+</head>
+<body style="background:#F8FAFC">
+<main class="w-[1200px] mx-auto py-16 px-12">
+
+  <header class="mb-10">
+    <div class="inline-flex items-center gap-2 bg-[#3B70FF] text-white text-[18px] font-bold tracking-widest uppercase px-5 py-2.5 rounded-full mb-5">
+      Process Flow
+    </div>
+    <h1 class="text-[64px] font-black text-[#0A0A0A] leading-[1.1] tracking-tight mb-4">
+      リール投稿の<br>
+      <span class="text-[#3B70FF]">標準ワークフロー</span>
+    </h1>
+    <p class="text-[24px] text-[#444] leading-relaxed">
+      企画から投稿後の分析まで、5つのステップをひと目で整理。
+    </p>
+  </header>
+
+  <!-- SAMPLE_DATA: NODES (5個) -->
+  <section class="bg-white rounded-[32px] p-10 mb-8 shadow-[0_2px_16px_rgba(0,0,0,0.04)]">
+    <div class="space-y-3">
+
+      <!-- Node 1 -->
+      <div class="flex items-center gap-5">
+        <div class="flex-shrink-0 w-20 h-20 rounded-2xl bg-[#3B70FF] flex items-center justify-center text-white text-[36px] font-black num">1</div>
+        <div class="flex-1 bg-[#F1F5FF] rounded-2xl p-6">
+          <p class="text-[28px] font-bold text-[#0A0A0A] mb-1">テーマ・フックの企画</p>
+          <p class="text-[22px] text-[#444]">最初の3秒で目を引く一行のフックを、まず決めます。</p>
+        </div>
+      </div>
+
+      <!-- Arrow -->
+      <div class="flex justify-center py-1">
+        <div class="w-1 h-10 bg-[#CBD5E1] rounded-full relative">
+          <div class="absolute -bottom-2 left-1/2 -translate-x-1/2 w-0 h-0 border-l-[10px] border-l-transparent border-r-[10px] border-r-transparent border-t-[14px] border-t-[#CBD5E1]"></div>
+        </div>
+      </div>
+
+      <!-- Node 2 -->
+      <div class="flex items-center gap-5">
+        <div class="flex-shrink-0 w-20 h-20 rounded-2xl bg-[#3B70FF] flex items-center justify-center text-white text-[36px] font-black num">2</div>
+        <div class="flex-1 bg-[#F1F5FF] rounded-2xl p-6">
+          <p class="text-[28px] font-bold text-[#0A0A0A] mb-1">台本・絵コンテ</p>
+          <p class="text-[22px] text-[#444]">10秒単位でシーンを分け、字幕のキー文を書き起こします。</p>
+        </div>
+      </div>
+
+      <div class="flex justify-center py-1">
+        <div class="w-1 h-10 bg-[#CBD5E1] rounded-full relative">
+          <div class="absolute -bottom-2 left-1/2 -translate-x-1/2 w-0 h-0 border-l-[10px] border-l-transparent border-r-[10px] border-r-transparent border-t-[14px] border-t-[#CBD5E1]"></div>
+        </div>
+      </div>
+
+      <!-- Node 3 -->
+      <div class="flex items-center gap-5">
+        <div class="flex-shrink-0 w-20 h-20 rounded-2xl bg-[#3B70FF] flex items-center justify-center text-white text-[36px] font-black num">3</div>
+        <div class="flex-1 bg-[#F1F5FF] rounded-2xl p-6">
+          <p class="text-[28px] font-bold text-[#0A0A0A] mb-1">撮影・編集</p>
+          <p class="text-[22px] text-[#444]">縦9:16、30秒以内。最初のカットに最も強いビジュアルを配置します。</p>
+        </div>
+      </div>
+
+      <div class="flex justify-center py-1">
+        <div class="w-1 h-10 bg-[#CBD5E1] rounded-full relative">
+          <div class="absolute -bottom-2 left-1/2 -translate-x-1/2 w-0 h-0 border-l-[10px] border-l-transparent border-r-[10px] border-r-transparent border-t-[14px] border-t-[#CBD5E1]"></div>
+        </div>
+      </div>
+
+      <!-- Node 4 -->
+      <div class="flex items-center gap-5">
+        <div class="flex-shrink-0 w-20 h-20 rounded-2xl bg-[#3B70FF] flex items-center justify-center text-white text-[36px] font-black num">4</div>
+        <div class="flex-1 bg-[#F1F5FF] rounded-2xl p-6">
+          <p class="text-[28px] font-bold text-[#0A0A0A] mb-1">投稿時刻の決定</p>
+          <p class="text-[22px] text-[#444]">直近7日間のインサイトで、リーチが高かった時間帯を優先します。</p>
+        </div>
+      </div>
+
+      <div class="flex justify-center py-1">
+        <div class="w-1 h-10 bg-[#CBD5E1] rounded-full relative">
+          <div class="absolute -bottom-2 left-1/2 -translate-x-1/2 w-0 h-0 border-l-[10px] border-l-transparent border-r-[10px] border-r-transparent border-t-[14px] border-t-[#CBD5E1]"></div>
+        </div>
+      </div>
+
+      <!-- Node 5 -->
+      <div class="flex items-center gap-5">
+        <div class="flex-shrink-0 w-20 h-20 rounded-2xl bg-[#21B26A] flex items-center justify-center text-white text-[36px] font-black num">5</div>
+        <div class="flex-1 bg-[#E8F7EE] rounded-2xl p-6">
+          <p class="text-[28px] font-bold text-[#0A0A0A] mb-1">48時間後の振り返り</p>
+          <p class="text-[22px] text-[#444]">保存率・完全視聴率・シェア率の3指標で、次のコンテンツの方向を決めます。</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="flex items-center justify-between pt-6 border-t border-slate-200">
+    <div class="flex items-center gap-3">
+      
+      <span class="font-bold text-[20px] text-slate-800">ours-magazine.jp</span>
+    </div>
+    <span class="text-[18px] text-slate-500">SNSマーケティングのセルフサービス</span>
+  </footer>
+
+</main>
+</body>
+</html>

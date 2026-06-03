@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<!--
+  Template: イベント・タイムライン型インフォグラフィック (Event Timeline)
+  用途: ポリシー変更、事態の進行、プラットフォームのアップデート、時系列がカギになる記事
+  備考: データは SAMPLE_DATA マーカー内にあります。記事ごとにデータを差し替えてください。
+
+  レンダリング:
+    node script/render-infographic.mjs \
+      this-html.html output.webp --width=1200 --max-height=2000
+-->
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  body { font-family: 'Noto Sans JP', -apple-system, sans-serif; -webkit-font-smoothing: antialiased; }
+  .num { font-variant-numeric: tabular-nums; }
+</style>
+</head>
+<body class="bg-[#F6F8FB]">
+  <main class="w-[1200px] mx-auto py-12 px-12">
+
+    <!-- HEADER -->
+    <header class="bg-gradient-to-br from-[#FFE8DC] via-[#F5EFE0] to-[#F6F8FB] rounded-[32px] p-12 mb-6 relative overflow-hidden">
+      <div class="inline-flex items-center gap-2 bg-[#FF6B2C] text-white text-[20px] font-bold tracking-widest uppercase px-5 py-2.5 rounded-full mb-6">
+        <span class="w-2 h-2 rounded-full bg-white"></span>
+        Event Timeline
+      </div>
+      <div class="flex justify-center mb-6">
+        
+      </div>
+      <!-- SAMPLE_DATA: 大見出し -->
+      <h1 class="text-[72px] font-black leading-[1.05] tracking-tight text-[#0A0A0A] mb-5">
+        何が<br>
+        <span class="text-[#FF6B2C]">いつ起きたのか</span>
+      </h1>
+      <!-- SAMPLE_DATA: サブタイトル -->
+      <p class="text-[26px] text-[#444] leading-relaxed max-w-3xl">
+        主な出来事と対応のタイミングを、時系列で整理しました。
+      </p>
+    </header>
+
+    <!-- TIMELINE -->
+    <section class="bg-white rounded-[28px] p-12 mb-6 shadow-[0_2px_12px_rgba(0,0,0,0.04)]">
+      <div class="flex items-center gap-4 mb-6">
+        <div class="w-12 h-12 rounded-full bg-[#FFE8DC] flex items-center justify-center text-[26px]">🗓️</div>
+        <h2 class="text-[40px] font-bold text-[#0A0A0A]">進行タイムライン</h2>
+      </div>
+
+      <!-- SAMPLE_DATA: タイムラインのノード (5〜7個) -->
+      <ol class="relative border-l-[4px] border-[#FFE8DC] pl-10 space-y-8">
+        <li class="relative">
+          <span class="absolute -left-[51px] top-1 w-7 h-7 rounded-full bg-[#FF6B2C] ring-4 ring-[#FFE8DC]"></span>
+          <p class="text-[18px] tracking-widest uppercase text-[#FF6B2C] font-bold mb-2 num">Phase 1 · 発端</p>
+          <h3 class="text-[30px] font-bold text-[#0A0A0A] leading-snug mb-2">事象の発生</h3>
+          <p class="text-[22px] text-[#444] leading-relaxed">最初に起きた時点と、発見の経緯を簡潔に記述。</p>
+        </li>
+        <li class="relative">
+          <span class="absolute -left-[51px] top-1 w-7 h-7 rounded-full bg-[#FF6B2C] ring-4 ring-[#FFE8DC]"></span>
+          <p class="text-[18px] tracking-widest uppercase text-[#FF6B2C] font-bold mb-2 num">Phase 2 · 拡散</p>
+          <h3 class="text-[30px] font-bold text-[#0A0A0A] leading-snug mb-2">ユーザー報告が急増</h3>
+          <p class="text-[22px] text-[#444] leading-relaxed">関連する報告・問い合わせの規模とチャネル。</p>
+        </li>
+        <li class="relative">
+          <span class="absolute -left-[51px] top-1 w-7 h-7 rounded-full bg-[#FF6B2C] ring-4 ring-[#FFE8DC]"></span>
+          <p class="text-[18px] tracking-widest uppercase text-[#FF6B2C] font-bold mb-2 num">Phase 3 · 公式</p>
+          <h3 class="text-[30px] font-bold text-[#0A0A0A] leading-snug mb-2">プラットフォームの公式回答</h3>
+          <p class="text-[22px] text-[#444] leading-relaxed">対象のプラットフォーム・機関の公式見解とその時点。</p>
+        </li>
+        <li class="relative">
+          <span class="absolute -left-[51px] top-1 w-7 h-7 rounded-full bg-[#FF6B2C] ring-4 ring-[#FFE8DC]"></span>
+          <p class="text-[18px] tracking-widest uppercase text-[#FF6B2C] font-bold mb-2 num">Phase 4 · 対応</p>
+          <h3 class="text-[30px] font-bold text-[#0A0A0A] leading-snug mb-2">ユーザーの対処法が確立</h3>
+          <p class="text-[22px] text-[#444] leading-relaxed">現時点で有効な復旧・予防の手順。</p>
+        </li>
+        <li class="relative">
+          <span class="absolute -left-[51px] top-1 w-7 h-7 rounded-full bg-[#0A0A0A] ring-4 ring-[#FFE8DC]"></span>
+          <p class="text-[18px] tracking-widest uppercase text-[#0A0A0A] font-bold mb-2 num">現在 · NOW</p>
+          <h3 class="text-[30px] font-bold text-[#0A0A0A] leading-snug mb-2">残された影響</h3>
+          <p class="text-[22px] text-[#444] leading-relaxed">2026年時点で残っているリスク。</p>
+        </li>
+      </ol>
+    </section>
+
+    <!-- IMPACT / ACTION (左右カード2枚) -->
+    <section class="grid grid-cols-2 gap-6 mb-6">
+      <div class="bg-white rounded-[28px] p-10 shadow-[0_2px_12px_rgba(0,0,0,0.04)]">
+        <p class="text-[18px] tracking-widest uppercase text-[#FF6B2C] font-bold mb-3">影響</p>
+        <h3 class="text-[30px] font-bold text-[#0A0A0A] leading-snug mb-3">誰に、どれだけ</h3>
+        <p class="text-[22px] text-[#444] leading-relaxed">被害・変化の規模を数値で。</p>
+      </div>
+      <div class="bg-[#0A0A0A] text-white rounded-[28px] p-10 shadow-[0_2px_12px_rgba(0,0,0,0.04)]">
+        <p class="text-[18px] tracking-widest uppercase text-[#D6E2FF] font-bold mb-3">対応</p>
+        <h3 class="text-[30px] font-bold leading-snug mb-3">今やるべきこと</h3>
+        <p class="text-[22px] text-[#D6E2FF] leading-relaxed">アクション項目を1〜2つ。</p>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-white rounded-[28px] p-8 flex items-center justify-between shadow-[0_2px_12px_rgba(0,0,0,0.04)]">
+      <div class="flex items-center gap-5">
+        
+        <div>
+          <div class="text-[26px] font-bold text-[#0A0A0A]">ours-magazine.jp</div>
+          <div class="text-[18px] text-[#555]">SNSマーケティングのセルフサービス</div>
+        </div>
+      </div>
+      <div class="text-[18px] text-[#555] italic text-right leading-relaxed">
+        出典: 公式発表 + ユーザーの声<br>
+        時点: 2026年5月時点
+      </div>
+    </footer>
+
+  </main>
+</body>
+</html>

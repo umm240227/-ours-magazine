@@ -632,5 +632,5 @@ draft: drafts/instagram-followers.md
 - 출처 없는 통계·수치 작성
 - 본문에 광고성·과장 표현 (§7)
 - 이미지에 텍스트 오버레이 (다국어·OCR 문제)
-- 보강 루프 4회차 (무한 루프 방지)
+- 보강 루프 한도 초과 — 한도 정본 = **Phase 9**(사용자 호출 5회 / cron `create auto` 무제한·60분 cap). seed 경로는 `seed-prompt-template.md` 최대 8회. (이전 "4회차" 표기는 Phase 9와 충돌하던 stale 값 — 폐기. 무한 루프 방지는 Phase 9 분기로 일원화)
 - 다른 글 수정 (이 스킬은 신규 draft 생성만)

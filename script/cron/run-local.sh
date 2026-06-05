@@ -7,6 +7,14 @@
 # env(선택): SLACK_WEBHOOK_URL, PROJECT_ROOT(기본=레포 루트), MODEL(기본 opus).
 set -uo pipefail
 
+# ── 0.0 절전 방지: caffeinate로 자기 자신 재실행 → 발행(~12분) 동안 Mac이 잠들지 않게 ──────────
+# (pmset가 10:00에 깨워도, 헤드리스 실행은 사용자 활동이 없어 유휴 절전으로 다시 잠들 수 있다.
+#  caffeinate -i(유휴)·-s(시스템, AC전원 시) 절전 차단. 스크립트 종료 시 assertion 자동 해제.
+#  _CAFFEINATED 가드로 무한 재실행 방지. /usr/bin 절대경로 — PATH 보강 전이라.)
+if [ -z "${_CAFFEINATED:-}" ] && [ -x /usr/bin/caffeinate ]; then
+  exec env _CAFFEINATED=1 /usr/bin/caffeinate -is "$0" "$@"
+fi
+
 # ── 0. 결제 경로 강제: API 키/토큰 제거 → Claude Code가 구독 OAuth로 인증 ──────────────
 # (이 한 줄이 "$12 종량제 → Max 구독 정액"의 핵심. 한국이 api 안 쓰는 것과 동일 상태로 만든다.)
 unset ANTHROPIC_API_KEY ANTHROPIC_AUTH_TOKEN

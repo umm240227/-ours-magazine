@@ -41,7 +41,7 @@ else
 fi
 
 echo ""
-echo "스케줄: 매일 08:00(로컬). 다음 실행까지 대기 — load 시 즉시 발행 안 함."
+echo "스케줄: 매일 10:00(로컬). 다음 실행까지 대기 — load 시 즉시 발행 안 함."
 echo "상태 확인 : launchctl print gui/${UID_NUM}/${LABEL} | grep -E 'state|runs|program'"
 echo "즉시 테스트: launchctl kickstart -k gui/${UID_NUM}/${LABEL}   (지금 1편 실행 — 구독 청구)"
 echo "로그       : tail -f $PROJECT_ROOT/tmp/local-logs/launchd-*.log"

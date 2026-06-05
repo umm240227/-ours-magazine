@@ -4,7 +4,7 @@
   ours-magazine.jp 일일 자동 블로그 발행 — 한국(com.snshelp.daily-all.plist)과 동일 방식.
   ⚠️ 구독 모드: run-local.sh가 ANTHROPIC_API_KEY를 unset → Max 5x 구독으로 청구(API 종량제 아님).
   ⚠️ 이 plist엔 ANTHROPIC_API_KEY를 절대 넣지 않는다(넣으면 종량제로 돌아감).
-  매일 08:00(로컬 시각) 1편 생성 → md-publish --commit → git push origin main → Vercel.
+  매일 10:00(로컬 시각) 1편 생성 → md-publish --commit → git push origin main → Vercel.
   전제: Mac 켜져 있고 사용자 GUI 로그인 상태(구독 토큰이 login 키체인에 있어 접근 필요).
   설치: bash script/cron/install-launchd.sh  (경로는 install 스크립트가 현재 머신에 맞게 치환)
 -->
@@ -33,11 +33,11 @@
         <string>en_US.UTF-8</string>
     </dict>
 
-    <!-- 매일 08:00 로컬 시각. 변경하려면 Hour/Minute 수정 후 재설치. -->
+    <!-- 매일 10:00 로컬 시각. 변경하려면 Hour/Minute 수정 후 재설치. -->
     <key>StartCalendarInterval</key>
     <dict>
         <key>Hour</key>
-        <integer>8</integer>
+        <integer>10</integer>
         <key>Minute</key>
         <integer>0</integer>
     </dict>

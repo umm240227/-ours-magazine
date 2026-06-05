@@ -17,6 +17,7 @@
 
 ## 3. 본문 포맷 (CRITICAL — KR과 가장 큰 차이)
 - **순수 GFM 마크다운.** Gutenberg HTML(`<figure class="wp-block-image">`, `<ul>`, `<p><strong>`) **금지.**
+- **강조(굵게) `**텍스트**`**: 일본어 구두점·괄호(`、。「」（）`)에 바로 붙어도 사이트가 `remark-cjk-friendly`(page.tsx)로 렌더 복구 — 표준 CommonMark flanking 규칙이면 별표가 리터럴로 노출되는 것을 방지(원본 마크다운 보존). 단 `**`는 **반드시 짝수로 닫을 것**: 닫는 `**` 누락은 플러그인도 복구 못 하고 `validate-post-html.mjs` `unparsed-emphasis` 게이트(audit −20)에서 차단된다.
 - KR write.md의 **본문 상단 5단 강제 순서는 유지하되 마크다운으로 표현**:
   1. TL;DR 헤더 → `**{메인키워드}、{N}つのポイント**` (페르소나 자기소개 금지)
   2. TL;DR 리스트 → `- ` bullets 5±2 (각 70–140자 상당, 본문 H2와 1:1)

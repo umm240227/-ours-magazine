@@ -18,6 +18,17 @@
 import { readFile } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import { listSlugs, resolvePostPath } from './lib/jp-paths.mjs';
+import { unified } from 'unified';
+import remarkParse from 'remark-parse';
+import remarkGfm from 'remark-gfm';
+import remarkCjkFriendly from 'remark-cjk-friendly';
+import { visit } from 'unist-util-visit';
+
+// 렌더러(app/articles/[id]/page.tsx)와 동일 파서: remark-gfm + remark-cjk-friendly.
+// 이걸로 파싱한 뒤에도 text 노드에 ** 가 남으면 = flanking-rule이 아니라 '짝 안 맞는 진짜 오타'
+// (닫는 ** 누락 등 — cjk-friendly 플러그인도 복구 못 함). 일본어 구두점 인접으로 깨지던 케이스는
+// 플러그인이 strong 으로 흡수하므로 검출 0(오탐 없음). code/inlineCode 는 text 노드가 아니라 자동 제외.
+const mdProcessor = unified().use(remarkParse).use(remarkGfm).use(remarkCjkFriendly);
 
 const args = process.argv.slice(2);
 const flagAll = args.includes('--all');
@@ -122,6 +133,26 @@ function validate(filename, body) {
     }
   }
 
+  // 4) 미해석 강조(unparsed-emphasis): gfm + cjk-friendly 파싱 후 text 노드에 남은 **.
+  //    `3 ** 2` 처럼 양옆 공백인 리터럴 별표는 제외(\S 인접한 것만 = 강조 의도였으나 짝이 안 맞음).
+  {
+    try {
+      const tree = mdProcessor.parse(body);
+      visit(tree, 'text', (node) => {
+        if (!node.value.includes('**')) return;
+        if (!/\S\*\*|\*\*\S/.test(node.value)) return; // 공백으로 둘러싸인 리터럴 별표는 통과
+        const at = node.value.indexOf('**');
+        issues.push({
+          kind: 'unparsed-emphasis',
+          line: node.position?.start?.line ?? null,
+          snippet: node.value.slice(Math.max(0, at - 12), at + 16).trim(),
+        });
+      });
+    } catch {
+      /* 파서 실패는 무시(다른 검사로 충분) */
+    }
+  }
+
   return { filename, ok: issues.length === 0, issues };
 }
 
@@ -165,6 +196,8 @@ async function run() {
           console.log(`   broken-gfm-table: ${issue.line}행 표 헤더 다음에 |---| 구분행 없음 → "${issue.header}"`);
         } else if (issue.kind === 'broken-md-link') {
           console.log(`   broken-md-link: ${issue.line}행 ${issue.kindOfToken} 닫는 ')' 누락 → "${issue.snippet}"`);
+        } else if (issue.kind === 'unparsed-emphasis') {
+          console.log(`   unparsed-emphasis: ${issue.line ?? '?'}행 짝 안 맞는 강조 ** 잔존(닫는 ** 누락 의심) → "${issue.snippet}"`);
         } else if (issue.kind === 'read-error') {
           console.log(`   read-error: ${issue.message}`);
         }

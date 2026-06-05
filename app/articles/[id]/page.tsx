@@ -4,6 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import remarkCjkFriendly from "remark-cjk-friendly";
 import { ensureArticleImageSrc, getArticleById, getArticleIds, getRecommendedArticles } from "../../../lib/markdown";
 
 const categories = [
@@ -173,7 +174,7 @@ export default async function ArticleDetailPage({ params }: ArticlePageProps) {
 
             <article className="space-y-8 text-base leading-relaxed text-slate-700 md:text-lg">
               <ReactMarkdown
-                remarkPlugins={[remarkGfm]}
+                remarkPlugins={[remarkGfm, remarkCjkFriendly]}
                 components={{
                   h2: ({ children }) => (
                     <h2 className="border-l-4 border-brand-primary bg-slate-50 px-4 py-2 text-2xl font-bold leading-snug text-brand-primary">

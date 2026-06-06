@@ -93,11 +93,20 @@ PY
 case "$STATUS" in
   success)
     if git log origin/main..HEAD --oneline 2>/dev/null | grep -q .; then
-      git push origin main 2>&1 | tee -a "$LOG" \
-        && { echo "[$(date '+%F %T')] ✅ 발행+push: $SLUG"; slack "✅ 로컬 블로그 발행: $SLUG → Vercel 배포 시작"; } \
-        || slack "⚠️ 로컬 블로그: $SLUG 생성됐으나 git push 실패 — 자격증명 확인"
+      # git push | tee 는 tee 의 종료코드를 반환하므로 push 실패가 가려진다 → PIPESTATUS[0]로 실제 push 종료코드 판정.
+      git push origin main 2>&1 | tee -a "$LOG"
+      PUSH_RC=${PIPESTATUS[0]}
+      if [ "$PUSH_RC" -eq 0 ]; then
+        echo "[$(date '+%F %T')] ✅ 발행+push: $SLUG"; slack "✅ 로컬 블로그 발행: $SLUG → Vercel 배포 시작"
+      else
+        echo "[$(date '+%F %T')] ✗ git push 실패(rc=$PUSH_RC): $SLUG" | tee -a "$LOG"
+        slack "⚠️ 로컬 블로그: $SLUG 생성됐으나 git push 실패(rc=$PUSH_RC) — Vercel 미배포, 자격증명 확인"
+        exit 1   # push 실패 = Vercel 미배포 → 실패 종료(launchd가 성공 오판 방지)
+      fi
     else
-      slack "⚠️ 로컬 블로그: $SLUG success인데 commit 없음 — md-publish --commit 확인"
+      echo "[$(date '+%F %T')] ✗ $SLUG success인데 commit 없음" | tee -a "$LOG"
+      slack "⚠️ 로컬 블로그: $SLUG success인데 commit 없음 — md-publish --commit 확인(미배포)"
+      exit 1   # success 인데 배포할 commit 없음 = 비정상 → 실패 종료
     fi ;;
   skipped) echo "[$(date '+%F %T')] ℹ️ 스킵: $SLUG"; slack "ℹ️ 로컬 블로그 스킵: $SLUG"; exit 0 ;;
   failed|*) echo "[$(date '+%F %T')] ✗ $SLUG status='${STATUS:-no-json}'" | tee -a "$LOG"; slack "✗ 로컬 블로그 실패: $SLUG (status=${STATUS:-no-json}) — 로그 확인"; exit 1 ;;

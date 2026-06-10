@@ -34,3 +34,88 @@ topics:
     main_keyword: "SNS コンテンツカレンダー 作り方"
     secondary: "SNS 投稿 ネタ / SNS 運用 計画 / 投稿 頻度 目安"
     category: "SNS運用"
+
+  # ── 2026-06-10 추가: 2주치(14편) ──────────────────────────────────
+  - slug: instagram-stories-engagement
+    topic: "インスタのストーリーズ閲覧数とエンゲージメントを高める活用術"
+    main_keyword: "ストーリーズ 閲覧数 増やす"
+    secondary: "ストーリーズ 活用 例 / ストーリーズ スタンプ 活用 / ストーリーズ 見られない"
+    category: "Instagram"
+
+  - slug: instagram-hashtag-strategy
+    topic: "インスタのハッシュタグの選び方と付け方（2026年版）"
+    main_keyword: "インスタ ハッシュタグ 選び方"
+    secondary: "ハッシュタグ 何個 まで / ハッシュタグ 効果 ない / ハッシュタグ 付け方"
+    category: "Instagram"
+
+  - slug: instagram-insights-basics
+    topic: "インスタのインサイトの見方と数字の改善方法（初心者向け）"
+    main_keyword: "インスタ インサイト 見方"
+    secondary: "リーチ フォロワー以外 / インサイト 用語 意味 / 保存率 確認 方法"
+    category: "Instagram"
+
+  - slug: tiktok-trending-sounds
+    topic: "TikTokでバズる音源の探し方と使い方"
+    main_keyword: "TikTok 音源 探し方"
+    secondary: "TikTok 流行り 音 / TikTok 音源 トレンド / TikTok 商用 音源"
+    category: "TikTok"
+
+  - slug: tiktok-account-design
+    topic: "伸びるTikTokアカウント設計（ジャンル選定と統一感）"
+    main_keyword: "TikTok アカウント設計"
+    secondary: "TikTok ジャンル 決め方 / TikTok プロフィール 書き方 / TikTok 世界観 統一"
+    category: "TikTok"
+
+  - slug: tiktok-analytics-insights
+    topic: "TikTokのインサイト分析と伸びる動画の見つけ方"
+    main_keyword: "TikTok インサイト 見方"
+    secondary: "TikTok 完了率 確認 / TikTok フォロワー 属性 / TikTok 分析 やり方"
+    category: "TikTok"
+
+  - slug: youtube-seo-title-description
+    topic: "検索から再生を増やすYouTube SEOの基本（タイトル・説明欄・タグ）"
+    main_keyword: "YouTube SEO 対策"
+    secondary: "YouTube タイトル 付け方 / YouTube 説明欄 書き方 / YouTube タグ 効果"
+    category: "YouTube"
+
+  - slug: youtube-playlist-strategy
+    topic: "再生リストで総再生時間を伸ばすYouTube運用術"
+    main_keyword: "YouTube 再生リスト 作り方"
+    secondary: "再生リスト 効果 / 再生リスト 並び 順 / YouTube 回遊 増やす"
+    category: "YouTube"
+
+  - slug: youtube-channel-concept
+    topic: "伸びるYouTubeチャンネルのコンセプト設計とジャンルの決め方"
+    main_keyword: "YouTube チャンネル コンセプト"
+    secondary: "YouTube ジャンル 決め方 / YouTube ターゲット 設定 / YouTube 差別化"
+    category: "YouTube"
+
+  - slug: x-profile-optimization
+    topic: "フォローされるXプロフィールの作り方（固定ポスト活用まで）"
+    main_keyword: "X プロフィール 書き方"
+    secondary: "X 自己紹介 例 / X 固定ポスト 活用 / X ヘッダー サイズ"
+    category: "X（Twitter）"
+
+  - slug: x-analytics-guide
+    topic: "Xアナリティクスの見方と投稿改善のやり方"
+    main_keyword: "X アナリティクス 見方"
+    secondary: "X インプレッション 確認 / X エンゲージメント率 目安 / X 伸びた投稿 分析"
+    category: "X（Twitter）"
+
+  - slug: sns-kpi-goal-setting
+    topic: "SNS運用のKPI設定と目標数値の決め方（初心者向け）"
+    main_keyword: "SNS KPI 設定"
+    secondary: "SNS KGI KPI 違い / SNS 目標 数値 例 / SNS レポート 項目"
+    category: "SNS運用"
+
+  - slug: sns-competitor-analysis
+    topic: "SNS競合アカウント分析のやり方と見るべき項目"
+    main_keyword: "SNS 競合分析 やり方"
+    secondary: "競合 アカウント 調べ方 / SNS ベンチマーク 選び方 / 競合分析 ツール 無料"
+    category: "SNS運用"
+
+  - slug: sns-crisis-prevention
+    topic: "SNS炎上を防ぐ運用ルールと投稿前チェックリスト"
+    main_keyword: "SNS 炎上 対策"
+    secondary: "SNS 炎上 原因 / 投稿前 チェック 項目 / 炎上 した場合 対応"
+    category: "SNS運用"
